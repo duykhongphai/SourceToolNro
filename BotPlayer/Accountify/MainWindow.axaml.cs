@@ -231,7 +231,6 @@ public partial class MainWindow : Window
 
             var fieldNames = (from DataRow row in dataTable.Rows
                 let fieldName = row["Field"].ToString()
-                let fieldType = row["Type"].ToString()
                 select fieldName).ToList();
             UsernameFieldComboBox.ItemsSource = fieldNames;
             PasswordFieldComboBox.ItemsSource = fieldNames;

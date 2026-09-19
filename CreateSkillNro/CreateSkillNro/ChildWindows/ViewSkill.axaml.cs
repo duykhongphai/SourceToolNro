@@ -94,9 +94,9 @@ public partial class ViewSkill : Window
 
             if (!_buildCancellationTokenSource.Token.IsCancellationRequested)
             {
-                WriteNrSkill();
-                WriteNrEffect();
-                WriteNrDart();
+                await WriteNrSkill();
+                await WriteNrEffect();
+                await WriteNrDart();
                 UpdateBuildProgress(100, totalOperations, totalOperations,
                     "Build completed successfully!", "All images processed");
 
@@ -176,7 +176,7 @@ public partial class ViewSkill : Window
         }
     }
 
-    private async void WriteNrSkill()
+    private async Task WriteNrSkill()
     {
         var myWriter = new myWriter(999999);
         myWriter.writeShort(FormMainEffect.Instance.SkillPaints.Count);
@@ -214,7 +214,7 @@ public partial class ViewSkill : Window
         }
     }
 
-    private async void WriteNrEffect()
+    private async Task WriteNrEffect()
     {
         var myWriter = new myWriter(999999);
         myWriter.writeShort(FormMainEffect.Instance.EffectCharPaints.Count);
@@ -235,7 +235,7 @@ public partial class ViewSkill : Window
         myWriter.Close();
     }
 
-    private async void WriteNrDart()
+    private async Task WriteNrDart()
     {
         var myWriter = new myWriter();
         myWriter.writeShort(FormMainEffect.Instance.DartInfos.Count);

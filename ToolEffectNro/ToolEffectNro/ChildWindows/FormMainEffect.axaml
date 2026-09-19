@@ -1,0 +1,106 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:ToolEffectNro.Options"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="ToolEffectNro.ChildWindows.FormMainEffect"
+        Title="FormMainEffect"
+        Width="1085" Height="610"
+        Background="#3A384D"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid ColumnDefinitions="*,200" Background="rgb(55, 55, 74)">
+        <Border Grid.Column="0"
+                Background="#3A384D"
+                BorderBrush="#555555"
+                BorderThickness="1"
+                Margin="10">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <options:ImageCropper x:Name="ImageCanvas" />
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Column="1"
+                BorderBrush="#4c374a"
+                CornerRadius="10"
+                BorderThickness="1"
+                Margin="0,10,10,10"
+                Height="370"
+                VerticalAlignment="Top">
+            <Grid RowDefinitions="Auto,*">
+                <Border Grid.Row="0"
+                        Background="#2b2a37"
+                        Height="40" CornerRadius="10,10,0,0">
+                    <TextBlock Text="Action"
+                               Foreground="White"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="15,0,0,0" />
+                </Border>
+
+                <StackPanel Grid.Row="1"
+                            Margin="15">
+                    <TextBox x:Name="IdEffectTextBox"
+                             Watermark="Id Effect"
+                             Margin="0,10,0,20"
+                             Background="White"
+                             Width="148"
+                             Foreground="Black"
+                             CornerRadius="4" />
+                    <Button x:Name="ImportImageButton"
+                            Classes="dark"
+                            Content="Import Image"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="8"
+                            Margin="0,0,0,5" Click="ImportImageButton_OnClick" />
+                    <Button x:Name="ImportDataButton"
+                            Classes="dark"
+                            Content="Import Data"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="8"
+                            Margin="0,0,0,5" Click="ImportDataButton_OnClick" />
+                    <Button x:Name="MakeTitle"
+                            Classes="dark"
+                            Content="Make Title"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="8"
+                            Margin="0,0,0,5" Click="MakeTitle_OnClick" />
+                    <Button x:Name="SaveCropButton"
+                            Classes="dark"
+                            Content="Save Crop"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="8"
+                            Margin="0,0,0,5" Click="SaveCropButton_OnClick" />
+                    <Button x:Name="FastCropButton"
+                            Classes="dark"
+                            Content="Fast Crop"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            Margin="0,0,0,5" Click="FastCropButton_OnClick" />
+                    <Button x:Name="FastCropWithSizeButton"
+                            Classes="dark"
+                            Content="Fast Crop With Size"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="8" Click="FastCropWithSizeButton_OnClick" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

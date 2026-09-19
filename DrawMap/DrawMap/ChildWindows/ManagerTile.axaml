@@ -1,0 +1,744 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:DrawMap.Options"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="535"
+        x:Class="DrawMap.ChildWindows.ManagerTile"
+        Title="Tile Manager"
+        Width="1000" Height="535"
+        ExtendClientAreaChromeHints="NoChrome"
+        Icon="/Assets/Icon.ico"
+        Background="rgb(70, 67, 90)"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Styles>
+        <Style>
+            <Style.Resources>
+                <SolidColorBrush x:Key="PanelBg">rgb(75, 72, 95)</SolidColorBrush>
+                <SolidColorBrush x:Key="ButtonBg">rgb(85, 82, 107)</SolidColorBrush>
+                <SolidColorBrush x:Key="ToolbarBg">rgb(78, 75, 100)</SolidColorBrush>
+                <SolidColorBrush x:Key="BorderColor">rgb(100, 97, 122)</SolidColorBrush>
+                <SolidColorBrush x:Key="AccentBlue">#4A90E2</SolidColorBrush>
+                <SolidColorBrush x:Key="AccentYellow">#FFC107</SolidColorBrush>
+                <SolidColorBrush x:Key="TextWhite">#FFFFFF</SolidColorBrush>
+                <SolidColorBrush x:Key="TextGray">#E0E0E0</SolidColorBrush>
+                <SolidColorBrush x:Key="TextMuted">#B0B0B0</SolidColorBrush>
+                <SolidColorBrush x:Key="TabInactiveBg">rgb(65, 62, 85)</SolidColorBrush>
+            </Style.Resources>
+        </Style>
+
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="{DynamicResource TabInactiveBg}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextMuted}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="BorderThickness" Value="1,1,1,0" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="Margin" Value="0,0,2,0" />
+            <Setter Property="CornerRadius" Value="6,6,0,0" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="MinWidth" Value="100" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.3" />
+                    <BrushTransition Property="Foreground" Duration="0:0:0.3" />
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.tab:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                        <GradientStop Color="#5A97E9" Offset="0" />
+                        <GradientStop Color="#4A87D9" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="RenderTransform" Value="translateY(-1px)" />
+        </Style>
+
+        <Style Selector="Button.tab.active">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="0%,100%">
+                        <GradientStop Color="#4A90E2" Offset="0" />
+                        <GradientStop Color="#357ABD" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBlue}" />
+        </Style>
+
+        <Style Selector="Button.tab.active:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="RenderTransform" Value="none" />
+        </Style>
+
+        <Style Selector="Grid.tab-content">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="RenderTransform" Value="translateX(30px)" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.4" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Grid.tab-content.active">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="RenderTransform" Value="translateX(0px)" />
+        </Style>
+
+        <Style Selector="Button">
+            <Setter Property="Background" Value="{DynamicResource ButtonBg}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="10,6" />
+            <Setter Property="Margin" Value="3" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.tool">
+            <Setter Property="Width" Value="36" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="{DynamicResource ButtonBg}" />
+        </Style>
+        <Style Selector="Button.tool:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource AccentBlue}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBlue}" />
+        </Style>
+        <Style Selector="Button.tool:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#357ABD" />
+            <Setter Property="BorderBrush" Value="#357ABD" />
+        </Style>
+        <Style Selector="Button.nav">
+            <Setter Property="Width" Value="32" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Padding" Value="4" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="{DynamicResource ButtonBg}" />
+        </Style>
+        <Style Selector="Button.nav:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="{DynamicResource AccentYellow}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentYellow}" />
+            <Setter Property="Foreground" Value="#000000" />
+        </Style>
+        <Style Selector="Button.nav:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#FFB300" />
+            <Setter Property="BorderBrush" Value="#FFB300" />
+            <Setter Property="Foreground" Value="#000000" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="{DynamicResource ButtonBg}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="{DynamicResource AccentBlue}" />
+        </Style>
+        <Style Selector="ComboBox">
+            <Setter Property="Background" Value="{DynamicResource ButtonBg}" />
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="Padding" Value="8,5" />
+            <Setter Property="FontSize" Value="11" />
+        </Style>
+        <Style Selector="CheckBox">
+            <Setter Property="Foreground" Value="{DynamicResource TextGray}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="0,3" />
+        </Style>
+        <Style Selector="TextBlock.title">
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+        <Style Selector="TextBlock.label">
+            <Setter Property="Foreground" Value="{DynamicResource TextGray}" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="Margin" Value="0,6,0,3" />
+        </Style>
+        <Style Selector="TextBlock.info">
+            <Setter Property="Foreground" Value="{DynamicResource TextMuted}" />
+            <Setter Property="FontSize" Value="10" />
+        </Style>
+        <Style Selector="Border.panel">
+            <Setter Property="Background" Value="{DynamicResource PanelBg}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource BorderColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="12" />
+            <Setter Property="Margin" Value="4" />
+        </Style>
+        <Style Selector="Border.separator">
+            <Setter Property="Background" Value="{DynamicResource BorderColor}" />
+            <Setter Property="Height" Value="1" />
+            <Setter Property="Margin" Value="0,8" />
+        </Style>
+        <Style Selector="PathIcon">
+            <Setter Property="Width" Value="16" />
+            <Setter Property="Height" Value="16" />
+            <Setter Property="Foreground" Value="{DynamicResource TextWhite}" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*,24" Background="rgb(70, 67, 90)">
+        <Border Grid.Row="0" Background="{DynamicResource ToolbarBg}"
+                BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,0,0,1"
+                Padding="8,8,8,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Classes="tab active" Content="Tile" Name="TileTabBtn" Click="OnTabClick" Tag="Tile" />
+                <Button Classes="tab" Content="ItemBackground" Name="ItemBgTabBtn" Click="OnTabClick"
+                        Tag="ItemBackground" />
+                <Button Classes="tab" Content="Actors And Effects" Name="ActorsAndEffectsTabBtn" Click="OnTabClick"
+                        Tag="ActorsAndEffects" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Name="TabContentContainer">
+            <Grid Name="TileTabContent" Classes="tab-content active" ColumnDefinitions="220,*,260">
+                <Border Grid.Column="0" Classes="panel">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="0,0,6,0">
+                            <TextBlock Text="Tile Library" Classes="title" />
+                            <Border Background="{DynamicResource ButtonBg}"
+                                    BorderBrush="{DynamicResource BorderColor}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="8"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="Preview" Classes="label" FontWeight="Medium" Margin="0,0,0,6" />
+
+                                    <Border Background="{DynamicResource PanelBg}"
+                                            BorderBrush="{DynamicResource BorderColor}"
+                                            BorderThickness="1"
+                                            CornerRadius="4"
+                                            Height="350"
+                                            Margin="0,0,0,8">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                                      HorizontalScrollBarVisibility="Disabled">
+                                            <WrapPanel Name="PanelItemMap" Background="{DynamicResource PanelBg}" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+                            <Grid Margin="0,0,0,12" ColumnDefinitions="*,Auto,Auto">
+                                <TextBlock Name="TextBlockPage" Grid.Column="0" Text="Tile: NaN" Classes="info"
+                                           VerticalAlignment="Center" />
+                                <Button Grid.Column="1" Classes="nav" Name="PrevPageBtn" Click="PrevPageBtn_OnClick">
+                                    <PathIcon Data="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+                                </Button>
+                                <Button Grid.Column="2" Classes="nav" Name="NextPageBtn" Click="NextPageBtn_OnClick">
+                                    <PathIcon Data="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+                                </Button>
+                            </Grid>
+                            <TextBlock Text="Quick Actions" Classes="label" />
+                            <Button Content="Add Tile To Tile ID" Classes="purple" HorizontalAlignment="Stretch"
+                                    Name="AddTileToTileIdButton" Click="AddNewBtn_OnClick" />
+                            <Button Content="Create New Tile ID" Classes="purple" HorizontalAlignment="Stretch"
+                                    Name="CreateTileIdButton" Click="CreateTileId_OnClick" />
+                            <Button Content="Delete Tile ID" Classes="purple" HorizontalAlignment="Stretch"
+                                    Name="DeleteTileIdButton" Click="RemoveBtn_OnClick" />
+
+                            <Border Classes="separator" />
+
+                            <Button Content="Export Tiles" HorizontalAlignment="Stretch" Name="ExportBtn"
+                                    Classes="purple" Click="ExportBtn_OnClick" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <Grid Grid.Column="1" Margin="8" RowDefinitions="Auto,*,Auto">
+                    <Border Grid.Row="0" Background="{DynamicResource ToolbarBg}"
+                            BorderBrush="{DynamicResource BorderColor}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="8"
+                            Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="Tools:" Classes="label" VerticalAlignment="Center" Margin="0,0,12,0" />
+                            <Button Classes="tool" ToolTip.Tip="Rotate Left" Name="RotateLeftBtn"
+                                    Click="RotateLeftBtn_OnClick">
+                                <PathIcon
+                                    Data="M7.11 8.53L5.7 7.11C4.8 8.27 4.24 9.61 4.07 11h2.02c.14-.87.49-1.72 1.02-2.47zM6.09 13H4.07c.17 1.39.72 2.73 1.62 3.89l1.41-1.42c-.52-.75-.87-1.59-1.01-2.47zm1.01 5.32c1.16.9 2.51 1.44 3.9 1.61V17.9c-.87-.15-1.71-.49-2.46-1.03L7.1 18.32zM13 4.07V1L8.45 5.55 13 10V6.09c2.84.48 5 2.94 5 5.91s-2.16 5.43-5 5.91v2.02c3.95-.49 7-3.85 7-7.93s-3.05-7.44-7-7.93z" />
+                            </Button>
+                            <Button Classes="tool" ToolTip.Tip="Rotate Right" Name="RotateRightBtn"
+                                    Click="RotateRightBtn_OnClick">
+                                <PathIcon
+                                    Data="M15.55 5.55L11 1v3.07C7.06 4.56 4 7.92 4 12s3.05 7.44 7 7.93v-2.02c-2.84-.48-5-2.94-5-5.91s2.16-5.43 5-5.91V10l4.55-4.45zM19.93 11c-.17-1.39-.72-2.73-1.62-3.89l-1.42 1.42c.54.75.88 1.6 1.02 2.47h2.02zM13 17.9v2.02c1.39-.17 2.74-.71 3.9-1.61l-1.44-1.44c-.75.54-1.59.89-2.46 1.03zm3.89-2.42l1.42 1.41c.9-1.16 1.45-2.5 1.62-3.89h-2.02c-.14.87-.48 1.72-1.02 2.48z" />
+                            </Button>
+                            <Button Classes="tool" ToolTip.Tip="Flip Horizontal" Name="FlipHBtn"
+                                    Click="FlipHBtn_OnClick">
+                                <PathIcon
+                                    Data="M2 18.1136V5.88638C2 4.18423 2 3.33316 2.54242 3.05402C3.08484 2.77488 3.77738 3.26956 5.16247 4.25891L6.74371 5.38837C7.35957 5.82827 7.6675 6.04822 7.83375 6.37127C8 6.69432 8 7.07274 8 7.82957V16.1704C8 16.9273 8 17.3057 7.83375 17.6287C7.6675 17.9518 7.35957 18.1717 6.74372 18.6116L5.16248 19.7411C3.77738 20.7304 3.08484 21.2251 2.54242 20.946C2 20.6668 2 19.8158 2 18.1136Z M22 18.1136V5.88638C22 4.18423 22 3.33316 21.4576 3.05402C20.9152 2.77488 20.2226 3.26956 18.8375 4.25891L17.2563 5.38837C16.6404 5.82827 16.3325 6.04822 16.1662 6.37127C16 6.69432 16 7.07274 16 7.82957V16.1704C16 16.9273 16 17.3057 16.1662 17.6287C16.3325 17.9518 16.6404 18.1717 17.2563 18.6116L18.8375 19.7411C20.2226 20.7304 20.9152 21.2251 21.4576 20.946C22 20.6668 22 19.8158 22 18.1136Z M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V6C12.75 6.41421 12.4142 6.75 12 6.75C11.5858 6.75 11.25 6.41421 11.25 6V2C11.25 1.58579 11.5858 1.25 12 1.25ZM12 9.25C12.4142 9.25 12.75 9.58579 12.75 10V14C12.75 14.4142 12.4142 14.75 12 14.75C11.5858 14.75 11.25 14.4142 11.25 14V10C11.25 9.58579 11.5858 9.25 12 9.25ZM12 17.25C12.4142 17.25 12.75 17.5858 12.75 18V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V18C11.25 17.5858 11.5858 17.25 12 17.25Z" />
+                            </Button>
+                            <Button Classes="tool" ToolTip.Tip="Flip Vertical" Name="FlipVBtn" Click="FlipVBtn_OnClick">
+                                <PathIcon
+                                    Data="M18.1136 22H5.88638C4.18423 22 3.33316 22 3.05402 21.4576C2.77488 20.9152 3.26956 20.2226 4.25891 18.8375L5.38837 17.2563C5.82827 16.6404 6.04822 16.3325 6.37127 16.1662C6.69432 16 7.07274 16 7.82957 16H16.1704C16.9273 16 17.3057 16 17.6287 16.1662C17.9518 16.3325 18.1717 16.6404 18.6116 17.2563L19.7411 18.8375C20.7304 20.2226 21.2251 20.9152 20.946 21.4576C20.6668 22 19.8158 22 18.1136 22Z M18.1136 2L5.88638 2C4.18423 2 3.33316 2 3.05402 2.54242C2.77488 3.08484 3.26956 3.77738 4.25891 5.16247L5.38837 6.74372C5.82827 7.35957 6.04822 7.6675 6.37127 7.83375C6.69432 8 7.07274 8 7.82957 8L16.1704 8C16.9273 8 17.3057 8 17.6287 7.83375C17.9518 7.6675 18.1717 7.35957 18.6116 6.74372L19.7411 5.16248C20.7304 3.77738 21.2251 3.08484 20.946 2.54242C20.6668 2 19.8158 2 18.1136 2Z M1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H6C6.41421 11.25 6.75 11.5858 6.75 12C6.75 12.4142 6.41421 12.75 6 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM9.25 12C9.25 11.5858 9.58579 11.25 10 11.25H14C14.4142 11.25 14.75 11.5858 14.75 12C14.75 12.4142 14.4142 12.75 14 12.75H10C9.58579 12.75 9.25 12.4142 9.25 12ZM17.25 12C17.25 11.5858 17.5858 11.25 18 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H18C17.5858 12.75 17.25 12.4142 17.25 12Z" />
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="1" Classes="panel">
+                        <Grid Background="{DynamicResource PanelBg}" Name="MainGrid">
+
+                            <options:PictureCustom Width="200" Height="200"
+                                                   Name="PictureImageSelected"
+                                                   HorizontalAlignment="Center"
+                                                   VerticalAlignment="Center" />
+                            <CheckBox Width="55" Height="55"
+                                      Background="Transparent"
+                                      Name="CheckBoxLeft"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="-140,10,90,0"
+                                      IsCheckedChanged="CheckBoxLeft_OnIsCheckedChanged" />
+                            <CheckBox Width="55" Height="55"
+                                      Background="Transparent"
+                                      Name="CheckBoxRight"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="300,10,0,0"
+                                      IsCheckedChanged="CheckBoxRight_OnIsCheckedChanged" />
+
+                            <CheckBox Width="55" Height="55"
+                                      Background="Transparent"
+                                      Name="CheckBoxTop"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="30,-140,0,100"
+                                      IsCheckedChanged="CheckBoxTop_OnIsCheckedChanged" />
+
+                            <CheckBox Width="55" Height="55"
+                                      Background="Transparent"
+                                      Name="CheckBoxBottom"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Margin="30,280,0,0"
+                                      IsCheckedChanged="CheckBoxBottom_OnIsCheckedChanged" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Row="2" Background="{DynamicResource ToolbarBg}"
+                            BorderBrush="{DynamicResource BorderColor}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="12">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Spacing="16">
+                            <Button Content="Save To Current Tile"
+                                    Classes="glass"
+                                    MinWidth="100"
+                                    Name="SaveImageBtn" Click="SaveImageBtn_OnClick" />
+                            <Button Content="Delete This Tile"
+                                    Classes="glass"
+                                    MinWidth="100"
+                                    Name="DeleteTileBtn" Click="DeleteTileBtn_OnClick" />
+                            <Button Content="Create New Tile"
+                                    Classes="glass"
+                                    MinWidth="100"
+                                    Name="CreateTileBtn" Click="CreateTileBtn_OnClick" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+
+                <Border Grid.Column="2" Classes="panel">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="Background" Classes="title" />
+
+                            <Grid Margin="0,0,0,8" ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                <Border Margin="0,8,0,0" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2"
+                                        BorderBrush="Aqua" BorderThickness="2">
+                                    <WrapPanel Name="PanelBackground" Width="220" Height="115" />
+                                </Border>
+                                <TextBlock Grid.Column="0" Grid.Row="1" Text="Background Id: NaN"
+                                           Name="TextBlockBackgroundId" Classes="label"
+                                           VerticalAlignment="Center" />
+                                <StackPanel Grid.Column="1" Grid.Row="1" Orientation="Horizontal">
+                                    <Button Classes="nav" Name="BgPrevBtn" Click="BgPrevBtn_OnClick">
+                                        <PathIcon Data="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+                                    </Button>
+                                    <Button Classes="nav" Name="BgNextBtn" Click="BgNextBtn_OnClick">
+                                        <PathIcon Data="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+
+                            <UniformGrid Columns="2" Margin="4,0,0,8">
+                                <Button Content="Add Bg" Width="100" Classes="subtle" Name="AddBgBtn"
+                                        Click="AddBgBtn_OnClick" />
+                                <Button Content="Remove Bg" Width="100" Classes="subtle" Name="RemoveBgBtn"
+                                        Click="RemoveBgBtn_OnClick" />
+                            </UniformGrid>
+                            <Border Classes="separator" />
+
+                            <TextBlock Text="Advanced" Classes="title" />
+                            <Button Content="Export Background" Classes="subtle" HorizontalAlignment="Stretch"
+                                    Name="ExportBgBtn" Click="ExportBgBtn_OnClick" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <Grid Name="ItemBackgroundTabContent" Classes="tab-content" ColumnDefinitions="420,*">
+                <Border Grid.Column="0" Classes="panel">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <StackPanel>
+                            <TextBlock Text="ItemBackground Library" Classes="title" />
+
+                            <Border Background="{DynamicResource ButtonBg}"
+                                    BorderBrush="{DynamicResource BorderColor}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="8"
+                                    Margin="0,0,0,12">
+                                <StackPanel>
+                                    <TextBlock Text="Preview" Classes="label" FontWeight="Medium" Margin="0,0,0,6" />
+                                    <Border Background="{DynamicResource PanelBg}"
+                                            BorderBrush="{DynamicResource BorderColor}"
+                                            BorderThickness="1"
+                                            CornerRadius="4"
+                                            Height="350"
+                                            Margin="0,0,0,8">
+                                        <ScrollViewer VerticalScrollBarVisibility="Auto"
+                                                      HorizontalScrollBarVisibility="Disabled">
+                                            <WrapPanel Orientation="Horizontal" Name="PanelItemBackground"
+                                                       Background="{DynamicResource PanelBg}" />
+                                        </ScrollViewer>
+                                    </Border>
+                                </StackPanel>
+                            </Border>
+
+                            <Grid Margin="0,0,0,12" ColumnDefinitions="*,Auto,Auto">
+                                <TextBlock Name="TextBlockItemBgPage" Grid.Column="0" Text="Page: NaN" Classes="info"
+                                           VerticalAlignment="Center" />
+                                <Button Grid.Column="1" Classes="nav" Name="PrevItemBgPageBtn"
+                                        Click="PrevItemBgPageBtn_OnClick">
+                                    <PathIcon Data="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" />
+                                </Button>
+                                <Button Grid.Column="2" Classes="nav" Name="NextItemBgPageBtn"
+                                        Click="NextItemBgPageBtn_OnClick">
+                                    <PathIcon Data="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" />
+                                </Button>
+                            </Grid>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Border>
+
+                <Grid Grid.Column="1" Margin="8" RowDefinitions="Auto,*,Auto">
+                    <Border Grid.Row="0" Background="{DynamicResource ToolbarBg}"
+                            BorderBrush="{DynamicResource BorderColor}"
+                            BorderThickness="1"
+                            CornerRadius="6"
+                            Padding="8"
+                            Margin="0,0,0,8">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                            <TextBlock Text="ItemBg Tools:" Classes="label" VerticalAlignment="Center"
+                                       Margin="0,0,12,0" />
+                            <Button Classes="tool" ToolTip.Tip="Import" Name="ImportBtn" Click="ImportBtn_OnClick">
+                                <PathIcon
+                                    Data="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z M12,12L16,16H13.5V19H10.5V16H8L12,12Z" />
+                            </Button>
+                            <Button Classes="tool" ToolTip.Tip="Save" Name="SaveBtn" Click="SaveBtn_OnClick">
+                                <PathIcon
+                                    Data="M20.71,6.29l-4-4A1,1,0,0,0,16,2H5A2,2,0,0,0,3,4V20a2,2,0,0,0,2,2H19a2,2,0,0,0,2-2V7A1,1,0,0,0,20.71,6.29Z M17,15v7H7V15a1,1,0,0,1,1-1h8A1,1,0,0,1,17,15ZM11,7a1,1,0,0,0-1-1H8A1,1,0,0,0,8,8h2A1,1,0,0,0,11,7Z" />
+                            </Button>
+                            <Button Classes="tool" ToolTip.Tip="Delete" Name="DeleteBtn" Click="DeleteBtn_OnClick">
+                                <PathIcon
+                                    Data="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z" />
+                            </Button>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Grid.Row="1" Classes="panel" Name="ItemBgContainer">
+                        <Grid Background="{DynamicResource PanelBg}">
+                            <options:CustomPanel Name="PanelViewItemBg"
+                                                 Width="{Binding #ItemBgContainer.Bounds.Width}"
+                                                 Height="{Binding #ItemBgContainer.Bounds.Height}"
+                                                 HorizontalAlignment="Center"
+                                                 VerticalAlignment="Center" />
+                            <Border HorizontalAlignment="Left" VerticalAlignment="Top"
+                                    Margin="20,20,0,0"
+                                    Background="{DynamicResource ButtonBg}"
+                                    BorderBrush="{DynamicResource BorderColor}"
+                                    BorderThickness="1"
+                                    CornerRadius="6"
+                                    Padding="8">
+                                <StackPanel>
+                                    <TextBlock Text="Position Offset" Classes="label" />
+                                    <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto,Auto">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Text="X:"
+                                                   VerticalAlignment="Center" Foreground="White" Margin="0,0,5,0" />
+                                        <TextBox Grid.Row="0" Grid.Column="1" Name="OffsetXTextBox" Text="0"
+                                                 Width="60" KeyDown="OffsetNumeric_OnKeyDown"
+                                                 TextChanged="OffsetTextBox_OnTextChanged"
+                                                 HorizontalAlignment="Stretch" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Text="Y:"
+                                                   VerticalAlignment="Center" Foreground="White" Margin="0,0,5,0" />
+                                        <TextBox Grid.Row="1" Grid.Column="1" Name="OffsetYTextBox" Text="0"
+                                                 Width="60" KeyDown="OffsetNumeric_OnKeyDown"
+                                                 TextChanged="OffsetTextBox_OnTextChanged"
+                                                 HorizontalAlignment="Stretch" />
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Text="Layer:"
+                                                   VerticalAlignment="Center" Foreground="White" Margin="0,0,5,0" />
+                                        <ComboBox Name="LayerItemBgComboBox" Grid.Row="2" Grid.Column="1" Width="90"
+                                                  MinWidth="90" Height="30">
+                                            <ComboBoxItem>Dưới Tile Map</ComboBoxItem>
+                                            <ComboBoxItem>Cùng Tile Map</ComboBoxItem>
+                                            <ComboBoxItem>Trên Player</ComboBoxItem>
+                                            <ComboBoxItem>Trên Tất Cả</ComboBoxItem>
+                                        </ComboBox>
+                                    </Grid>
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Border>
+                    <Border Grid.Row="2" Background="{DynamicResource ToolbarBg}"
+                            BorderBrush="{DynamicResource BorderColor}"
+                            BorderThickness="1"
+                            CornerRadius="8"
+                            Padding="12">
+                        <StackPanel Orientation="Horizontal"
+                                    HorizontalAlignment="Center"
+                                    Spacing="16">
+                            <Button Content="Load Data Item Background"
+                                    Classes="glass"
+                                    MinWidth="180"
+                                    Name="LoadDataItemBg" Click="LoadDataItemBg_OnClick" />
+                            <Button Content="Export Data Item Background"
+                                    Classes="glass"
+                                    MinWidth="180"
+                                    Name="ExportDataItemBgBtn" Click="ExportDataItemBg_OnClick" />
+                        </StackPanel>
+                    </Border>
+                </Grid>
+            </Grid>
+            <Grid Name="ActorsAndEffectsTabContent" Classes="tab-content" RowDefinitions="Auto,Auto,*">
+                <ScrollViewer Grid.RowSpan="3" VerticalScrollBarVisibility="Auto">
+                    <StackPanel Margin="12">
+                        <Border Classes="panel" Margin="0,0,0,16">
+                            <StackPanel>
+                                <TextBlock Text="Load Effect" Classes="title" />
+                                <TextBlock Text="Data Source" Classes="label" />
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,12" Spacing="20">
+                                    <RadioButton Content="Load From Image, Data"
+                                                 Name="EffectFromImageDataRadio"
+                                                 GroupName="EffectSource"
+                                                 IsChecked="True"
+                                                 Foreground="White" />
+                                    <RadioButton Content="Load From Data"
+                                                 Name="EffectFromDataRadio"
+                                                 GroupName="EffectSource"
+                                                 Foreground="White" />
+                                </StackPanel>
+                                <StackPanel IsVisible="{Binding #EffectFromImageDataRadio.IsChecked}">
+                                    <TextBlock Text="Image Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+                                        <TextBox Grid.Column="0" Name="EffectImageFolderTextBox"
+                                                 Watermark="Select image folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseEffectImageBtn" Click="BrowseEffectImageBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+                                    <TextBlock Text="Data Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                        <TextBox Grid.Column="0" Name="EffectDataFolderTextBox"
+                                                 Watermark="Select data folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseEffectDataBtn" Click="BrowseEffectDataBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel IsVisible="{Binding #EffectFromDataRadio.IsChecked}">
+                                    <TextBlock Text="Data Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                        <TextBox Grid.Column="0" Name="EffectDataOnlyFolderTextBox"
+                                                 Watermark="Select data folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseEffectDataOnlyBtn" Click="BrowseEffectDataOnlyBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
+
+                                <Button Content="Load Effect"
+                                        HorizontalAlignment="Stretch"
+                                        Name="LoadEffectBtn" Classes="subtle" Click="LoadEffectBtn_OnClick" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="panel" Margin="0,0,0,16">
+                            <StackPanel>
+                                <TextBlock Text="Load Part Npc" Classes="title" />
+                                <TextBlock Text="JSON Format" Classes="label" />
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,8" Spacing="20">
+                                    <RadioButton Content="JSON Array"
+                                                 Name="JsonArrayRadio"
+                                                 GroupName="JsonFormat"
+                                                 IsChecked="True"
+                                                 Foreground="White" />
+                                    <RadioButton Content="JSON Object"
+                                                 Name="JsonObjectRadio"
+                                                 GroupName="JsonFormat"
+                                                 Foreground="White" />
+                                </StackPanel>
+                                <StackPanel IsVisible="{Binding #JsonArrayRadio.IsChecked}">
+                                    <TextBlock Text="Array Order" Classes="label" />
+                                    <StackPanel Orientation="Horizontal" Margin="0,0,0,12" Spacing="20">
+                                        <RadioButton Content="Id, Dx, Dy"
+                                                     Name="IdDxDyRadio"
+                                                     GroupName="ArrayOrder"
+                                                     IsChecked="True"
+                                                     Foreground="White" />
+                                        <RadioButton Content="Dx, Dy, Id"
+                                                     Name="DxDyIdRadio"
+                                                     GroupName="ArrayOrder"
+                                                     Foreground="White" />
+                                    </StackPanel>
+                                </StackPanel>
+                                <TextBlock Text="Icons Path" Classes="label" />
+                                <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                    <TextBox Grid.Column="0" Name="IconsPathTextBox"
+                                             Watermark="Enter icons folder path..." />
+                                    <Button Grid.Column="1" Classes="tool"
+                                            ToolTip.Tip="Browse Folder"
+                                            Name="BrowseIconsBtn" Click="BrowseIconsBtn_Click">
+                                        <PathIcon
+                                            Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                    </Button>
+                                </Grid>
+
+                                <Button Content="Load Part"
+                                        HorizontalAlignment="Stretch"
+                                        Name="LoadPartBtn" Classes="subtle" Click="LoadPartBtn_OnClick" />
+                            </StackPanel>
+                        </Border>
+
+                        <Border Classes="panel">
+                            <StackPanel>
+                                <TextBlock Text="Load Monster" Classes="title" />
+                                <TextBlock Text="Data Source" Classes="label" />
+                                <StackPanel Orientation="Horizontal" Margin="0,0,0,12" Spacing="20">
+                                    <RadioButton Content="Load From Image, Data"
+                                                 Name="MonsterFromImageDataRadio"
+                                                 GroupName="MonsterSource"
+                                                 IsChecked="True"
+                                                 Foreground="White" />
+                                    <RadioButton Content="Load From Data"
+                                                 Name="MonsterFromDataRadio"
+                                                 GroupName="MonsterSource"
+                                                 Foreground="White" />
+                                </StackPanel>
+                                <StackPanel IsVisible="{Binding #MonsterFromImageDataRadio.IsChecked}">
+                                    <TextBlock Text="Image Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,8">
+                                        <TextBox Grid.Column="0" Name="MonsterImageFolderTextBox"
+                                                 Watermark="Select image folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseMonsterImageBtn" Click="BrowseMonsterImageBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+
+                                    <TextBlock Text="Data Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                        <TextBox Grid.Column="0" Name="MonsterDataFolderTextBox"
+                                                 Watermark="Select data folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseMonsterDataBtn" Click="BrowseMonsterDataBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
+                                <StackPanel IsVisible="{Binding #MonsterFromDataRadio.IsChecked}">
+                                    <TextBlock Text="Data Folder" Classes="label" />
+                                    <Grid ColumnDefinitions="*,Auto" Margin="0,0,0,12">
+                                        <TextBox Grid.Column="0" Name="MonsterDataOnlyFolderTextBox"
+                                                 Watermark="Select data folder path..." />
+                                        <Button Grid.Column="1" Classes="tool"
+                                                ToolTip.Tip="Browse Folder"
+                                                Name="BrowseMonsterDataOnlyBtn" Click="BrowseMonsterDataOnlyBtn_Click">
+                                            <PathIcon
+                                                Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                                        </Button>
+                                    </Grid>
+                                </StackPanel>
+
+                                <Button Content="Load Monster"
+                                        HorizontalAlignment="Stretch"
+                                        Name="LoadMonsterBtn" Classes="subtle" Click="LoadMonsterBtn_OnClick" />
+                            </StackPanel>
+                        </Border>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </Grid>
+
+        <Border Grid.Row="2" Background="{DynamicResource ToolbarBg}" BorderBrush="{DynamicResource BorderColor}"
+                BorderThickness="0,1,0,0">
+            <Grid Margin="12,0" ColumnDefinitions="*,*,*">
+                <TextBlock Grid.Column="0" Text="© Copyright by Duy Không Phai" Classes="info"
+                           VerticalAlignment="Center" />
+                <TextBlock Grid.Column="1" Text="Tool: Draw" Classes="info" VerticalAlignment="Center"
+                           TextAlignment="Center" />
+                <TextBlock Grid.Column="2" Text="Modified" Classes="info" VerticalAlignment="Center"
+                           TextAlignment="Right" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

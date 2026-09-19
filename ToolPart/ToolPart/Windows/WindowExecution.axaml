@@ -1,0 +1,219 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1215" d:DesignHeight="700"
+        MaxHeight="700" MaxWidth="1215" Width="1215" Height="700"
+        x:Class="ToolPart.Windows.WindowExecution"
+        Title="Tool Part"
+        Background="White"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid ColumnDefinitions="330,*" RowDefinitions="40,*">
+        <Border x:Name="DragPanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="rgb(221, 129, 109)"
+                PointerPressed="DragPanel_OnPointerPressed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Margin="0,0,10,0">
+                <Button x:Name="MinimumButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,5,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="MinimumButton_OnClick">
+                    <TextBlock Text="-"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+                <Button x:Name="CloseButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="CloseButton_OnClick">
+                    <TextBlock Text="×"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Grid.Column="0" RowDefinitions="*,Auto,Auto,Auto,*">
+
+            <Grid Grid.Row="1" Margin="0,0,0,20">
+                <Image Source="../Assets/banner.png"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Margin="-25,20,0,0"
+                       MaxWidth="290"
+                       Stretch="Uniform" />
+            </Grid>
+
+            <Border Grid.Row="2" CornerRadius="15" BorderBrush="rgb(213, 218, 223)" Margin="25,0,25,15"
+                    BorderThickness="1"
+                    Background="White">
+                <Grid RowDefinitions="Auto,*">
+                    <Border Grid.Row="0" Background="rgb(209, 155, 30)" CornerRadius="13,13,0,0" Height="39">
+                        <TextBlock Text="Information" FontFamily="{DynamicResource SegoeUIBold}" Foreground="White"
+                                   VerticalAlignment="Center" Margin="15,0,0,0"
+                                   FontWeight="SemiBold" />
+                    </Border>
+
+                    <WrapPanel Grid.Row="1" Orientation="Vertical">
+                        <Grid ColumnDefinitions="Auto,*" Margin="15,12,15,5">
+                            <TextBlock Grid.Column="0" FontFamily="{DynamicResource SegoeUIBold}" Foreground="DimGray"
+                                       Text="Tool:"
+                                       VerticalAlignment="Center" Width="40" />
+                            <TextBox FontFamily="{DynamicResource SegoeUIBold}" Width="210" Foreground="Red"
+                                     Grid.Column="1" Height="26" Text="Write Part" IsReadOnly="True" Focusable="False"
+                                     IsHitTestVisible="False" />
+                        </Grid>
+                        <Separator Margin="15,2,15,2" Background="rgb(196, 129, 89)" Height="2" />
+                        <Grid ColumnDefinitions="Auto,*" Margin="15,12,15,5">
+                            <TextBlock Grid.Column="0" FontFamily="{DynamicResource SegoeUIBold}" Foreground="DimGray"
+                                       Text="HSD:" VerticalAlignment="Center" Width="40" />
+                            <TextBox Name="TextBoxHsd" Grid.Column="1" Height="26" IsReadOnly="True" Focusable="False"
+                                     IsHitTestVisible="False" Width="210" Foreground="LightGreen" />
+                        </Grid>
+                        <Separator Margin="15,2,15,2" Background="rgb(196, 129, 89)" Height="2" />
+                        <Grid ColumnDefinitions="Auto,*" Margin="15,12,15,5">
+                            <TextBlock Grid.Column="0" FontFamily="{DynamicResource SegoeUIBold}" Foreground="DimGray"
+                                       Text="D/L:" VerticalAlignment="Center" Width="40" />
+                            <TextBox Name="TextBoxDayleft" Grid.Column="1" Height="26" IsReadOnly="True"
+                                     Focusable="False" Width="210"
+                                     IsHitTestVisible="False" Foreground="LightGreen" />
+                        </Grid>
+                        <Separator Margin="15,2,15,15" Background="rgb(196, 129, 89)" Height="2" />
+                    </WrapPanel>
+                </Grid>
+            </Border>
+
+            <Border Grid.Row="3" CornerRadius="15" BorderBrush="rgb(213, 218, 223)" Margin="25,0,25,25"
+                    BorderThickness="1"
+                    Background="White">
+                <Grid RowDefinitions="Auto,*">
+                    <Border Grid.Row="0" Background="rgb(209, 155, 30)" CornerRadius="13,13,0,0" Height="39">
+                        <TextBlock Text="Action" FontFamily="{DynamicResource SegoeUIBold}" Foreground="White"
+                                   VerticalAlignment="Center" Margin="15,0,0,0"
+                                   FontWeight="SemiBold" />
+                    </Border>
+
+                    <StackPanel Grid.Row="1" Margin="15,15,15,15">
+                        <ComboBox SelectedIndex="0" Width="260" Height="32" Margin="0,5,0,10"
+                                  HorizontalAlignment="Stretch" Name="TypePaint"
+                                  SelectionChanged="TypePaint_OnSelectionChanged">
+                            <ComboBoxItem>Head - Body - Leg</ComboBoxItem>
+                            <ComboBoxItem>Body - Head - Leg</ComboBoxItem>
+                        </ComboBox>
+                        <Button x:Name="ImportImageButton" Click="ImportImage_OnClick" Classes="yellow"
+                                Content="Import Image"
+                                HorizontalAlignment="Stretch"
+                                Height="37"
+                                Margin="0,8,0,2" />
+                        <Button x:Name="ImportDataButton" Click="ImportDataButton_OnClick" Classes="yellow"
+                                Content="Import Data"
+                                HorizontalAlignment="Stretch"
+                                Height="37"
+                                Margin="0,8,0,2" />
+                        <Button x:Name="ExportPart" Click="ExportPart_OnClick" Content="Export Part" Classes="yellow"
+                                HorizontalAlignment="Stretch"
+                                Height="37"
+                                Margin="0,8,0,2" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1" Margin="10,10,10,10">
+            <Grid RowDefinitions="Auto,*">
+                <Border Grid.Row="0" BorderThickness="1"
+                        Background="White" CornerRadius="15"
+                        BorderBrush="rgb(213, 218, 223)">
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Grid.Row="0" Background="rgb(209, 155, 30)" CornerRadius="13,13,0,0" Height="39">
+                            <TextBlock Text="Actions Char" FontFamily="{DynamicResource SegoeUIBold}"
+                                       Foreground="White"
+                                       VerticalAlignment="Center" Margin="15,0,0,0"
+                                       FontWeight="SemiBold" />
+                        </Border>
+
+                        <UniformGrid Grid.Row="1" Rows="1" Columns="7" Margin="10,15,10,15">
+                            <Button Content="Stand"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="1"
+                                    HorizontalAlignment="Center"
+                                    Click="Button_OnClick" />
+                            <Button Content="Run"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="2"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                            <Button Content="Fall"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="3"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                            <Button Content="Fly"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="4"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                            <Button Content="Skill Stand"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="5"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                            <Button Content="Injured"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="6"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                            <Button Content="Custom"
+                                    Classes="yellow"
+                                    Margin="5,0,5,0"
+                                    Width="100"
+                                    Tag="7"
+                                    HorizontalAlignment="Center" Click="Button_OnClick" />
+                        </UniformGrid>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1"
+                        BorderBrush="#CCCCCC"
+                        BorderThickness="1"
+                        Background="#FAFAFA"
+                        CornerRadius="5"
+                        Margin="0,10,0,0">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto">
+                        <WrapPanel x:Name="CharacterDisplayArea" Tag="-1" Opacity="1" Orientation="Horizontal"
+                                   Margin="20">
+                            <TextBlock Text="Character Animation Will Display Here"
+                                       Foreground="#CCCCCC"
+                                       HorizontalAlignment="Center"
+                                       VerticalAlignment="Center"
+                                       FontStyle="Italic" />
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

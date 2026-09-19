@@ -1,0 +1,55 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="300" d:DesignHeight="90"
+        x:Class="DrawMap.ChildWindows.NotificationDialog"
+        Title="NotificationDialog"
+        Width="300" Height="90"
+        ExtendClientAreaChromeHints="NoChrome"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+    <Border BorderThickness="1" CornerRadius="6" Padding="20">
+
+        <Grid RowDefinitions="50,Auto" MinHeight="120" Margin="0,20,0,0">
+            <StackPanel Grid.Row="0"
+                        Spacing="12"
+                        VerticalAlignment="Center"
+                        Margin="0,15">
+                <StackPanel Spacing="30" Orientation="Horizontal">
+                    <RadioButton Name="Cb1RadioButton"
+                                 Content="Cb1"
+                                 GroupName="OptionGroup"
+                                 IsChecked="True"
+                                 FontFamily="{DynamicResource SegoeUIBold}"
+                                 FontSize="13" />
+
+                    <RadioButton Name="Cb2RadioButton"
+                                 Content="Cb2"
+                                 GroupName="OptionGroup"
+                                 FontFamily="{DynamicResource SegoeUIBold}"
+                                 FontSize="13" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Grid.Row="1"
+                        Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        Spacing="10"
+                        Margin="0,-10,0,0">
+
+                <Button Name="CancelButton"
+                        Content="Cancel"
+                        Classes="dark"
+                        MinWidth="70"
+                        Height="30" Click="CancelButton_OnClick" />
+                <Button Name="ConfirmButton"
+                        Content="Confirm"
+                        Classes="dark"
+                        MinWidth="70"
+                        Height="30" Click="ConfirmButton_OnClick" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

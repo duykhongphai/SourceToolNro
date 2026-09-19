@@ -1,0 +1,89 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
+        <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0"/>
+        <PackageReference Include="OpenCvSharp4" Version="4.11.0.20250507"/>
+        <PackageReference Include="OpenCvSharp4.runtime.win" Version="4.11.0.20250507"/>
+        <PackageReference Include="OpenCvSharp4.Windows" Version="4.11.0.20250507"/>
+        <PackageReference Include="SixLabors.ImageSharp" Version="3.1.8"/>
+        <PackageReference Include="SixLabors.ImageSharp.Drawing" Version="2.1.6"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\banner.png"/>
+        <AvaloniaResource Include="Assets\banner.png"/>
+        <None Remove="Assets\Icon.ico"/>
+        <AvaloniaResource Include="Assets\Icon.ico"/>
+        <None Remove="Assets\Resources\arrowLeft.png"/>
+        <AvaloniaResource Include="Assets\Resources\arrowLeft.png"/>
+        <None Remove="Assets\Resources\arrowRight.png"/>
+        <AvaloniaResource Include="Assets\Resources\arrowRight.png"/>
+        <None Remove="Assets\Resources\banner.png"/>
+        <AvaloniaResource Include="Assets\Resources\banner.png"/>
+        <None Remove="Assets\Resources\bird.png"/>
+        <AvaloniaResource Include="Assets\Resources\bird.png"/>
+        <None Remove="Assets\Resources\birdSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\birdSelected.png"/>
+        <None Remove="Assets\Resources\effect.png"/>
+        <AvaloniaResource Include="Assets\Resources\effect.png"/>
+        <None Remove="Assets\Resources\effectSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\effectSelected.png"/>
+        <None Remove="Assets\Resources\film.png"/>
+        <AvaloniaResource Include="Assets\Resources\film.png"/>
+        <None Remove="Assets\Resources\filmSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\filmSelected.png"/>
+        <None Remove="Assets\Resources\home.png"/>
+        <AvaloniaResource Include="Assets\Resources\home.png"/>
+        <None Remove="Assets\Resources\homeSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\homeSelected.png"/>
+        <None Remove="Assets\Resources\icons8-left-24.png"/>
+        <AvaloniaResource Include="Assets\Resources\icons8-left-24.png"/>
+        <None Remove="Assets\Resources\icons8-restore-24.png"/>
+        <AvaloniaResource Include="Assets\Resources\icons8-restore-24.png"/>
+        <None Remove="Assets\Resources\icons8-right-24.png"/>
+        <AvaloniaResource Include="Assets\Resources\icons8-right-24.png"/>
+        <None Remove="Assets\Resources\icons8-trash-24.png"/>
+        <AvaloniaResource Include="Assets\Resources\icons8-trash-24.png"/>
+        <None Remove="Assets\Resources\image.png"/>
+        <AvaloniaResource Include="Assets\Resources\image.png"/>
+        <None Remove="Assets\Resources\imageSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\imageSelected.png"/>
+        <None Remove="Assets\Resources\lion.png"/>
+        <AvaloniaResource Include="Assets\Resources\lion.png"/>
+        <None Remove="Assets\Resources\lionSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\lionSelected.png"/>
+        <None Remove="Assets\Fonts\SegoeUIBold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUIBold.ttf"/>
+        <None Remove="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <None Remove="Assets\Resources\Char.png"/>
+        <AvaloniaResource Include="Assets\Resources\Char.png"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Assets\Styles\AppDefaultStyle.axaml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+    </ItemGroup>
+</Project>

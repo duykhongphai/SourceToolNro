@@ -1,0 +1,146 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:ToolPart.Options"
+        mc:Ignorable="d" d:DesignWidth="1255" d:DesignHeight="620"
+        Width="1255" Height="620"
+        x:Class="ToolPart.Windows.ImportImage"
+        Title="ImportImage"
+        Background="White"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid RowDefinitions="*,90">
+        <Grid Grid.Row="0" RowDefinitions="170,250,150">
+            <Border Grid.Row="0" CornerRadius="15" BorderBrush="rgb(213, 218, 223)" Margin="25,20,25,15"
+                    BorderThickness="1"
+                    Background="White" Width="300" HorizontalAlignment="Left">
+                <Grid RowDefinitions="Auto,*">
+                    <Border Grid.Row="0" Background="#FAAD60" CornerRadius="13,13,0,0" Height="39">
+                        <TextBlock Text="Head" FontFamily="{DynamicResource SegoeUIBold}" Foreground="White"
+                                   VerticalAlignment="Center" Margin="15,0,0,0"
+                                   FontWeight="SemiBold" />
+                    </Border>
+
+                    <WrapPanel Name="PanelHead" Grid.Row="1" Orientation="Horizontal">
+                        <options:ImagePart Name="Head1" Width="80" Height="80" Source="../Assets/Resources/h1.png"
+                                           Margin="20,6,0,0" />
+                        <options:ImagePart Name="Head2" Width="80" Height="80" Source="../Assets/Resources/h2.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Head3" Width="80" Height="80" Source="../Assets/Resources/h3.png"
+                                           Margin="10,6,0,0" />
+                    </WrapPanel>
+                </Grid>
+            </Border>
+            <Border Grid.Row="1" CornerRadius="15" BorderBrush="rgb(213, 218, 223)" Margin="25,0,25,20"
+                    BorderThickness="1"
+                    Background="White">
+                <Grid RowDefinitions="Auto,*">
+                    <Border Grid.Row="0" Background="#FAAD60" CornerRadius="13,13,0,0" Height="39">
+                        <TextBlock Text="Body" FontFamily="{DynamicResource SegoeUIBold}" Foreground="White"
+                                   VerticalAlignment="Center" Margin="15,0,0,0"
+                                   FontWeight="SemiBold" />
+                    </Border>
+
+                    <WrapPanel Name="PanelBody" Grid.Row="1" Orientation="Horizontal">
+                        <options:ImagePart Name="Body1" Width="80" Height="80" Source="../Assets/Resources/b1.png"
+                                           Margin="20,10,0,0" />
+                        <options:ImagePart Name="Body2" Width="80" Height="80" Source="../Assets/Resources/b2.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body3" Width="80" Height="80" Source="../Assets/Resources/b3.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body4" Width="80" Height="80" Source="../Assets/Resources/b4.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body5" Width="80" Height="80" Source="../Assets/Resources/b5.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body6" Width="80" Height="80" Source="../Assets/Resources/b6.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body7" Width="80" Height="80" Source="../Assets/Resources/b7.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body8" Width="80" Height="80" Source="../Assets/Resources/b8.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body9" Width="80" Height="80" Source="../Assets/Resources/b9.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body10" Width="80" Height="80" Source="../Assets/Resources/b10.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body11" Width="80" Height="80" Source="../Assets/Resources/b11.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body12" Width="80" Height="80" Source="../Assets/Resources/b12.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body13" Width="80" Height="80" Source="../Assets/Resources/b13.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body14" Width="80" Height="80" Source="../Assets/Resources/b14.png"
+                                           Margin="20,10,0,0" />
+                        <options:ImagePart Name="Body15" Width="80" Height="80" Source="../Assets/Resources/b15.png"
+                                           Margin="10,10,0,0" />
+                        <options:ImagePart Name="Body16" Width="80" Height="80" Source="../Assets/Resources/b16.png"
+                                           Margin="10,10,0,0" />
+                    </WrapPanel>
+                </Grid>
+            </Border>
+            <Border Grid.Row="2" CornerRadius="15" BorderBrush="rgb(213, 218, 223)" Margin="25,0,25,15"
+                    BorderThickness="1"
+                    Background="White">
+                <Grid RowDefinitions="Auto,*">
+                    <Border Grid.Row="0" Background="#FAAD60" CornerRadius="13,13,0,0" Height="39">
+                        <TextBlock Text="Leg" FontFamily="{DynamicResource SegoeUIBold}" Foreground="White"
+                                   VerticalAlignment="Center" Margin="15,0,0,0"
+                                   FontWeight="SemiBold" />
+                    </Border>
+
+                    <WrapPanel Name="PanelLeg" Grid.Row="1" Orientation="Horizontal">
+                        <options:ImagePart Name="Leg1" Width="80" Height="80" Source="../Assets/Resources/l1.png"
+                                           Margin="20,6,0,0" />
+                        <options:ImagePart Name="Leg2" Width="80" Height="80" Source="../Assets/Resources/l2.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg3" Width="80" Height="80" Source="../Assets/Resources/l3.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg4" Width="80" Height="80" Source="../Assets/Resources/l4.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg5" Width="80" Height="80" Source="../Assets/Resources/l5.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg6" Width="80" Height="80" Source="../Assets/Resources/l6.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg7" Width="80" Height="80" Source="../Assets/Resources/l7.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg8" Width="80" Height="80" Source="../Assets/Resources/l8.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg9" Width="80" Height="80" Source="../Assets/Resources/l9.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg10" Width="80" Height="80" Source="../Assets/Resources/l10.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg11" Width="80" Height="80" Source="../Assets/Resources/l11.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg12" Width="80" Height="80" Source="../Assets/Resources/l12.png"
+                                           Margin="10,6,0,0" />
+                        <options:ImagePart Name="Leg13" Width="80" Height="80" Source="../Assets/Resources/l13.png"
+                                           Margin="10,6,0,0" />
+                    </WrapPanel>
+                </Grid>
+            </Border>
+        </Grid>
+        <Separator Grid.Row="1" Height="2" Background="Coral" />
+        <Grid Grid.Row="1" ColumnDefinitions="120,190,*,120,120">
+            <Button Grid.Column="0" Content="Clear" Classes="yellow"
+                    Margin="15,45,5,0"
+                    Width="100"
+                    HorizontalAlignment="Left" Click="ClearButton_OnClick" />
+            <Button Grid.Column="1" Content="Fill Transparent" Classes="yellow"
+                    Margin="15,45,5,0"
+                    Width="130"
+                    HorizontalAlignment="Left" Click="FillTransparent_OnClick" />
+            <Button Grid.Column="3" Content="Cancel" Classes="yellow"
+                    Margin="15,45,5,0"
+                    Width="100"
+                    HorizontalAlignment="Left" Click="CancelButton_OnClick" />
+            <Button Grid.Column="4" Content="OK" Classes="yellow"
+                    Margin="15,45,15,0"
+                    Width="100"
+                    HorizontalAlignment="Left" Click="OkButton_OnClick" />
+        </Grid>
+    </Grid>
+</Window>

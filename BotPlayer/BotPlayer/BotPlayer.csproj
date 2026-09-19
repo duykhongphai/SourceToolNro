@@ -1,0 +1,43 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
+        <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\banner.png"/>
+        <AvaloniaResource Include="Assets\banner.png"/>
+        <None Remove="Assets\Icon.ico"/>
+        <AvaloniaResource Include="Assets\Icon.ico"/>
+        <None Remove="Assets\Fonts\SegoeUIBold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUIBold.ttf"/>
+        <None Remove="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUISemibold.ttf"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Classes\AStar\"/>
+    </ItemGroup>
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+    </ItemGroup>
+</Project>

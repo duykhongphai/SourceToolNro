@@ -1,0 +1,139 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
+        <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <UpToDateCheckInput Remove="Assets\Styles\AppDefaultStyle.axaml"/>
+        <UpToDateCheckInput Remove="Themes\Dark.axaml"/>
+        <UpToDateCheckInput Remove="Themes\Light.axaml"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\Resources\arrowLeft.png"/>
+        <AvaloniaResource Include="Assets\Resources\arrowLeft.png"/>
+        <None Remove="Assets\Resources\banner.png"/>
+        <AvaloniaResource Include="Assets\Resources\banner.png"/>
+        <None Remove="Assets\Resources\Char.png"/>
+        <None Remove="Assets\Resources\effect.png"/>
+        <AvaloniaResource Include="Assets\Resources\effect.png"/>
+        <None Remove="Assets\Resources\effectSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\effectSelected.png"/>
+        <None Remove="Assets\Resources\film.png"/>
+        <AvaloniaResource Include="Assets\Resources\film.png"/>
+        <None Remove="Assets\Resources\filmSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\filmSelected.png"/>
+        <None Remove="Assets\Resources\home.png"/>
+        <AvaloniaResource Include="Assets\Resources\home.png"/>
+        <None Remove="Assets\Resources\homeSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\homeSelected.png"/>
+        <None Remove="Assets\Resources\image.png"/>
+        <AvaloniaResource Include="Assets\Resources\image.png"/>
+        <None Remove="Assets\Resources\imageSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\imageSelected.png"/>
+        <None Remove="Assets\banner.png"/>
+        <AvaloniaResource Include="Assets\banner.png"/>
+        <None Remove="Assets\Icon.ico"/>
+        <AvaloniaResource Include="Assets\Icon.ico"/>
+        <None Remove="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <None Remove="Assets\Fonts\SegoeUIBold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUIBold.ttf"/>
+        <None Remove="Assets\Resources\actor.png"/>
+        <None Remove="Assets\Resources\sword.png"/>
+        <None Remove="Assets\Resources\visible.png"/>
+        <AvaloniaResource Include="Assets\Resources\visible.png"/>
+        <None Remove="Assets\Resources\visibleSelected.png"/>
+        <AvaloniaResource Include="Assets\Resources\visibleSelected.png"/>
+        <None Remove="Assets\Resources\ActionChar\0.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\0.png"/>
+        <None Remove="Assets\Resources\ActionChar\2.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\2.png"/>
+        <None Remove="Assets\Resources\ActionChar\3.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\3.png"/>
+        <None Remove="Assets\Resources\ActionChar\4.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\4.png"/>
+        <None Remove="Assets\Resources\ActionChar\5.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\5.png"/>
+        <None Remove="Assets\Resources\ActionChar\6.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\6.png"/>
+        <None Remove="Assets\Resources\ActionChar\8.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\8.png"/>
+        <None Remove="Assets\Resources\ActionChar\9.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\9.png"/>
+        <None Remove="Assets\Resources\ActionChar\10.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\10.png"/>
+        <None Remove="Assets\Resources\ActionChar\11.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\11.png"/>
+        <None Remove="Assets\Resources\ActionChar\12.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\12.png"/>
+        <None Remove="Assets\Resources\ActionChar\13.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\13.png"/>
+        <None Remove="Assets\Resources\ActionChar\14.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\14.png"/>
+        <None Remove="Assets\Resources\ActionChar\15.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\15.png"/>
+        <None Remove="Assets\Resources\ActionChar\16.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\16.png"/>
+        <None Remove="Assets\Resources\ActionChar\17.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\17.png"/>
+        <None Remove="Assets\Resources\ActionChar\19.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\19.png"/>
+        <None Remove="Assets\Resources\ActionChar\20.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\20.png"/>
+        <None Remove="Assets\Resources\ActionChar\23.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\23.png"/>
+        <None Remove="Assets\Resources\ActionChar\1.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\1.png"/>
+        <None Remove="Assets\Resources\ActionChar\7.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\7.png"/>
+        <None Remove="Assets\Resources\ActionChar\18.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\18.png"/>
+        <None Remove="Assets\Resources\ActionChar\21.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\21.png"/>
+        <None Remove="Assets\Resources\ActionChar\22.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\22.png"/>
+        <None Remove="Assets\Resources\ActionChar\24.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\24.png"/>
+        <None Remove="Assets\Resources\ActionChar\26.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\26.png"/>
+        <None Remove="Assets\Resources\ActionChar\27.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\27.png"/>
+        <None Remove="Assets\Resources\ActionChar\28.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\28.png"/>
+        <None Remove="Assets\Resources\ActionChar\29.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\29.png"/>
+        <None Remove="Assets\Resources\ActionChar\30.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\30.png"/>
+        <None Remove="Assets\Resources\ActionChar\31.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\31.png"/>
+        <None Remove="Assets\Resources\ActionChar\32.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\32.png"/>
+        <None Remove="Assets\Resources\ActionChar\CharInjured.png"/>
+        <AvaloniaResource Include="Assets\Resources\ActionChar\CharInjured.png"/>
+    </ItemGroup>
+</Project>

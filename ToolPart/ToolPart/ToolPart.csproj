@@ -1,0 +1,137 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <BuiltInComInteropSupport>true</BuiltInComInteropSupport>
+        <ApplicationManifest>app.manifest</ApplicationManifest>
+        <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+        <BuiltInComInteropSupport>false</BuiltInComInteropSupport>
+        <TrimMode>link</TrimMode>
+        <ApplicationIcon>Assets/Icon.ico</ApplicationIcon>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Desktop" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Themes.Fluent" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Fonts.Inter" Version="11.2.1"/>
+        <PackageReference Include="Avalonia.Diagnostics" Version="11.2.1">
+            <IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+            <PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+        </PackageReference>
+        <PackageReference Include="MessageBox.Avalonia" Version="3.2.0"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <TrimmerRootAssembly Include="Avalonia.Themes.Fluent"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Remove="Assets\Fonts\SegoeUIBold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUIBold.ttf"/>
+        <None Remove="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <AvaloniaResource Include="Assets\Fonts\SegoeUISemibold.ttf"/>
+        <None Remove="Assets\Icon.ico"/>
+        <AvaloniaResource Include="Assets\Icon.ico"/>
+        <None Remove="Assets\banner.png"/>
+        <AvaloniaResource Include="Assets\banner.png"/>
+        <None Remove="Assets\Resources\0.png"/>
+        <AvaloniaResource Include="Assets\Resources\0.png"/>
+        <None Remove="Assets\Resources\1.png"/>
+        <AvaloniaResource Include="Assets\Resources\1.png"/>
+        <None Remove="Assets\Resources\2.png"/>
+        <AvaloniaResource Include="Assets\Resources\2.png"/>
+        <None Remove="Assets\Resources\3.png"/>
+        <AvaloniaResource Include="Assets\Resources\3.png"/>
+        <None Remove="Assets\Resources\4.png"/>
+        <AvaloniaResource Include="Assets\Resources\4.png"/>
+        <None Remove="Assets\Resources\5.png"/>
+        <AvaloniaResource Include="Assets\Resources\5.png"/>
+        <None Remove="Assets\Resources\6.png"/>
+        <AvaloniaResource Include="Assets\Resources\6.png"/>
+        <None Remove="Assets\Resources\7.png"/>
+        <AvaloniaResource Include="Assets\Resources\7.png"/>
+        <None Remove="Assets\Resources\8.png"/>
+        <AvaloniaResource Include="Assets\Resources\8.png"/>
+        <None Remove="Assets\Resources\9.png"/>
+        <AvaloniaResource Include="Assets\Resources\9.png"/>
+        <None Remove="Assets\Resources\10.png"/>
+        <AvaloniaResource Include="Assets\Resources\10.png"/>
+        <None Remove="Assets\Resources\16.png"/>
+        <AvaloniaResource Include="Assets\Resources\16.png"/>
+        <None Remove="Assets\Resources\20.png"/>
+        <AvaloniaResource Include="Assets\Resources\20.png"/>
+        <None Remove="Assets\Resources\34.png"/>
+        <AvaloniaResource Include="Assets\Resources\34.png"/>
+        <None Remove="Assets\Resources\b1.png"/>
+        <AvaloniaResource Include="Assets\Resources\b1.png"/>
+        <None Remove="Assets\Resources\b2.png"/>
+        <AvaloniaResource Include="Assets\Resources\b2.png"/>
+        <None Remove="Assets\Resources\b3.png"/>
+        <AvaloniaResource Include="Assets\Resources\b3.png"/>
+        <None Remove="Assets\Resources\b4.png"/>
+        <AvaloniaResource Include="Assets\Resources\b4.png"/>
+        <None Remove="Assets\Resources\b5.png"/>
+        <AvaloniaResource Include="Assets\Resources\b5.png"/>
+        <None Remove="Assets\Resources\b6.png"/>
+        <AvaloniaResource Include="Assets\Resources\b6.png"/>
+        <None Remove="Assets\Resources\b7.png"/>
+        <AvaloniaResource Include="Assets\Resources\b7.png"/>
+        <None Remove="Assets\Resources\b8.png"/>
+        <AvaloniaResource Include="Assets\Resources\b8.png"/>
+        <None Remove="Assets\Resources\b9.png"/>
+        <AvaloniaResource Include="Assets\Resources\b9.png"/>
+        <None Remove="Assets\Resources\b10.png"/>
+        <AvaloniaResource Include="Assets\Resources\b10.png"/>
+        <None Remove="Assets\Resources\b11.png"/>
+        <AvaloniaResource Include="Assets\Resources\b11.png"/>
+        <None Remove="Assets\Resources\b12.png"/>
+        <AvaloniaResource Include="Assets\Resources\b12.png"/>
+        <None Remove="Assets\Resources\b13.png"/>
+        <AvaloniaResource Include="Assets\Resources\b13.png"/>
+        <None Remove="Assets\Resources\b14.png"/>
+        <AvaloniaResource Include="Assets\Resources\b14.png"/>
+        <None Remove="Assets\Resources\b15.png"/>
+        <AvaloniaResource Include="Assets\Resources\b15.png"/>
+        <None Remove="Assets\Resources\b16.png"/>
+        <AvaloniaResource Include="Assets\Resources\b16.png"/>
+        <None Remove="Assets\Resources\bodyE.png"/>
+        <None Remove="Assets\Resources\bong.png"/>
+        <AvaloniaResource Include="Assets\Resources\bong.png"/>
+        <None Remove="Assets\Resources\h1.png"/>
+        <AvaloniaResource Include="Assets\Resources\h1.png"/>
+        <None Remove="Assets\Resources\h2.png"/>
+        <AvaloniaResource Include="Assets\Resources\h2.png"/>
+        <None Remove="Assets\Resources\h3.png"/>
+        <AvaloniaResource Include="Assets\Resources\h3.png"/>
+        <None Remove="Assets\Resources\headE.png"/>
+        <None Remove="Assets\Resources\l1.png"/>
+        <AvaloniaResource Include="Assets\Resources\l1.png"/>
+        <None Remove="Assets\Resources\l2.png"/>
+        <AvaloniaResource Include="Assets\Resources\l2.png"/>
+        <None Remove="Assets\Resources\l3.png"/>
+        <AvaloniaResource Include="Assets\Resources\l3.png"/>
+        <None Remove="Assets\Resources\l4.png"/>
+        <AvaloniaResource Include="Assets\Resources\l4.png"/>
+        <None Remove="Assets\Resources\l5.png"/>
+        <AvaloniaResource Include="Assets\Resources\l5.png"/>
+        <None Remove="Assets\Resources\l6.png"/>
+        <AvaloniaResource Include="Assets\Resources\l6.png"/>
+        <None Remove="Assets\Resources\l7.png"/>
+        <AvaloniaResource Include="Assets\Resources\l7.png"/>
+        <None Remove="Assets\Resources\l8.png"/>
+        <AvaloniaResource Include="Assets\Resources\l8.png"/>
+        <None Remove="Assets\Resources\l9.png"/>
+        <AvaloniaResource Include="Assets\Resources\l9.png"/>
+        <None Remove="Assets\Resources\l10.png"/>
+        <AvaloniaResource Include="Assets\Resources\l10.png"/>
+        <None Remove="Assets\Resources\l11.png"/>
+        <AvaloniaResource Include="Assets\Resources\l11.png"/>
+        <None Remove="Assets\Resources\l12.png"/>
+        <AvaloniaResource Include="Assets\Resources\l12.png"/>
+        <None Remove="Assets\Resources\l13.png"/>
+        <AvaloniaResource Include="Assets\Resources\l13.png"/>
+        <None Remove="Assets\Resources\legE.png"/>
+    </ItemGroup>
+</Project>

@@ -1,0 +1,62 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="375" d:DesignHeight="320"
+        Width="375" Height="320"
+        x:Class="ToolEffectNro.ChildWindows.FormArrFrame"
+        Title="FormArrFrame"
+        Background="White"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ShowInTaskbar="False">
+
+    <Grid RowDefinitions="70,*,5,40">
+
+        <Border Grid.Row="0" CornerRadius="8" BorderThickness="1"
+                BorderBrush="#E0E0E0" Background="#F8F9FA"
+                Margin="10,10,10,5" ClipToBounds="True">
+            <Grid ColumnDefinitions="Auto,*">
+                <TextBlock Grid.Column="0" Text="📝" FontSize="14"
+                           VerticalAlignment="Center" Margin="8,0,5,0" />
+                <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled" MaxHeight="55">
+                    <TextBlock FontSize="10" LineHeight="12" Margin="0,5"
+                               Foreground="#666666" TextWrapping="Wrap">
+                        <Run Text="• 501: Đứng Yên" /><LineBreak />
+                        <Run Text="• 502: Đứng Yên, Bay Qua Bay Lại" /><LineBreak />
+                        <Run Text="• 503: Bay Từ Dưới Lên" /><LineBreak />
+                        <Run Text="• 504: Giữ Trên Không, Bay Xuống" /><LineBreak />
+                        <Run Text="• 510: Bay Qua Bay Lại" />
+                    </TextBlock>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" CornerRadius="12" BorderThickness="0"
+                Background="{DynamicResource DarkGradientBrush}"
+                Margin="10,5,10,10" ClipToBounds="True">
+            <Panel>
+                <Border CornerRadius="10" Background="White" Margin="3">
+                    <ListBox x:Name="ListBox" KeyDown="ListBox_OnKeyDown"
+                             Background="Transparent" SelectionMode="Multiple"
+                             BorderThickness="0" />
+                </Border>
+            </Panel>
+        </Border>
+
+        <Separator Grid.Row="2" />
+
+        <Panel Grid.Row="3">
+            <ComboBox x:Name="ParentId" Width="120" Margin="10,2,0,0" />
+            <Button Click="AddFrame_OnClick" Classes="dark" x:Name="AddFrame"
+                    Content="Add Frame" HorizontalAlignment="Right" FontSize="12"
+                    Margin="0,0,10,5" />
+        </Panel>
+
+    </Grid>
+</Window>

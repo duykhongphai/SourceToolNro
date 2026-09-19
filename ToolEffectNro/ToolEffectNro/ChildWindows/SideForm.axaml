@@ -1,0 +1,38 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="205" d:DesignHeight="612"
+        Width="205" Height="612"
+        x:Class="ToolEffectNro.ChildWindows.SideForm"
+        Title="SideForm"
+        Background="#3A384D"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ShowInTaskbar="False">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <WrapPanel Name="PanelParentFrame" Opacity="1" Orientation="Vertical" Background="rgb(70, 67, 90)">
+                <WrapPanel.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Add Frame" Click="AddItem_OnClick">
+                            <MenuItem.Icon>
+                                <PathIcon Height="12" Width="12" Foreground="Green"
+                                          Data="{DynamicResource add_regular}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                        <MenuItem Header="Remove Frame" Click="RemoveItem_OnClick">
+                            <MenuItem.Icon>
+                                <PathIcon Height="12" Width="12" Foreground="Red"
+                                          Data="{DynamicResource remove_regular}" />
+                            </MenuItem.Icon>
+                        </MenuItem>
+                    </ContextMenu>
+                </WrapPanel.ContextMenu>
+            </WrapPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>

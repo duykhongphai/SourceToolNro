@@ -1,0 +1,14 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Accountify.App"
+             RequestedThemeVariant="Default">
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+    <Application.Resources>
+        <FontFamily x:Key="SegoeUIBold">avares://Accountify/Assets/Fonts/SegoeUIBold.ttf#Segoe UI</FontFamily>
+        <FontFamily x:Key="SegoeUISemibold">avares://Accountify/Assets/Fonts/SegoeUISemibold.ttf#Segoe UI</FontFamily>
+
+    </Application.Resources>
+</Application>

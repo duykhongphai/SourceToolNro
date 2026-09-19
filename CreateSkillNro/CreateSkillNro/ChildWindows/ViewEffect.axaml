@@ -1,0 +1,295 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="CreateSkillNro.ChildWindows.ViewEffect"
+        Title="View Effects"
+        Width="1085" Height="610"
+        Background="{DynamicResource WindowBackgroundGradient}"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryAccent" Color="#4f46e5" />
+        <SolidColorBrush x:Key="SecondaryAccent" Color="#06b6d4" />
+        <SolidColorBrush x:Key="Success" Color="#10b981" />
+        <SolidColorBrush x:Key="Error" Color="#ef4444" />
+        <SolidColorBrush x:Key="SurfaceLight" Color="#f8fafc" />
+        <SolidColorBrush x:Key="TextPrimary" Color="#0f172a" />
+        <SolidColorBrush x:Key="TextSecondary" Color="#64748b" />
+        <SolidColorBrush x:Key="Border" Color="#e2e8f0" />
+        <LinearGradientBrush x:Key="ModernPanelGradient" StartPoint="0%,0%" EndPoint="0%,100%">
+            <GradientStop Color="#ffffff" Offset="0" />
+            <GradientStop Color="#f8fafc" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="{StaticResource SurfaceLight}" />
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1,1,1,0" />
+            <Setter Property="Padding" Value="24,12" />
+            <Setter Property="Margin" Value="0,0,4,0" />
+            <Setter Property="CornerRadius" Value="12,12,0,0" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="MinWidth" Value="140" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.25" />
+                    <BrushTransition Property="Foreground" Duration="0:0:0.25" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.tab:pointerover">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="RenderTransform" Value="translateY(-2px)" />
+        </Style>
+
+        <Style Selector="Button.tab.active">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="ZIndex" Value="10" />
+        </Style>
+
+        <Style Selector="Button.tab.active:pointerover">
+            <Setter Property="RenderTransform" Value="none" />
+        </Style>
+
+        <Style Selector="Grid.tab-content">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="RenderTransform" Value="translateX(30px)" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Grid.tab-content.active">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="RenderTransform" Value="translateX(0px)" />
+        </Style>
+
+        <Style Selector="Border.content-panel">
+            <Setter Property="Background" Value="{StaticResource ModernPanelGradient}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="16" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Margin" Value="10" />
+        </Style>
+
+        <Style Selector="ContextMenu">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="8" />
+        </Style>
+
+        <Style Selector="MenuItem">
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="Margin" Value="2" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="MenuItem:pointerover">
+            <Setter Property="Background" Value="{StaticResource SurfaceLight}" />
+        </Style>
+
+        <Style Selector="TextBlock.section-title">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
+            <Setter Property="Margin" Value="0,0,0,16" />
+            <Setter Property="HorizontalAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="Border.stats-panel">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="16" />
+            <Setter Property="Margin" Value="0,0,0,16" />
+        </Style>
+
+        <Style Selector="TextBlock.stats-label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
+            <Setter Property="Margin" Value="0,0,8,0" />
+        </Style>
+
+        <Style Selector="TextBlock.stats-value">
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource PrimaryAccent}" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Grid.Row="0"
+                Background="{DynamicResource WindowBackgroundGradient}"
+                BorderBrush="{StaticResource Border}"
+                BorderThickness="0,0,0,1"
+                Padding="20,12,20,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Classes="tab active"
+                        Content="✨ View Effect"
+                        Name="ViewEffectTabBtn"
+                        Click="OnTabClick"
+                        Tag="ViewEffect"
+                        ToolTip.Tip="Browse and manage visual effects" />
+                <Button Classes="tab"
+                        Content="🎯 View Dart"
+                        Name="ViewDartTabBtn"
+                        Click="OnTabClick"
+                        Tag="ViewDart"
+                        ToolTip.Tip="Browse and manage dart projectiles" />
+                <Button Classes="tab"
+                        Content="⚡ View Skill"
+                        Name="ViewSkillTabBtn"
+                        Click="OnTabClick"
+                        Tag="ViewSkill"
+                        ToolTip.Tip="Browse and manage skills" />
+            </StackPanel>
+        </Border>
+        <Grid Grid.Row="1" Name="TabContentContainer" Background="{StaticResource SurfaceLight}">
+            <Grid Name="ViewEffectTabContent" Classes="tab-content active">
+                <Border Classes="content-panel">
+                    <ScrollViewer Name="EffectScrollViewer" VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Name="EffectWrapPanel" Orientation="Horizontal" />
+                        <ScrollViewer.ContextMenu>
+                            <ContextMenu Opened="MenuEffect_OnOpened">
+                                <MenuItem Header="Add Effect" Click="AddEffect_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Success}"
+                                                  Data="{DynamicResource AddRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="EditEffectMenuItem" Header="Edit Effect" Click="EditEffect_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource PrimaryAccent}"
+                                                  Data="{DynamicResource EditSettingsRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="CloneEffectMenuItem" Header="Clone Effect" Click="CloneEffect_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource SecondaryAccent}"
+                                                  Data="{DynamicResource DocumentCopyRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="RemoveEffectMenuItem" Header="Remove Effect"
+                                          Click="RemoveEffect_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Error}"
+                                                  Data="{DynamicResource RemoveRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ScrollViewer.ContextMenu>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <Grid Name="ViewSkillTabContent" Classes="tab-content">
+                <Border Classes="content-panel">
+                    <ScrollViewer Name="SkillScrollViewer" VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Name="SkillWrapPanel" Orientation="Horizontal" />
+                        <ScrollViewer.ContextMenu>
+                            <ContextMenu Opened="MenuSkill_OnOpened">
+                                <MenuItem Header="Add Skill" Click="AddSkill_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Success}"
+                                                  Data="{DynamicResource AddRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="EditSkillMenuItem" Header="Edit Skill" Click="EditSkill_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource PrimaryAccent}"
+                                                  Data="{DynamicResource EditSettingsRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="CloneSkillMenuItem" Header="Clone Skill" Click="CloneSkill_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource SecondaryAccent}"
+                                                  Data="{DynamicResource DocumentCopyRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="RemoveSkillMenuItem" Header="Remove Skill" Click="RemoveSkill_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Error}"
+                                                  Data="{DynamicResource RemoveRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ScrollViewer.ContextMenu>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+
+            <Grid Name="ViewDartTabContent" Classes="tab-content">
+                <Border Classes="content-panel">
+                    <ScrollViewer Name="DartScrollViewer" VerticalScrollBarVisibility="Auto">
+                        <WrapPanel Name="DartWrapPanel" Orientation="Horizontal" />
+                        <ScrollViewer.ContextMenu>
+                            <ContextMenu Opened="MenuDart_OnOpened">
+                                <MenuItem Header="Add Dart" Click="AddDart_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Success}"
+                                                  Data="{DynamicResource AddRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="EditDartMenuItem" Header="Edit Dart" Click="EditDart_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource PrimaryAccent}"
+                                                  Data="{DynamicResource EditSettingsRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="CloneDartMenuItem" Header="Clone Dart" Click="CloneDart_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource SecondaryAccent}"
+                                                  Data="{DynamicResource DocumentCopyRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                                <MenuItem Name="RemoveDartMenuItem" Header="Remove Dart" Click="RemoveDart_OnClick">
+                                    <MenuItem.Icon>
+                                        <PathIcon Height="14" Width="14" Foreground="{StaticResource Error}"
+                                                  Data="{DynamicResource RemoveRegular}" />
+                                    </MenuItem.Icon>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ScrollViewer.ContextMenu>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

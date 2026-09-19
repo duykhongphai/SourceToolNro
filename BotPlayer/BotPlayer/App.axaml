@@ -1,0 +1,39 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="BotPlayer.App"
+             RequestedThemeVariant="Default">
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Styles/AppDefaultStyle.axaml" />
+    </Application.Styles>
+    <Application.Resources>
+        <LinearGradientBrush x:Key="AquaGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="Aqua" />
+            <GradientStop Offset="1" Color="DodgerBlue" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#00B8B8" />
+            <GradientStop Offset="1" Color="#0078C8" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#009696" />
+            <GradientStop Offset="1" Color="#005A96" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#448888" />
+            <GradientStop Offset="1" Color="#446A88" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#377777" />
+            <GradientStop Offset="1" Color="#375A77" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#2A6666" />
+            <GradientStop Offset="1" Color="#2A4A66" />
+        </LinearGradientBrush>
+        <FontFamily x:Key="SegoeUIBold">avares://BotPlayer/Assets/Fonts/SegoeUIBold.ttf#Segoe UI</FontFamily>
+        <FontFamily x:Key="SegoeUISemibold">avares://BotPlayer/Assets/Fonts/SegoeUISemibold.ttf#Segoe UI</FontFamily>
+
+    </Application.Resources>
+</Application>

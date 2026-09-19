@@ -1,0 +1,34 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="ToolEffectNro.ChildWindows.FormFilmEffect"
+        Width="1085" Height="610"
+        Title="FormFilmEffect"
+        Background="White"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid Background="#46435a">
+        <Border BorderBrush="#555555"
+                BorderThickness="1"
+                CornerRadius="0">
+            <Panel x:Name="MainPanel" />
+        </Border>
+        <Button
+            Classes="image"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Center"
+            Margin="0,0,0,0"
+            Width="40"
+            Height="40"
+            Background="Transparent"
+            BorderThickness="0" Click="Button_OnClick">
+            <Image Source="/Assets/Resources/arrowLeft.png" Width="40" Height="40" />
+        </Button>
+    </Grid>
+</Window>

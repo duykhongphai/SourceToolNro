@@ -1,0 +1,148 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:options="clr-namespace:CreateSkillNro.Options"
+             x:Class="CreateSkillNro.App"
+             RequestedThemeVariant="Light">
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Styles/AppDefaultStyle.axaml" />
+    </Application.Styles>
+    <Application.Resources>
+        <options:SubtractConverter x:Key="SubtractConverter" />
+        <StreamGeometry x:Key="EditSettingsRegular">M21.0304 2.96967C22.4279 4.36713 22.4279 6.63286 21.0304 8.03033L18.386 10.6742C17.8921 10.429 17.3626 10.2449 16.8073 10.1315L17.9393 8.99957L15.0003 6.06057L5.0621 15.9987C4.96981 16.0909 4.9032 16.2057 4.86886 16.3316L3.81901 20.1811L7.66845 19.1312C7.79437 19.0969 7.90915 19.0303 8.00144 18.938L9.13159 17.8072C9.24502 18.3628 9.42932 18.8925 9.67463 19.3866L9.0621 19.9987C8.78522 20.2755 8.44089 20.4754 8.06312 20.5784L2.94743 21.9736C2.38756 22.1263 1.87383 21.6125 2.02652 21.0527L3.42171 15.937C3.52474 15.5592 3.72456 15.2149 4.00144 14.938L15.9698 2.96967C17.3672 1.5722 19.633 1.5722 21.0304 2.96967ZM15.5001 11C15.7932 11 16.0807 11.0245 16.3609 11.0717L16.5342 11.7878C16.7932 12.8616 17.8736 13.5221 18.9474 13.2631L19.0452 13.2369L19.6463 13.058C20.0088 13.525 20.2992 14.0546 20.4999 14.6285L20.0527 15.0588C19.2986 15.7844 19.237 16.9589 19.8838 17.7573L20.0252 17.9142L20.4999 18.3715C20.2994 18.945 20.0092 19.4742 19.647 19.941L19.0452 19.7631C17.9859 19.4501 16.8734 20.0551 16.5604 21.1144L16.5342 21.2122L16.3609 21.9282C16.0807 21.9755 15.7932 22 15.5001 22C15.2067 22 14.9189 21.9754 14.6384 21.9281L14.466 21.2122C14.207 20.1384 13.1266 19.4779 12.0528 19.7369L11.955 19.7631L11.3532 19.941C10.991 19.4742 10.7008 18.945 10.5003 18.3715L10.9475 17.9412C11.7435 17.1753 11.7678 15.9092 11.002 15.1133L10.9475 15.0588L10.5003 14.6285C10.7008 14.055 10.991 13.5258 11.3532 13.059L11.955 13.2369C13.0143 13.5499 14.1268 12.9449 14.4398 11.8856L14.466 11.7878L14.6384 11.0719C14.9189 11.0246 15.2067 11 15.5001 11ZM15.5001 15C14.6995 15 14.0504 15.6716 14.0504 16.5C14.0504 17.3284 14.6995 18 15.5001 18C16.3007 18 16.9498 17.3284 16.9498 16.5C16.9498 15.6716 16.3007 15 15.5001 15ZM17.0304 4.03033L16.0603 4.99957L18.9993 7.93957L19.9698 6.96967C20.7814 6.15799 20.7814 4.842 19.9698 4.03033C19.1581 3.21865 17.8421 3.21865 17.0304 4.03033Z</StreamGeometry>
+        <StreamGeometry x:Key="RemoveRegular">M18 11h-12c-1.104 0-2 .896-2 2s.896 2 2 2h12c1.104 0 2-.896 2-2s-.896-2-2-2z</StreamGeometry>
+        <StreamGeometry x:Key="AddRegular">M14.5,13 L14.5,3.75378577 C14.5,3.33978577 14.164,3.00378577 13.75,3.00378577 C13.336,3.00378577 13,3.33978577 13,3.75378577 L13,13 L3.75387573,13 C3.33987573,13 3.00387573,13.336 3.00387573,13.75 C3.00387573,14.164 3.33987573,14.5 3.75387573,14.5 L13,14.5 L13,23.7523651 C13,24.1663651 13.336,24.5023651 13.75,24.5023651 C14.164,24.5023651 14.5,24.1663651 14.5,23.7523651 L14.5,14.5 L23.7498262,14.5030754 C24.1638262,14.5030754 24.4998262,14.1670754 24.4998262,13.7530754 C24.4998262,13.3390754 24.1638262,13.0030754 23.7498262,13.0030754 L14.5,13 Z</StreamGeometry>
+        <StreamGeometry x:Key="DocumentCopyRegular">M11.5004316,10.3756744 L11.5,33.75 C11.5,37.4779221 14.5220779,40.5 18.25,40.5 L33.6238675,40.5005808 C32.9567459,41.9745319 31.4731284,43 29.75,43 L18.25,43 C13.1413661,43 9,38.8586339 9,33.75 L9,14.25 C9,12.5264771 10.0259377,11.0425748 11.5004316,10.3756744 Z M25.7573593,5 C26.8845294,5 27.9655335,5.44776657 28.7625631,6.24479618 L37.7552038,15.2374369 C38.5522334,16.0344665 39,17.1154706 39,18.2426407 L39,33.75 C39,36.0972102 37.0972102,38 34.75,38 L18.25,38 C15.9027898,38 14,36.0972102 14,33.75 L14,9.25 C14,6.90278981 15.9027898,5 18.25,5 L25.7573593,5 Z M25,7.5 L18.25,7.5 C17.2835017,7.5 16.5,8.28350169 16.5,9.25 L16.5,33.75 C16.5,34.7164983 17.2835017,35.5 18.25,35.5 L34.75,35.5 C35.7164983,35.5 36.5,34.7164983 36.5,33.75 L36.5,19 L29.25,19 C26.9718254,19 25.1123133,17.207493 25.0049009,14.9559163 L25,14.75 L25,7.5 Z M35.482,16.5 L27.5,8.518 L27.5,14.75 C27.5,15.6681734 28.2071103,16.4211923 29.1064728,16.4941988 L29.25,16.5 L35.482,16.5 Z</StreamGeometry>
+        <StreamGeometry x:Key="CaretUpRegular">M5.16108 14.9083C4.45387 15.7165 5.02785 16.9814 6.1018 16.9814H17.898C18.972 16.9814 19.5459 15.7165 18.8388 14.9083L13.3169 8.59762C12.6197 7.80079 11.3801 7.80079 10.6829 8.59762L5.16108 14.9083ZM6.65274 15.4814L11.8118 9.58537C11.9114 9.47154 12.0885 9.47154 12.1881 9.58537L17.3471 15.4814H6.65274Z</StreamGeometry>
+        <StreamGeometry x:Key="CaretDownRegular">M5.16108 10.0731C4.45387 9.2649 5.02785 8 6.1018 8H17.898C18.972 8 19.5459 9.2649 18.8388 10.0731L13.3169 16.3838C12.6197 17.1806 11.3801 17.1806 10.6829 16.3838L5.16108 10.0731ZM6.65274 9.5L11.8118 15.396C11.9114 15.5099 12.0885 15.5099 12.1881 15.396L17.3471 9.5H6.65274Z</StreamGeometry>
+
+        <LinearGradientBrush x:Key="AquaGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#667eea" />
+            <GradientStop Offset="1" Color="#764ba2" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#5a6fd8" />
+            <GradientStop Offset="1" Color="#6a4190" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#4d5ec7" />
+            <GradientStop Offset="1" Color="#5e377e" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="HeaderGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#667eea" />
+            <GradientStop Offset="0.5" Color="#764ba2" />
+            <GradientStop Offset="1" Color="#f093fb" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="WindowBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#f8f9fa" />
+            <GradientStop Offset="0.3" Color="#e9ecef" />
+            <GradientStop Offset="0.7" Color="#dee2e6" />
+            <GradientStop Offset="1" Color="#ced4da" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ContentBackgroundGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#ffffff" />
+            <GradientStop Offset="0.5" Color="#f8f9fa" />
+            <GradientStop Offset="1" Color="#e9ecef" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SidebarGradientBrush" StartPoint="0%, 0%" EndPoint="0%, 100%">
+            <GradientStop Offset="0" Color="#b8dbd9" />
+            <GradientStop Offset="0.3" Color="#b8dbd9" />
+            <GradientStop Offset="0.7" Color="#b8dbd9" />
+            <GradientStop Offset="1" Color="#b8dbd9" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="SecondaryButtonGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#f7fafc" />
+            <GradientStop Offset="0.5" Color="#edf2f7" />
+            <GradientStop Offset="1" Color="#e2e8f0" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SecondaryButtonHoverGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#e6fffa" />
+            <GradientStop Offset="0.5" Color="#c6f7e9" />
+            <GradientStop Offset="1" Color="#9ae6b4" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="SecondaryButtonPressedGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#c6f7e9" />
+            <GradientStop Offset="0.5" Color="#9ae6b4" />
+            <GradientStop Offset="1" Color="#68d391" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="TertiaryButtonGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#faf5ff" />
+            <GradientStop Offset="0.5" Color="#e9d8fd" />
+            <GradientStop Offset="1" Color="#d6bcfa" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TertiaryButtonHoverGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#e9d8fd" />
+            <GradientStop Offset="0.5" Color="#d6bcfa" />
+            <GradientStop Offset="1" Color="#b794f6" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="TertiaryButtonPressedGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#d6bcfa" />
+            <GradientStop Offset="0.5" Color="#b794f6" />
+            <GradientStop Offset="1" Color="#9f7aea" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ImageButtonHoverGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#20f0f4f7" />
+            <GradientStop Offset="0.5" Color="#30d6eadf" />
+            <GradientStop Offset="1" Color="#20b8dbd9" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PanelGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#e9ecef" />
+            <GradientStop Offset="0.5" Color="#f8f9fa" />
+            <GradientStop Offset="1" Color="#ffffff" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="ActionPanelGradient" StartPoint="0%, 0%" EndPoint="100%, 100%">
+            <GradientStop Offset="0" Color="#667eea" />
+            <GradientStop Offset="0.3" Color="#764ba2" />
+            <GradientStop Offset="0.7" Color="#f093fb" />
+            <GradientStop Offset="1" Color="#ff9a9e" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#56ab2f" />
+            <GradientStop Offset="1" Color="#a8e6cf" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#4e9a28" />
+            <GradientStop Offset="1" Color="#96d4b8" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#468921" />
+            <GradientStop Offset="1" Color="#84c2a1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DarkGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#667eea" />
+            <GradientStop Offset="1" Color="#764ba2" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DarkGradientBrushHover" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#5a6fd8" />
+            <GradientStop Offset="1" Color="#6a4190" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DarkGradientBrushPressed" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#4d5ec7" />
+            <GradientStop Offset="1" Color="#5e377e" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PurpleGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#8B7FC7" />
+            <GradientStop Offset="1" Color="#A294D9" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="PurpleGradientBrushHover" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#9A8FD1" />
+            <GradientStop Offset="1" Color="#B3A6E3" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="PurpleGradientBrushPressed" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#7C6FBD" />
+            <GradientStop Offset="1" Color="#9187CF" />
+        </LinearGradientBrush>
+        <FontFamily x:Key="SegoeUIBold">avares://CreateSkillNro/Assets/Fonts/SegoeUIBold.ttf#Segoe UI</FontFamily>
+        <FontFamily x:Key="SegoeUISemibold">avares://CreateSkillNro/Assets/Fonts/SegoeUISemibold.ttf#Segoe UI</FontFamily>
+    </Application.Resources>
+</Application>

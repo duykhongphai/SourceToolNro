@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BotPlayer", "BotPlayer\BotPlayer.csproj", "{752640FC-33F5-48D9-96FC-6C2FCD86288A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Accountify", "Accountify\Accountify.csproj", "{D8B41B31-B7BF-4F23-95F9-9CEFE232A909}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{752640FC-33F5-48D9-96FC-6C2FCD86288A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{752640FC-33F5-48D9-96FC-6C2FCD86288A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{752640FC-33F5-48D9-96FC-6C2FCD86288A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{752640FC-33F5-48D9-96FC-6C2FCD86288A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D8B41B31-B7BF-4F23-95F9-9CEFE232A909}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D8B41B31-B7BF-4F23-95F9-9CEFE232A909}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D8B41B31-B7BF-4F23-95F9-9CEFE232A909}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D8B41B31-B7BF-4F23-95F9-9CEFE232A909}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

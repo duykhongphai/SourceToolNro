@@ -1,0 +1,20 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:ToolEffectNro.Options"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="ToolEffectNro.ChildWindows.FormSkillEffect"
+        Title="FormSkillEffect"
+        Width="1085" Height="610"
+        Background="#3A384D"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Border Background="rgb(70, 67, 90)" KeyDown="InputElement_OnKeyDown" Focusable="True" IsTabStop="True">
+        <options:CustomPanel Name="PanelMain" />
+    </Border>
+</Window>

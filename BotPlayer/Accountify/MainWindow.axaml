@@ -1,0 +1,321 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="600"
+        Width="900" Height="600"
+        x:Class="Accountify.MainWindow"
+        Title="Accountify"
+        Background="#f5f6fa"
+        ExtendClientAreaChromeHints="NoChrome"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+    <Window.Styles>
+        <Style Selector="TextBox">
+            <Setter Property="Background" Value="#ffffff" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="#dfe1e5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBox:focus">
+            <Setter Property="BorderBrush" Value="#4267B2" />
+        </Style>
+        <Style Selector="TextBox:pointerover">
+            <Setter Property="BorderBrush" Value="#bdc7d8" />
+        </Style>
+        <Style Selector="TextBox /template/ TextBlock#PART_Watermark">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TextBox /template/ TextBlock#PART_TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="Button">
+            <Setter Property="Background" Value="#4267B2" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="Height" Value="36" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.15" />
+                </Transitions>
+            </Setter>
+            <Setter Property="RenderTransform" Value="scale(1)" />
+        </Style>
+        <Style Selector="Button:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#365899" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+        <Style Selector="Button:pressed /template/ ContentPresenter">
+            <Setter Property="Background" Value="#304d86" />
+        </Style>
+        <Style Selector="Button:pressed">
+            <Setter Property="RenderTransform" Value="scale(0.98)" />
+        </Style>
+
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="#4267B2" />
+            <Setter Property="BorderBrush" Value="#dadce0" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+        <Style Selector="Button.secondary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#f5f7fa" />
+            <Setter Property="BorderBrush" Value="#c3c9d5" />
+        </Style>
+
+        <Style Selector="TreeView">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#e1e4e8" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+        <Style Selector="TreeViewItem">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="Margin" Value="0,1" />
+            <Setter Property="MinHeight" Value="28" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.1" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TreeViewItem /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem /template/ Border">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem /template/ Grid">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem > TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="TreeViewItem:selected /template/ Border#SelectionBorder">
+            <Setter Property="Background" Value="#e7f0ff" />
+            <Setter Property="BorderBrush" Value="#4267B2" />
+            <Setter Property="BorderThickness" Value="0,0,0,0" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        <Style Selector="TreeViewItem:pointerover /template/ Border#SelectionBorder">
+            <Setter Property="Background" Value="#f5f7fa" />
+        </Style>
+
+        <Style Selector="TreeViewItem.loadingItem">
+            <Setter Property="Background" Value="#e3f2fd" />
+            <Setter Property="Foreground" Value="#1976d2" />
+        </Style>
+
+        <Style Selector="ComboBox">
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#dfe1e5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="ComboBox:pointerover /template/ Border">
+            <Setter Property="BorderBrush" Value="#bdc7d8" />
+        </Style>
+        <Style Selector="ComboBox:focus /template/ Border">
+            <Setter Property="BorderBrush" Value="#4267B2" />
+            <Setter Property="BoxShadow" Value="0 0 0 2 #4267B233" />
+        </Style>
+
+        <Style Selector="TextBlock.sectionTitle">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#202124" />
+            <Setter Property="Margin" Value="0,0,0,10" />
+        </Style>
+
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Foreground" Value="#5f6368" />
+            <Setter Property="Margin" Value="0,0,0,5" />
+        </Style>
+
+        <Style Selector="Border.panel">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="BoxShadow" Value="0 2 10 0 #20000000" />
+            <Setter Property="Padding" Value="20,15" />
+            <Setter Property="Margin" Value="0,0,0,20" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*,Auto">
+        <Border Grid.Row="0" Background="#4267B2" Padding="10,10" BoxShadow="0 1 8 0 #20000000"
+                PointerPressed="InputElement_OnPointerPressed">
+            <Panel>
+                <TextBlock Text="Accountify" FontSize="18" FontWeight="Bold" Foreground="White"
+                           HorizontalAlignment="Center" />
+                <Border Name="CloseButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,10,0"
+                        Width="20" Height="20"
+                        CornerRadius="10"
+                        PointerPressed="CloseButton_OnPointerPressed">
+                    <TextBlock Text="×"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Border>
+            </Panel>
+        </Border>
+
+        <Grid Grid.Row="1" RowDefinitions="Auto,*" Margin="20">
+            <Border Grid.Row="0"
+                    Background="White"
+                    CornerRadius="8"
+                    BoxShadow="0 2 10 0 #20000000"
+                    Padding="20,15"
+                    Margin="0,0,0,20">
+                <Grid RowDefinitions="Auto,Auto">
+                    <StackPanel Grid.Row="0" Orientation="Horizontal" Spacing="10" Margin="0,0,0,15">
+                        <TextBox Name="ServerTextBox" Width="200" Watermark="Server" ToolTip.Tip="Nhập địa chỉ máy chủ" />
+                        <TextBox Name="UsernameTextBox" Width="200" Watermark="Username"
+                                 ToolTip.Tip="Nhập tên người dùng" />
+                        <TextBox Name="PasswordTextBox" Width="200" PasswordChar="•" Watermark="Password"
+                                 ToolTip.Tip="Nhập mật khẩu" />
+                        <Button Name="ConnectButton" Content="Kết nối" Click="ConnectButton_Click" />
+                    </StackPanel>
+
+                    <TextBlock Grid.Row="1" Name="StatusTextBlock"
+                               Foreground="#4267B2"
+                               FontWeight="SemiBold"
+                               IsVisible="False" />
+                </Grid>
+            </Border>
+
+            <Grid Grid.Row="1" ColumnDefinitions="300,*">
+                <Border Grid.Column="0"
+                        Background="White"
+                        CornerRadius="8"
+                        BoxShadow="0 2 10 0 #20000000"
+                        Padding="15">
+                    <Grid RowDefinitions="Auto,*">
+                        <TextBlock Grid.Row="0"
+                                   Text="Cơ sở dữ liệu"
+                                   FontWeight="Bold"
+                                   FontSize="16"
+                                   Margin="0,0,0,10" />
+                        <TreeView Grid.Row="1"
+                                  Name="DatabaseTreeView"
+                                  SelectionChanged="DatabaseTreeView_SelectionChanged" />
+                    </Grid>
+                </Border>
+
+                <Border Grid.Column="1"
+                        Background="White"
+                        CornerRadius="8"
+                        BoxShadow="0 2 10 0 #20000000"
+                        Padding="15"
+                        Margin="20,0,0,0">
+                    <Grid RowDefinitions="Auto,*,Auto">
+                        <StackPanel Grid.Row="0" Spacing="15">
+                            <TextBlock Text="Chọn trường"
+                                       FontWeight="Bold"
+                                       FontSize="16" />
+
+                            <TextBlock Name="InstructionLabel"
+                                       Text="Chọn 1 trường tài khoản và 1 trường mật khẩu, trường tài khoản sẽ nhập tài khoản theo định dạng abcX để thêm tài khoản theo lô"
+                                       TextWrapping="Wrap"
+                                       Foreground="#666666"
+                                       Margin="0,0,0,10" />
+
+                            <Grid ColumnDefinitions="*,*" RowDefinitions="Auto,Auto" Margin="0,0,0,15">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Text="Trường tài khoản:" />
+                                <ComboBox Grid.Row="1" Grid.Column="0" Name="UsernameFieldComboBox" Margin="0,5,10,0"
+                                          Width="200" HorizontalAlignment="Left" />
+
+                                <TextBlock Grid.Row="0" Grid.Column="1" Text="Trường mật khẩu:" />
+                                <ComboBox Grid.Row="1" Grid.Column="1" Name="PasswordFieldComboBox" Margin="0,5,0,0"
+                                          Width="200" HorizontalAlignment="Left" />
+                            </Grid>
+                        </StackPanel>
+                        <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" Margin="0,0,0,10">
+                            <ComboBox Grid.Row="1"
+                                      Name="EncryptionComboBox"
+                                      SelectedIndex="0"
+                                      HorizontalAlignment="Stretch"
+                                      Height="34" Margin="0,0,0,10">
+                                <ComboBoxItem Content="Không mã hóa (Plain Text)" />
+                                <ComboBoxItem Content="MD5" />
+                                <ComboBoxItem Content="SHA1" />
+                                <ComboBoxItem Content="SHA2-256" />
+                                <ComboBoxItem Content="SHA2-384" />
+                                <ComboBoxItem Content="SHA2-512" />
+                                <ComboBoxItem Content="auth_socket (Unix Socket)" />
+                                <ComboBoxItem Content="authentication_windows (Chỉ Windows)" />
+                                <ComboBoxItem Content="mysql_clear_password" />
+                            </ComboBox>
+                            <TextBox Grid.Row="2" Name="CustomUserTextBox" Watermark="Tài Khoản"
+                                     ToolTip.Tip="Nhập tài khoản" />
+                        </Grid>
+
+                        <Border Grid.Row="2"
+                                Background="#f9f9f9"
+                                CornerRadius="6"
+                                Padding="15"
+                                BorderBrush="#e1e4e8"
+                                BorderThickness="1">
+                            <Grid RowDefinitions="Auto,Auto">
+                                <TextBlock Grid.Row="0"
+                                           Text="Truy vấn dữ liệu"
+                                           FontWeight="Bold"
+                                           Margin="0,0,0,10" />
+
+                                <Grid Grid.Row="1" ColumnDefinitions="*,*,Auto">
+                                    <TextBox Grid.Column="0" Name="FromTextBox" Watermark="Từ" Margin="0,0,10,0" />
+                                    <TextBox Grid.Column="1" Name="ToTextBox" Watermark="Tới" Margin="0,0,10,0" />
+                                    <Button Grid.Column="2" Name="QueryButton" Content="Truy vấn"
+                                            Click="QueryButton_Click" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <Border Grid.Row="2"
+                Background="#ebedf0"
+                Padding="10"
+                BorderBrush="#e1e4e8"
+                BorderThickness="0,1,0,0">
+            <TextBlock Text="© 2025 Accountify - Quản lý tài khoản"
+                       HorizontalAlignment="Center"
+                       Foreground="#666666"
+                       FontSize="12" />
+        </Border>
+    </Grid>
+</Window>

@@ -1,0 +1,82 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:DrawMap.Options"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="535"
+        x:Class="DrawMap.ChildWindows.DrawMap"
+        Title="DrawMap"
+        Width="1000" Height="535"
+        ExtendClientAreaChromeHints="NoChrome"
+        Icon="/Assets/Icon.ico"
+        Background="rgb(70, 67, 90)"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+    <Grid ColumnDefinitions="*,200" Background="#FF999999">
+
+        <Border Grid.Column="0"
+                Background="#FF999999"
+                BorderBrush="#FF666666"
+                BorderThickness="1" Margin="0,0,0,5">
+            <ScrollViewer HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+                <options:PanelMap Name="PanelMap" />
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Column="1"
+                Background="#FF3E3E42"
+                BorderBrush="#FF464647"
+                BorderThickness="1,0,0,0">
+
+            <Grid RowDefinitions="*,Auto">
+                <ScrollViewer Grid.Row="0" Name="ItemScrollViewer">
+                    <WrapPanel Margin="10"
+                               Name="PanelItems" />
+                </ScrollViewer>
+
+                <Border Grid.Row="1"
+                        Background="#FF4A4A4F"
+                        BorderBrush="#FF5A5A5F"
+                        BorderThickness="0,1,0,0"
+                        Padding="10">
+
+                    <Grid RowDefinitions="Auto,Auto">
+
+                        <StackPanel Grid.Row="0"
+                                    Orientation="Horizontal"
+                                    VerticalAlignment="Center"
+                                    Margin="0,0,0,8">
+
+                            <options:PictureCustom Width="24" Height="24" Name="Eraser"
+                                                   TypePicture="Eraser"
+                                                   Source="../Assets/Resources/eraser24.png"
+                                                   PointerPressed="PicOnPointerPressed" Margin="0,0,20,0" />
+
+                            <TextBlock Name="TileIdText"
+                                       Text="Tile ID: NaN"
+                                       Foreground="White"
+                                       FontSize="12"
+                                       VerticalAlignment="Center" />
+                        </StackPanel>
+
+                        <StackPanel Grid.Row="1"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Center">
+                            <Button Classes="glass" Click="PrevPageBtn_OnClick" Name="PrevPageBtn" Width="35"
+                                    Height="30" Margin="0,0,20,0">
+                                <PathIcon Data="M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z" Width="15"
+                                          Height="15" Foreground="White" />
+                            </Button>
+                            <Button Classes="glass" Click="NextPageBtn_OnClick" Name="NextPageBtn" Width="35"
+                                    Height="30">
+                                <PathIcon Data="M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z" Width="15"
+                                          Height="15" Foreground="White" />
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

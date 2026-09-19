@@ -1,0 +1,49 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="200" d:DesignHeight="267"
+        Width="200" Height="267"
+        x:Class="ToolEffectNro.ChildWindows.ManagerEffect"
+        Title="ManagerEffect"
+        Background="#3A384D"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ShowInTaskbar="False">
+    <Border CornerRadius="6" BorderBrush="#DDDDDD" BorderThickness="1" Background="White"
+            PointerPressed="InputElement_OnPointerPressed">
+        <Grid RowDefinitions="Auto,*,Auto">
+            <StackPanel Grid.Row="0" Spacing="5" Margin="10">
+                <CheckBox Name="ViewChar" Content="View Char" IsCheckedChanged="ViewChar_OnIsCheckedChanged"
+                          FontSize="13"
+                          FontWeight="Bold" Foreground="#333344" />
+                <CheckBox Name="DataHasEffectId" Content="Data Has Effect Id" FontSize="13" FontWeight="Bold"
+                          Foreground="#333344" IsCheckedChanged="DataHasEffectId_OnIsCheckedChanged" />
+                <CheckBox Name="FlagBag" Content="Flag Bag" FontSize="13" FontWeight="Bold"
+                          Foreground="#333344" IsCheckedChanged="FlagBag_OnIsCheckedChanged" />
+                <CheckBox Name="SeparateImageAndData" Content="Separate Image And Data" FontSize="13" FontWeight="Bold"
+                          Foreground="#333344" IsCheckedChanged="SeparateImageAndData_OnIsCheckedChanged" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Spacing="1" Margin="10,0,10,10">
+                <Button x:Name="EditArrayItem"
+                        Classes="dark"
+                        Content="Edit Array Frame"
+                        HorizontalAlignment="Stretch"
+                        Height="36"
+                        CornerRadius="8"
+                        Margin="0,0,0,5" Click="EditArrayItem_OnClick" />
+                <Button x:Name="BuildEffect"
+                        Classes="dark"
+                        Content="Build Effect"
+                        HorizontalAlignment="Stretch"
+                        Height="36"
+                        CornerRadius="8"
+                        Margin="0,0,0,0" Click="BuildEffect_OnClick" />
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

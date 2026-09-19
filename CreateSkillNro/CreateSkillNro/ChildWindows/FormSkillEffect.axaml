@@ -1,0 +1,872 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:options="clr-namespace:CreateSkillNro.Options"
+        xmlns:local="clr-namespace:CreateSkillNro.Classes.Enums"
+        xmlns:childWindows="clr-namespace:CreateSkillNro.ChildWindows"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="CreateSkillNro.ChildWindows.FormSkillEffect"
+        Title="Skill Effect Editor - Enhanced UX"
+        Width="1085" Height="610"
+        Background="{DynamicResource WindowBackgroundGradient}"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="PrimaryAccent" Color="#4f46e5" />
+        <SolidColorBrush x:Key="PrimaryAccentHover" Color="#4338ca" />
+        <SolidColorBrush x:Key="SecondaryAccent" Color="#06b6d4" />
+        <SolidColorBrush x:Key="Success" Color="#10b981" />
+        <SolidColorBrush x:Key="Warning" Color="#f59e0b" />
+        <SolidColorBrush x:Key="Error" Color="#ef4444" />
+        <SolidColorBrush x:Key="SurfaceLight" Color="#f8fafc" />
+        <SolidColorBrush x:Key="TextPrimary" Color="#0f172a" />
+        <SolidColorBrush x:Key="TextSecondary" Color="#64748b" />
+        <SolidColorBrush x:Key="Border" Color="#e2e8f0" />
+        <SolidColorBrush x:Key="BorderHover" Color="#cbd5e1" />
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="Button.tab">
+            <Setter Property="Background" Value="{StaticResource SurfaceLight}" />
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1,1,1,0" />
+            <Setter Property="Padding" Value="24,12" />
+            <Setter Property="Margin" Value="0,0,4,0" />
+            <Setter Property="CornerRadius" Value="12,12,0,0" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="MinWidth" Value="140" />
+            <Setter Property="Height" Value="48" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.25" />
+                    <BrushTransition Property="Foreground" Duration="0:0:0.25" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.tab:pointerover">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="RenderTransform" Value="translateY(-2px)" />
+        </Style>
+
+        <Style Selector="Button.tab.active">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="ZIndex" Value="10" />
+        </Style>
+        <Style Selector="Button.tab.small">
+            <Setter Property="Background" Value="{StaticResource SurfaceLight}" />
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1,1,1,0" />
+            <Setter Property="Padding" Value="12,6" />
+            <Setter Property="Margin" Value="0,0,2,0" />
+            <Setter Property="CornerRadius" Value="6,6,0,0" />
+            <Setter Property="FontSize" Value="11" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="MinWidth" Value="80" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                    <BrushTransition Property="Foreground" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.tab.small:pointerover">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+        </Style>
+
+        <Style Selector="Button.tab.small.active">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="ZIndex" Value="5" />
+        </Style>
+        <Style Selector="TextBox.modern-input">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
+            <Setter Property="CaretBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="SelectionBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="SelectionForegroundBrush" Value="White" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="TextBox.modern-input:focus">
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Background" Value="#fefefe" />
+        </Style>
+
+        <Style Selector="TextBox.modern-input:pointerover">
+            <Setter Property="BorderBrush" Value="{StaticResource BorderHover}" />
+            <Setter Property="Background" Value="#fafafa" />
+        </Style>
+
+        <Style Selector="ComboBox.modern-input">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="ComboBox.modern-input:focus">
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Background" Value="#fefefe" />
+        </Style>
+
+        <Style Selector="Button.action-btn">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="MinHeight" Value="36" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.15" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.action-btn:pointerover">
+            <Setter Property="Background" Value="{StaticResource PrimaryAccentHover}" />
+            <Setter Property="RenderTransform" Value="translateY(-1px)" />
+        </Style>
+
+        <Style Selector="Button.action-btn.success">
+            <Setter Property="Background" Value="{StaticResource Success}" />
+        </Style>
+
+        <Style Selector="Button.action-btn.warning">
+            <Setter Property="Background" Value="{StaticResource Warning}" />
+        </Style>
+
+        <Style Selector="Button.action-btn.error">
+            <Setter Property="Background" Value="{StaticResource Error}" />
+        </Style>
+
+        <Style Selector="Button.dart-type">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#667eea" Offset="0" />
+                        <GradientStop Color="#764ba2" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Padding" Value="20,10" />
+            <Setter Property="MinHeight" Value="40" />
+            <Setter Property="MinWidth" Value="95" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.25" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.2" />
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.15" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type:pointerover">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#5a67d8" Offset="0" />
+                        <GradientStop Color="#667eea" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="RenderTransform" Value="translateY(-2px) scale(1.05)" />
+        </Style>
+
+        <Style Selector="Button.dart-type.head-border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#f093fb" Offset="0" />
+                        <GradientStop Color="#f5576c" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type.head">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#4facfe" Offset="0" />
+                        <GradientStop Color="#00f2fe" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type.tail-border">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#43e97b" Offset="0" />
+                        <GradientStop Color="#38f9d7" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type.tail">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#fa709a" Offset="0" />
+                        <GradientStop Color="#fee140" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type.xd1">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#a8edea" Offset="0" />
+                        <GradientStop Color="#fed6e3" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Button.dart-type.xd2">
+            <Setter Property="Background">
+                <Setter.Value>
+                    <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                        <GradientStop Color="#ff9a9e" Offset="0" />
+                        <GradientStop Color="#fecfef" Offset="1" />
+                    </LinearGradientBrush>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style Selector="Border.panel">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+
+        <Style Selector="Border.panel-accent">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="16" />
+        </Style>
+        <Style Selector="Border.panel-wrap">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="12" />
+        </Style>
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+        </Style>
+
+        <Style Selector="TextBlock.section-title">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
+            <Setter Property="Margin" Value="0,0,0,12" />
+        </Style>
+
+        <Style Selector="Grid.tab-content">
+            <Setter Property="Opacity" Value="0" />
+            <Setter Property="IsVisible" Value="False" />
+            <Setter Property="RenderTransform" Value="translateX(30px)" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.4" />
+                    <TransformOperationsTransition Property="RenderTransform" Duration="0:0:0.3" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="Grid.tab-content.active">
+            <Setter Property="Opacity" Value="1" />
+            <Setter Property="IsVisible" Value="True" />
+            <Setter Property="RenderTransform" Value="translateX(0px)" />
+        </Style>
+
+        <Style Selector="TextBox.compact-input">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="FontSize" Value="10" />
+            <Setter Property="FontFamily" Value="Segoe UI" />
+            <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
+            <Setter Property="CaretBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="SelectionBrush" Value="{StaticResource PrimaryAccent}" />
+            <Setter Property="SelectionForegroundBrush" Value="White" />
+            <Setter Property="Padding" Value="6,4" />
+            <Setter Property="Height" Value="28" />
+            <Setter Property="Width" Value="30" />
+            <Setter Property="TextAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="ScrollViewer.modern">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style Selector="ScrollBar">
+            <Setter Property="Background" Value="{StaticResource SurfaceLight}" />
+            <Setter Property="BorderBrush" Value="{StaticResource Border}" />
+            <Setter Property="Width" Value="12" />
+            <Setter Property="Height" Value="12" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.3" />
+                </Transitions>
+            </Setter>
+        </Style>
+
+        <Style Selector="ScrollBar:pointerover">
+            <Setter Property="Opacity" Value="0.8" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*" KeyDown="InputElement_OnKeyDown" Focusable="True" IsTabStop="True">
+        <Border Grid.Row="0"
+                Background="{DynamicResource WindowBackgroundGradient}"
+                BorderBrush="{StaticResource Border}"
+                BorderThickness="0,0,0,1"
+                Padding="20,12,20,0">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <Button Classes="tab active"
+                        Content="✨ Edit Effect"
+                        Name="EditEffectTabBtn"
+                        Click="OnTabClick"
+                        Tag="EditEffect"
+                        ToolTip.Tip="Edit visual effects and animations" />
+                <Button Classes="tab"
+                        Content="🎯 Edit Dart"
+                        Name="EditDartTabBtn"
+                        Click="OnTabClick"
+                        Tag="EditDart"
+                        ToolTip.Tip="Configure dart projectiles" />
+                <Button Classes="tab"
+                        Content="⚡ Edit Skill"
+                        Name="EditSkillTabBtn"
+                        Click="OnTabClick"
+                        Tag="EditSkill"
+                        ToolTip.Tip="Modify skill properties and animations" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Name="TabContentContainer" Background="{StaticResource SurfaceLight}">
+            <Grid Name="EditEffectTabContent" Classes="tab-content active">
+                <Grid ColumnDefinitions="*,200" Margin="20">
+                    <Border Grid.Column="0" Classes="panel" Margin="0,0,10,0">
+                        <Grid RowDefinitions="Auto,*">
+                            <TextBlock Grid.Row="0" Classes="section-title" Text="Effect Preview" />
+                            <options:PanelView Grid.Row="1" IsEditor="True" TypeData="Effect" Name="EffectPanelFrame" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1" Classes="panel-accent">
+                        <Grid RowDefinitions="Auto,*">
+                            <TextBlock Grid.Row="0" Classes="section-title" Text="Effect Frames" />
+
+                            <Border Grid.Row="1" Classes="panel-wrap" BorderBrush="{StaticResource SecondaryAccent}"
+                                    Name="EffectScrollContainer">
+                                <ScrollViewer Name="EffectScrollEditor"
+                                              VerticalScrollBarVisibility="Auto">
+                                    <WrapPanel Name="EffectWrapPanel" Orientation="Horizontal" />
+                                    <ScrollViewer.ContextMenu>
+                                        <ContextMenu Opened="EffectMenu_OnOpened">
+                                            <MenuItem Header="Add Image" Name="AddImageEffect"
+                                                      Click="AddImageEffect_OnClick">
+                                                <MenuItem.Icon>
+                                                    <PathIcon Height="12" Width="12" Foreground="#a6d189"
+                                                              Data="{DynamicResource AddRegular}" />
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Remove Image" Name="RemoveImageEffect"
+                                                      Click="RemoveImageEffect_OnClick">
+                                                <MenuItem.Icon>
+                                                    <PathIcon Height="12" Width="12" Foreground="#e78284"
+                                                              Data="{DynamicResource RemoveRegular}" />
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Move Up" Name="MoveUpEffect" Click="MoveUpEffect_OnClick">
+                                                <MenuItem.Icon>
+                                                    <PathIcon Height="12" Width="12" Foreground="#c6a0f6"
+                                                              Data="{DynamicResource CaretUpRegular}" />
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                            <MenuItem Header="Move Down" Name="MoveDownEffect"
+                                                      Click="MoveDownEffect_OnClick">
+                                                <MenuItem.Icon>
+                                                    <PathIcon Height="12" Width="12" Foreground="#ed8796"
+                                                              Data="{DynamicResource CaretDownRegular}" />
+                                                </MenuItem.Icon>
+                                            </MenuItem>
+                                        </ContextMenu>
+                                    </ScrollViewer.ContextMenu>
+                                </ScrollViewer>
+                            </Border>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Grid Name="EditSkillTabContent" Classes="tab-content">
+                <Grid ColumnDefinitions="*,200" Margin="20">
+                    <Border Grid.Column="0" Classes="panel" Margin="0,0,10,0">
+                        <Grid RowDefinitions="Auto,*">
+                            <TextBlock Grid.Row="0" Classes="section-title" Text="Skill Preview" />
+                            <options:PanelView Grid.Row="1" IsEditor="True" TypeData="Skill" Name="SkillPanelFrame" />
+                        </Grid>
+                    </Border>
+
+                    <Border Grid.Column="1" Classes="panel" Margin="0,0,0,0">
+                        <Grid RowDefinitions="Auto,*">
+                            <Border Grid.Row="0" BorderBrush="{StaticResource Border}" BorderThickness="0,0,0,1"
+                                    Padding="0,0,0,4">
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Button Classes="tab small active" Content="⚙️ Setup" Name="SkillSetupTabBtn"
+                                            Click="OnSkillTabClick" Tag="Setup"
+                                            ToolTip.Tip="Character and effects configuration" />
+                                    <Button Classes="tab small" Content="🎬 Frames" Name="SkillFramesTabBtn"
+                                            Click="OnSkillTabClick" Tag="Frames"
+                                            ToolTip.Tip="Skill animation frames" />
+                                </StackPanel>
+                            </Border>
+
+                            <Grid Grid.Row="1" Name="SkillTabContentContainer">
+                                <Grid Name="SkillSetupTabContent" Classes="tab-content active">
+                                    <ScrollViewer Classes="modern" VerticalScrollBarVisibility="Auto" Margin="0,8,0,0">
+                                        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" Margin="0,4,0,0">
+                                            <TextBlock Grid.Row="0" Classes="section-title" Text="Character Setup" />
+
+                                            <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" Margin="0,0,0,16">
+                                                <TextBlock Grid.Row="0" Classes="label" Text="Character Stand"
+                                                           HorizontalAlignment="Center" />
+                                                <Border Grid.Row="1" Width="64" Height="64" BorderThickness="2"
+                                                        BorderBrush="{StaticResource Border}"
+                                                        CornerRadius="12" Background="White"
+                                                        HorizontalAlignment="Center" Margin="0,4,0,4"
+                                                        Cursor="Hand" DoubleTapped="CharStandBorder_DoubleTapped">
+                                                    <Image Name="CharImageStand" Width="60" Height="60"
+                                                           Stretch="Uniform" />
+                                                </Border>
+                                                <TextBlock Grid.Row="2" Text="Double-click to change" Classes="label"
+                                                           HorizontalAlignment="Center" FontStyle="Italic"
+                                                           Opacity="0.7" />
+                                            </Grid>
+
+                                            <Grid Grid.Row="2" RowDefinitions="Auto,Auto" Margin="0,0,0,16">
+                                                <TextBlock Grid.Row="0" Classes="label" Text="Effect on Mob" />
+                                                <ComboBox Grid.Row="1" Name="EffectMob" Classes="modern-input"
+                                                          SelectionChanged="EffectMob_OnSelectionChanged"
+                                                          HorizontalAlignment="Stretch"
+                                                          ItemsSource="{Binding Source={x:Static childWindows:FormMainEffect.Instance}, Path=EffectKeys}"
+                                                          PlaceholderText="Select effect..." />
+                                            </Grid>
+
+                                            <Grid Grid.Row="3" RowDefinitions="Auto,Auto,Auto,Auto" Margin="0,0,0,16">
+                                                <TextBlock Grid.Row="0" Classes="label" Text="Effects Configuration" />
+
+                                                <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" Margin="0,4">
+                                                    <TextBlock Grid.Row="0" Classes="label" Text="Effect 1:"
+                                                               FontSize="10" />
+                                                    <ComboBox Grid.Row="1" Name="Effect1" Classes="modern-input"
+                                                              Height="28" FontSize="10"
+                                                              SelectionChanged="Effect1_OnSelectionChanged"
+                                                              HorizontalAlignment="Stretch"
+                                                              ItemsSource="{Binding Source={x:Static childWindows:FormMainEffect.Instance}, Path=EffectKeys}" />
+                                                    <Grid Grid.Row="2" ColumnDefinitions="*,*" Margin="0,2,0,0">
+                                                        <TextBox Grid.Column="0" Name="Effect1Dx"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="0,0,2,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect1Dx_OnTextChanged"
+                                                                 Watermark="X Position" />
+                                                        <TextBox Grid.Column="1" Name="Effect1Dy"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="2,0,0,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect1Dy_OnTextChanged"
+                                                                 Watermark="Y Position" />
+                                                    </Grid>
+                                                </Grid>
+
+                                                <Grid Grid.Row="2" RowDefinitions="Auto,Auto,Auto" Margin="0,4">
+                                                    <TextBlock Grid.Row="0" Classes="label" Text="Effect 2:"
+                                                               FontSize="10" />
+                                                    <ComboBox Grid.Row="1" Name="Effect2" Classes="modern-input"
+                                                              Height="28" FontSize="10"
+                                                              SelectionChanged="Effect2_OnSelectionChanged"
+                                                              HorizontalAlignment="Stretch"
+                                                              ItemsSource="{Binding Source={x:Static childWindows:FormMainEffect.Instance}, Path=EffectKeys}" />
+                                                    <Grid Grid.Row="2" ColumnDefinitions="*,*" Margin="0,2,0,0">
+                                                        <TextBox Grid.Column="0" Name="Effect2Dx"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="0,0,2,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect2Dx_OnTextChanged"
+                                                                 Watermark="X Position" />
+                                                        <TextBox Grid.Column="1" Name="Effect2Dy"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="2,0,0,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect2Dy_OnTextChanged"
+                                                                 Watermark="Y Position" />
+                                                    </Grid>
+                                                </Grid>
+
+                                                <Grid Grid.Row="3" RowDefinitions="Auto,Auto,Auto" Margin="0,4">
+                                                    <TextBlock Grid.Row="0" Classes="label" Text="Effect 3:"
+                                                               FontSize="10" />
+                                                    <ComboBox Grid.Row="1" Name="Effect3" Classes="modern-input"
+                                                              Height="28" FontSize="10"
+                                                              SelectionChanged="Effect3_OnSelectionChanged"
+                                                              HorizontalAlignment="Stretch"
+                                                              ItemsSource="{Binding Source={x:Static childWindows:FormMainEffect.Instance}, Path=EffectKeys}" />
+                                                    <Grid Grid.Row="2" ColumnDefinitions="*,*" Margin="0,2,0,0">
+                                                        <TextBox Grid.Column="0" Name="Effect3Dx"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="0,0,2,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect3Dx_OnTextChanged"
+                                                                 Watermark="X Position" />
+                                                        <TextBox Grid.Column="1" Name="Effect3Dy"
+                                                                 Classes="modern-input" Height="28" FontSize="10"
+                                                                 Margin="2,0,0,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="Effect3Dy_OnTextChanged"
+                                                                 Watermark="Y Position" />
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+
+                                            <Grid Grid.Row="4" RowDefinitions="Auto,Auto">
+                                                <TextBlock Grid.Row="0" Classes="label" Text="Dart Configuration" />
+                                                <Grid Grid.Row="1" RowDefinitions="Auto,Auto,Auto" Margin="0,4">
+                                                    <TextBlock Grid.Row="0" Classes="label" Text="Dart ID:"
+                                                               FontSize="10" />
+                                                    <ComboBox Grid.Row="1" Name="DartId" Classes="modern-input"
+                                                              Height="28" HorizontalAlignment="Stretch" FontSize="10"
+                                                              SelectionChanged="DartId_OnSelectionChanged"
+                                                              ItemsSource="{Binding Source={x:Static childWindows:FormMainEffect.Instance}, Path=DartKeys}" />
+                                                    <Grid Grid.Row="2" ColumnDefinitions="*,*" Margin="0,2,0,0">
+                                                        <TextBox Grid.Column="0" Name="DartIdDx" Classes="modern-input"
+                                                                 Height="28" FontSize="10" Margin="0,0,2,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="DartIdDx_OnTextChanged"
+                                                                 Watermark="X Position" />
+                                                        <TextBox Grid.Column="1" Name="DartIdDy" Classes="modern-input"
+                                                                 Height="28" FontSize="10" Margin="2,0,0,0"
+                                                                 KeyDown="NumericTextBox_OnKeyDown"
+                                                                 TextChanged="DartIdDy_OnTextChanged"
+                                                                 Watermark="Y Position" />
+                                                    </Grid>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </ScrollViewer>
+                                </Grid>
+
+                                <Grid Name="SkillFramesTabContent" Classes="tab-content">
+                                    <Grid RowDefinitions="Auto,*" Margin="0,12,0,0">
+                                        <TextBlock Grid.Row="0" Classes="section-title" Text="Skill Frames" />
+
+                                        <Border Grid.Row="1" Classes="panel-wrap"
+                                                BorderBrush="{StaticResource SecondaryAccent}"
+                                                Name="SkillScrollContainer">
+                                            <ScrollViewer Name="SkillScrollEditor"
+                                                          VerticalScrollBarVisibility="Auto">
+                                                <WrapPanel Name="SkillWrapPanel" Orientation="Horizontal" />
+                                                <ScrollViewer.ContextMenu>
+                                                    <ContextMenu Opened="SkillMenu_OnOpened">
+                                                        <MenuItem Header="Add Skill" Name="AddSkill"
+                                                                  Click="AddSkill_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#8bd5ca"
+                                                                          Data="{DynamicResource AddRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Remove Skill" Name="RemoveSkill"
+                                                                  Click="RemoveSkill_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#ee99a0"
+                                                                          Data="{DynamicResource RemoveRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Clone Skill" Name="CloneSkill"
+                                                                  Click="CloneSkill_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#b4befe"
+                                                                          Data="{DynamicResource DocumentCopyRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Up" Name="MoveUpSkill"
+                                                                  Click="MoveUpSkill_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#c6a0f6"
+                                                                          Data="{DynamicResource CaretUpRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Down" Name="MoveDownSkill"
+                                                                  Click="MoveDownSkill_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#ed8796"
+                                                                          Data="{DynamicResource CaretDownRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                    </ContextMenu>
+                                                </ScrollViewer.ContextMenu>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Grid>
+                                </Grid>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Grid>
+            </Grid>
+
+            <Grid Name="EditDartTabContent" Classes="tab-content">
+                <Grid ColumnDefinitions="*,200" Margin="20">
+                    <Border Grid.Column="0" Classes="panel" Margin="0,0,10,0">
+                        <Grid RowDefinitions="Auto,Auto,*">
+                            <TextBlock Grid.Row="0" Classes="section-title" Text="Dart Preview" />
+
+                            <Grid Grid.Row="1" ColumnDefinitions="Auto,*" Margin="0,0,0,16">
+                                <Border Grid.Column="0" Classes="panel" Name="NumericInputLayer" Margin="0,0,16,0">
+                                    <Grid RowDefinitions="Auto,Auto" Width="250">
+                                        <TextBlock Grid.Row="0" Classes="label" Text="Dart Properties"
+                                                   HorizontalAlignment="Center" Margin="0,0,0,8" />
+                                        <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+                                            <TextBox Grid.Column="0" Name="NUpdateTextBox" Classes="modern-input"
+                                                     Margin="0,0,4,0"
+                                                     KeyDown="NumericTextBox_OnKeyDown" Watermark="nUpdate"
+                                                     TextChanged="NUpdateTextBox_OnTextChanged" />
+                                            <TextBox Grid.Column="1" Name="AngleTextBox" Classes="modern-input"
+                                                     Margin="2,0"
+                                                     KeyDown="NumericTextBox_OnKeyDown" Watermark="Angle"
+                                                     TextChanged="AngleTextBox_OnTextChanged" />
+                                            <TextBox Grid.Column="2" Name="XdPercentTextBox" Classes="modern-input"
+                                                     Margin="4,0,0,0"
+                                                     KeyDown="NumericTextBox_OnKeyDown" Watermark="XdPercent"
+                                                     TextChanged="XdPercentTextBox_OnTextChanged" />
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+
+                                <Border Grid.Column="1" Classes="panel">
+                                    <Grid RowDefinitions="Auto,Auto,Auto">
+                                        <TextBlock Grid.Row="0" Classes="label" Text="Select Dart Component"
+                                                   HorizontalAlignment="Center" Margin="0,0,0,8" />
+                                        <WrapPanel Grid.Row="1" HorizontalAlignment="Center" Orientation="Horizontal">
+                                            <Button Name="HeadBorderButton" Content="🔲 Head Border"
+                                                    Classes="dart-type head-border" Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.HeadBorder}"
+                                                    ToolTip.Tip="Edit head border frames" />
+                                            <Button Name="HeadButton" Content="🎯 Head" Classes="dart-type head"
+                                                    Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.Head}"
+                                                    ToolTip.Tip="Edit head frames" />
+                                            <Button Name="TailBorderButton" Content="🔳 Tail Border"
+                                                    Classes="dart-type tail-border" Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.TailBorder}"
+                                                    ToolTip.Tip="Edit tail border frames" />
+                                        </WrapPanel>
+                                        <WrapPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal"
+                                                   Margin="0,4,0,0">
+                                            <Button Name="TailButton" Content="🎪 Tail" Classes="dart-type tail"
+                                                    Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.Tail}"
+                                                    ToolTip.Tip="Edit tail frames" />
+                                            <Button Name="Xd1Button" Content="⚡ Xd1" Classes="dart-type xd1" Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.Xd1}"
+                                                    ToolTip.Tip="Edit Xd1 frames" />
+                                            <Button Name="Xd2Button" Content="💫 Xd2" Classes="dart-type xd2"
+                                                    Margin="2"
+                                                    Click="ActiveDartButton_OnClick"
+                                                    Tag="{x:Static local:TypeDartEdit.Xd2}"
+                                                    ToolTip.Tip="Edit Xd2 frames" />
+                                        </WrapPanel>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <options:PanelView Grid.Row="2" IsEditor="True" TypeData="Dart" Name="DartPanelFrame" />
+                        </Grid>
+                    </Border>
+
+                    <Grid Grid.Column="1" Name="DartControlsContainer" RowDefinitions="Auto,*">
+                        <Border Grid.Row="0" 
+                                Name="DartTabHeader" 
+                                BorderBrush="{StaticResource Border}" 
+                                BorderThickness="0,0,0,1" 
+                                IsVisible="False"
+                                Background="White"
+                                ZIndex="10">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Button Classes="tab small active" 
+                                        Content="🎯 Heads" 
+                                        Name="HeadFramesTabBtn" 
+                                        Click="OnDartTabClick" 
+                                        Tag="HeadFrames" 
+                                        ToolTip.Tip="Edit head animation frames" />
+                                <Button Classes="tab small" 
+                                        Content="💫 Frames" 
+                                        Name="DartFramesTabBtn" 
+                                        Click="OnDartTabClick" 
+                                        Tag="DartFrames"
+                                        ToolTip.Tip="Edit dart body frames" />
+                            </StackPanel>
+                        </Border>
+                        <Grid Grid.Row="1" Name="DartTabContentContainer">
+                            <Grid Name="HeadFramesTabContent" 
+                                  Classes="tab-content active"
+                                  IsVisible="False">
+                                <Border Classes="panel-accent" Margin="0,8,0,0">
+                                    <Grid RowDefinitions="Auto,*">
+                                        <TextBlock Grid.Row="0" Classes="section-title" Text="Head Frames" />
+                                        <Border Grid.Row="1" Classes="panel-wrap" BorderBrush="{StaticResource Warning}">
+                                            <ScrollViewer Classes="modern" VerticalScrollBarVisibility="Auto">
+                                                <WrapPanel Name="PanelImgHead" Orientation="Horizontal" />
+                                                <ScrollViewer.ContextMenu>
+                                                    <ContextMenu Opened="DartHeadMenu_OnOpened">
+                                                        <MenuItem Header="Add Image" Name="AddDartHead" Click="AddDartHead_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#a6e3a1"
+                                                                          Data="{DynamicResource AddRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Remove Image" Name="RemoveDartHead" Click="RemoveDartHead_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#eba0ac"
+                                                                          Data="{DynamicResource RemoveRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Up" Name="MoveUpDartHead" Click="MoveUpDartHead_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#c6a0f6"
+                                                                          Data="{DynamicResource CaretUpRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Down" Name="MoveDownDartHead" Click="MoveDownDartHead_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#ed8796"
+                                                                          Data="{DynamicResource CaretDownRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                    </ContextMenu>
+                                                </ScrollViewer.ContextMenu>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+
+                            <Grid Name="DartFramesTabContent" 
+                                  Classes="tab-content active">
+                                <Border Classes="panel-accent" Name="DartFramesBorder" Margin="0,8,0,0">
+                                    <Grid RowDefinitions="Auto,*">
+                                        <TextBlock Grid.Row="0" Classes="section-title" Text="Dart Frames" Name="DartFramesTitle" />
+                                        <Border Grid.Row="1" Classes="panel-wrap" BorderBrush="{StaticResource SecondaryAccent}">
+                                            <ScrollViewer Classes="modern" Name="DartScrollEditor" VerticalScrollBarVisibility="Auto">
+                                                <WrapPanel Name="DartWrapPanel" Orientation="Horizontal" />
+                                                <ScrollViewer.ContextMenu>
+                                                    <ContextMenu Opened="DartMenu_OnOpened">
+                                                        <MenuItem Header="Add Image" Name="AddDart" Click="AddDart_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#a6e3a1"
+                                                                          Data="{DynamicResource AddRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Remove Image" Name="RemoveDart" Click="RemoveDart_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#eba0ac"
+                                                                          Data="{DynamicResource RemoveRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Up" Name="MoveUpDart" Click="MoveUpDart_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#c6a0f6"
+                                                                          Data="{DynamicResource CaretUpRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                        <MenuItem Header="Move Down" Name="MoveDownDart" Click="MoveDownDart_OnClick">
+                                                            <MenuItem.Icon>
+                                                                <PathIcon Height="12" Width="12" Foreground="#ed8796"
+                                                                          Data="{DynamicResource CaretDownRegular}" />
+                                                            </MenuItem.Icon>
+                                                        </MenuItem>
+                                                    </ContextMenu>
+                                                </ScrollViewer.ContextMenu>
+                                            </ScrollViewer>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

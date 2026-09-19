@@ -1,0 +1,185 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="520" d:DesignHeight="560"
+        Width="520" Height="560"
+        x:Class="ToolPart.Windows.ImportData"
+        Title="Import Data"
+        Background="White"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+
+    <Grid RowDefinitions="*,60">
+        <Grid Grid.Row="0" Margin="20">
+            <StackPanel Spacing="20">
+                <Border CornerRadius="10" BorderBrush="rgb(213, 218, 223)"
+                        BorderThickness="1" Background="White">
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Grid.Row="0" Background="#FAAD60" CornerRadius="9,9,0,0" Height="30">
+                            <TextBlock Text="JSON Configuration"
+                                       FontFamily="{DynamicResource SegoeUIBold}"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       Margin="15,0,0,0"
+                                       FontWeight="SemiBold"
+                                       FontSize="13" />
+                        </Border>
+                        <StackPanel Grid.Row="1" Margin="20,5,20,10">
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <TextBlock Text="Format:" FontWeight="Bold" VerticalAlignment="Center"
+                                           Width="70" FontSize="13" />
+                                <RadioButton Name="JsonArrayRadio"
+                                             Content="JSON Array"
+                                             IsChecked="True"
+                                             FontSize="13"
+                                             Margin="0,0,20,0"
+                                             GroupName="JsonType" />
+                                <RadioButton Name="JsonObjectRadio"
+                                             Content="JSON Object"
+                                             FontSize="13"
+                                             GroupName="JsonType" />
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="15"
+                                        IsEnabled="{Binding #JsonArrayRadio.IsChecked}">
+                                <TextBlock Text="Order:" FontWeight="Bold" VerticalAlignment="Center"
+                                           Width="70" FontSize="13" />
+                                <RadioButton Name="IdFirstRadio"
+                                             Content="Id, Dx, Dy"
+                                             IsChecked="True"
+                                             FontSize="13"
+                                             Margin="0,0,20,0"
+                                             GroupName="ArrayOrder" />
+                                <RadioButton Name="DxFirstRadio"
+                                             Content="Dx, Dy, Id"
+                                             FontSize="13"
+                                             GroupName="ArrayOrder" />
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="10" BorderBrush="rgb(213, 218, 223)"
+                        BorderThickness="1" Background="White">
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Grid.Row="0" Background="#FAAD60" CornerRadius="9,9,0,0" Height="30">
+                            <TextBlock Text="Icon Path Configuration"
+                                       FontFamily="{DynamicResource SegoeUIBold}"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       Margin="15,0,0,0"
+                                       FontWeight="SemiBold"
+                                       FontSize="13" />
+                        </Border>
+
+                        <Grid Grid.Row="1" Margin="20,15,20,15" ColumnDefinitions="Auto,*,Auto">
+                            <TextBlock Grid.Column="0"
+                                       Text="Icon Path (x4):"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       Margin="0,0,15,0" />
+                            <TextBox Name="IconPathTextBox"
+                                     Grid.Column="1"
+                                     Watermark="Click to select folder..."
+                                     Height="30"
+                                     FontSize="13"
+                                     IsReadOnly="True"
+                                     IsEnabled="False"
+                                     Cursor="Hand"
+                                     Margin="0,0,10,0" />
+                            <Button Name="BrowseButton"
+                                    Grid.Column="2"
+                                    Content="Browse"
+                                    Classes="yellow"
+                                    Width="70"
+                                    Height="30"
+                                    FontSize="12"
+                                    Click="OnBrowseButtonClick" />
+                        </Grid>
+                    </Grid>
+                </Border>
+                <Border CornerRadius="10" BorderBrush="rgb(213, 218, 223)"
+                        BorderThickness="1" Background="White">
+                    <Grid RowDefinitions="Auto,*">
+                        <Border Grid.Row="0" Background="#FAAD60" CornerRadius="9,9,0,0" Height="30">
+                            <TextBlock Text="Part Configuration"
+                                       FontFamily="{DynamicResource SegoeUIBold}"
+                                       Foreground="White"
+                                       VerticalAlignment="Center"
+                                       Margin="15,0,0,0"
+                                       FontWeight="SemiBold"
+                                       FontSize="13" />
+                        </Border>
+
+                        <Grid Grid.Row="1" Margin="20,15,20,15" RowDefinitions="Auto,Auto,Auto"
+                              ColumnDefinitions="80,*">
+
+                            <TextBlock Grid.Row="0" Grid.Column="0"
+                                       Text="Head:"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       Margin="0,0,10,12" />
+                            <TextBox Name="PartHeadTextBox"
+                                     Grid.Row="0" Grid.Column="1"
+                                     Watermark="Enter part head configuration"
+                                     Height="30"
+                                     FontSize="13"
+                                     Margin="0,0,0,12" />
+
+                            <TextBlock Grid.Row="1" Grid.Column="0"
+                                       Text="Body:"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       Margin="0,0,10,12" />
+                            <TextBox Name="PartBodyTextBox"
+                                     Grid.Row="1" Grid.Column="1"
+                                     Watermark="Enter part body configuration"
+                                     Height="30"
+                                     FontSize="13"
+                                     Margin="0,0,0,12" />
+
+                            <TextBlock Grid.Row="2" Grid.Column="0"
+                                       Text="Leg:"
+                                       VerticalAlignment="Center"
+                                       FontWeight="Bold"
+                                       FontSize="13"
+                                       Margin="0,0,10,0" />
+                            <TextBox Name="PartLegTextBox"
+                                     Grid.Row="2" Grid.Column="1"
+                                     Watermark="Enter part leg configuration"
+                                     Height="30"
+                                     FontSize="13" />
+                        </Grid>
+                    </Grid>
+                </Border>
+            </StackPanel>
+        </Grid>
+
+        <Border Grid.Row="1" Background="#F5F5F5" BorderBrush="#DDD" BorderThickness="0,1,0,0">
+            <StackPanel Orientation="Horizontal"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Margin="20,0"
+                        Spacing="10">
+                <Button Name="CancelButton"
+                        Content="Cancel"
+                        Classes="yellow"
+                        Click="OnCancelClick"
+                        Width="80"
+                        Height="32" />
+                <Button Name="ImportButton"
+                        Content="Import"
+                        Classes="yellow"
+                        Click="OnImportClick"
+                        Width="80"
+                        Height="32" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

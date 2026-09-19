@@ -1,0 +1,160 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1085" d:DesignHeight="610"
+        x:Class="CreateSkillNro.ChildWindows.FormMainEffect"
+        Title="FormMainEffect"
+        Width="1085" Height="610"
+        Background="{DynamicResource WindowBackgroundGradient}"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid ColumnDefinitions="*,200" RowDefinitions="*,Auto" Background="{DynamicResource PanelGradientBrush}">
+        <Border Grid.Column="0" Grid.Row="0"
+                Background="{DynamicResource ContentBackgroundGradient}"
+                BorderBrush="#dee2e6"
+                BorderThickness="1"
+                Margin="10">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <WrapPanel Name="PanelImage"
+                           Orientation="Horizontal"
+                           HorizontalAlignment="Left"
+                           Opacity="1"
+                           Margin="20" />
+            </ScrollViewer>
+        </Border>
+
+        <Border Grid.Column="1" Grid.Row="0"
+                BorderBrush="#ced4da"
+                CornerRadius="10"
+                BorderThickness="1"
+                Margin="0,10,10,10"
+                Height="360"
+                VerticalAlignment="Top">
+            <Grid RowDefinitions="Auto,*">
+                <Border Grid.Row="0"
+                        Background="{DynamicResource ActionPanelGradient}"
+                        Height="40" CornerRadius="10,10,0,0">
+                    <TextBlock Text="Action"
+                               Foreground="White"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               HorizontalAlignment="Left"
+                               Margin="15,0,0,0" />
+                </Border>
+
+                <StackPanel Grid.Row="1"
+                            Margin="15">
+                    <TextBlock Text="📸 Image Import"
+                               Foreground="#4a5568"
+                               FontSize="11"
+                               FontWeight="SemiBold"
+                               Margin="2,0,0,10" />
+                    <Button x:Name="ImportImageButton"
+                            Classes="secondary"
+                            Content="Import Images"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="6"
+                            Margin="0,0,0,8"
+                            Click="ImportImageButton_OnClick" />
+
+                    <Button x:Name="ImportPathIconButton"
+                            Classes="tertiary"
+                            Content="Import Path Icon"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="6"
+                            Margin="0,0,0,24"
+                            Click="ImportPathIconButton_OnClick" />
+
+                    <TextBlock Text="🎮 Game Data Import"
+                               Foreground="#4a5568"
+                               FontSize="11"
+                               FontWeight="SemiBold"
+                               Margin="2,0,0,10" />
+
+                    <Button x:Name="ImportNrSkillButton"
+                            Classes="secondary"
+                            Content="Import NrSkill"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="6"
+                            Margin="0,0,0,8"
+                            Click="ImportNrSkillButton_OnClick" />
+
+                    <Button x:Name="ImportNrEffectButton"
+                            Classes="tertiary"
+                            Content="Import NrEffect"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="6"
+                            Margin="0,0,0,8"
+                            Click="ImportNrEffectButton_OnClick" />
+                    <Button x:Name="ImportNrDartButton"
+                            Classes="secondary"
+                            Content="Import NrDart"
+                            HorizontalAlignment="Stretch"
+                            Height="36"
+                            Width="148"
+                            CornerRadius="6"
+                            Margin="0,0,0,8"
+                            Click="ImportNrDartButton_OnClick" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                x:Name="ProgressPanel"
+                Background="{DynamicResource ActionPanelGradient}"
+                BorderBrush="#dee2e6"
+                BorderThickness="0,1,0,0"
+                Height="60"
+                IsVisible="False"
+                Margin="10,0,10,10">
+            <Grid ColumnDefinitions="Auto,*,Auto" Margin="20,0">
+                <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                    <TextBlock x:Name="ProgressText"
+                               Text="Loading images..."
+                               Foreground="White"
+                               FontSize="12"
+                               FontWeight="Medium" />
+                    <TextBlock x:Name="ProgressCount"
+                               Text="0 / 0"
+                               Foreground="#e2e8f0"
+                               FontSize="10"
+                               Margin="0,2,0,0" />
+                </StackPanel>
+
+                <ProgressBar x:Name="LoadingProgressBar"
+                             Grid.Column="1"
+                             Value="0"
+                             Minimum="0"
+                             Maximum="100"
+                             Height="8"
+                             Margin="20,0"
+                             VerticalAlignment="Center"
+                             Background="#4a5568"
+                             Foreground="#10b981" />
+
+                <Button x:Name="CancelButton"
+                        Grid.Column="2"
+                        Classes="primary"
+                        Content="Cancel"
+                        Width="60"
+                        Height="28"
+                        CornerRadius="4"
+                        VerticalAlignment="Center"
+                        Click="CancelButton_OnClick" />
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

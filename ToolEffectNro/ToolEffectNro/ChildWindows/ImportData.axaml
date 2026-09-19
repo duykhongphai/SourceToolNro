@@ -1,0 +1,226 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="270"
+        Width="400" Height="270"
+        x:Class="ToolEffectNro.ChildWindows.ImportData"
+        Title="ImportData"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1"
+        ShowInTaskbar="False">
+
+    <Window.Styles>
+        <Style Selector="TextBox.modern">
+            <Setter Property="Background" Value="#F8F9FA" />
+            <Setter Property="BorderBrush" Value="#E9ECEF" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="10,8" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#495057" />
+            <Setter Property="MinHeight" Value="32" />
+        </Style>
+        <Style Selector="TextBox.modern:focus /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderBrush" Value="#007BFF" />
+            <Setter Property="Background" Value="White" />
+        </Style>
+        <Style Selector="TextBox.modern:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="BorderBrush" Value="#6C757D" />
+        </Style>
+        <Style Selector="Button.browse">
+            <Setter Property="Background" Value="#6C757D" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="MinWidth" Value="36" />
+            <Setter Property="MinHeight" Value="32" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Margin" Value="6,0,0,0" />
+        </Style>
+        <Style Selector="Button.browse:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#5A6268" />
+        </Style>
+        <Style Selector="Button.browse:pressed /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Background" Value="#495057" />
+        </Style>
+        <Style Selector="Button.primary">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="Padding" Value="16,8" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Width" Value="120" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+        <Style Selector="Button.header-btn">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Width" Value="24" />
+            <Setter Property="Height" Value="24" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+        <Style Selector="Button.header-btn.close:pointerover">
+            <Setter Property="Background" Value="#FF5F56" />
+        </Style>
+        <Style Selector="Button.header-btn.minimize:pointerover">
+            <Setter Property="Background" Value="#FFBD2E" />
+        </Style>
+        <Style Selector="RadioButton.modern">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Foreground" Value="#495057" />
+            <Setter Property="Padding" Value="6,2" />
+        </Style>
+        <Style Selector="RadioButton.modern /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#495057" />
+        </Style>
+        <Style Selector="RadioButton.modern:checked /template/ ContentPresenter#PART_ContentPresenter">
+            <Setter Property="Foreground" Value="#007BFF" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+        <Style Selector="RadioButton.modern /template/ Ellipse#OuterEllipse">
+            <Setter Property="Fill" Value="White" />
+            <Setter Property="Stroke" Value="#CED4DA" />
+            <Setter Property="StrokeThickness" Value="2" />
+        </Style>
+        <Style Selector="RadioButton.modern:checked /template/ Ellipse#OuterEllipse">
+            <Setter Property="Fill" Value="#007BFF" />
+            <Setter Property="Stroke" Value="#007BFF" />
+        </Style>
+        <Style Selector="RadioButton.modern /template/ Ellipse#CheckGlyph">
+            <Setter Property="Fill" Value="Transparent" />
+        </Style>
+        <Style Selector="RadioButton.modern:checked /template/ Ellipse#CheckGlyph">
+            <Setter Property="Fill" Value="White" />
+        </Style>
+        <Style Selector="TextBlock.label">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Foreground" Value="#6C757D" />
+            <Setter Property="Margin" Value="0,0,0,4" />
+        </Style>
+        <Style Selector="TextBlock.title">
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Foreground" Value="#212529" />
+        </Style>
+        <Style Selector="Button">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                    <BrushTransition Property="Background" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+    </Window.Styles>
+
+    <Border Background="White" CornerRadius="12" PointerPressed="InputElement_OnPointerPressed">
+        <Border.Effect>
+            <DropShadowEffect Color="Black" Opacity="0.08" OffsetX="0" OffsetY="2" BlurRadius="16" />
+        </Border.Effect>
+
+        <Grid RowDefinitions="Auto,*,Auto" Margin="16">
+            <Grid Grid.Row="0" Margin="0,0,0,5">
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Spacing="8">
+                    <Button Classes="header-btn close" Name="CloseBtn" Click="CloseBtn_OnClick">
+                        <Ellipse Width="12" Height="12" Fill="#FF5F56" />
+                    </Button>
+                </StackPanel>
+
+            </Grid>
+            <StackPanel Grid.Row="1" Spacing="5">
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <RadioButton Content="Image &amp; Data"
+                                 Name="EffectFromImageDataRadio"
+                                 GroupName="EffectSource"
+                                 IsChecked="True"
+                                 Classes="modern" IsCheckedChanged="OnRadioButtonChanged" />
+                    <RadioButton Content="Data Only"
+                                 Name="EffectFromDataRadio"
+                                 GroupName="EffectSource"
+                                 Classes="modern" IsCheckedChanged="OnRadioButtonChanged" />
+                </StackPanel>
+                <StackPanel IsVisible="{Binding #EffectFromImageDataRadio.IsChecked}" Spacing="3">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="📁 Image File" Classes="label" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBox Grid.Column="0"
+                                     Name="EffectImageFolderTextBox"
+                                     Classes="modern"
+                                     Watermark="Select image file..." />
+                            <Button Grid.Column="1"
+                                    Classes="browse"
+                                    ToolTip.Tip="Browse"
+                                    Name="BrowseEffectImageBtn"
+                                    Click="BrowseEffectImageBtn_Click">
+                                <PathIcon Width="14" Height="14"
+                                          Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="📄 Data File" Classes="label" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBox Grid.Column="0"
+                                     Name="EffectDataFolderTextBox"
+                                     Classes="modern"
+                                     Watermark="Select data file..." />
+                            <Button Grid.Column="1"
+                                    Classes="browse"
+                                    ToolTip.Tip="Browse"
+                                    Name="BrowseEffectDataBtn"
+                                    Click="BrowseEffectDataBtn_Click">
+                                <PathIcon Width="14" Height="14"
+                                          Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+                <StackPanel IsVisible="{Binding #EffectFromDataRadio.IsChecked}" Spacing="3">
+                    <StackPanel Spacing="4">
+                        <TextBlock Text="📄 Data File" Classes="label" />
+                        <Grid ColumnDefinitions="*,Auto">
+                            <TextBox Grid.Column="0"
+                                     Name="EffectDataOnlyFolderTextBox"
+                                     Classes="modern"
+                                     Watermark="Select data file..." />
+                            <Button Grid.Column="1"
+                                    Classes="browse"
+                                    ToolTip.Tip="Browse"
+                                    Name="BrowseEffectDataOnlyBtn"
+                                    Click="BrowseEffectDataOnlyBtn_Click">
+                                <PathIcon Width="14" Height="14"
+                                          Data="M10 4H4c-1.11 0-2 .89-2 2v12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2h-8l-2-2z" />
+                            </Button>
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+            <Button Grid.Row="2" Content="🎆 Load Effect"
+                    Classes="primary"
+                    HorizontalAlignment="Stretch"
+                    Name="LoadEffectBtn"
+                    Margin="0,0,0,-5"
+                    Click="LoadEffectBtn_OnClick" />
+        </Grid>
+    </Border>
+
+</Window>

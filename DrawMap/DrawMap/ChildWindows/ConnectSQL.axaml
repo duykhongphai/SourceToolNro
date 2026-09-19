@@ -1,0 +1,364 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1000" d:DesignHeight="535"
+        x:Class="DrawMap.ChildWindows.ConnectSQL"
+        Width="1000" Height="535"
+        Title="ConnectSQL"
+        ExtendClientAreaChromeHints="NoChrome"
+        Icon="/Assets/Icon.ico"
+        Background="rgb(45, 45, 65)"
+        ExtendClientAreaToDecorationsHint="True"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <LinearGradientBrush x:Key="DarkGradient" StartPoint="0,0" EndPoint="1,1">
+            <GradientStop Color="#2D2D41" Offset="0" />
+            <GradientStop Color="#37374A" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="CardGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FFFFFF" Offset="0" />
+            <GradientStop Color="#F8F9FA" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AccentGradient" StartPoint="0,0" EndPoint="1,0">
+            <GradientStop Color="#667EEA" Offset="0" />
+            <GradientStop Color="#764BA2" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="MonsterGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#FEF2F2" Offset="0" />
+            <GradientStop Color="#FDE8E8" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="NpcGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F0FDF4" Offset="0" />
+            <GradientStop Color="#DCFCE7" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="PartGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#F3E8FF" Offset="0" />
+            <GradientStop Color="#E9D5FF" Offset="1" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="BgItemGradient" StartPoint="0,0" EndPoint="0,1">
+            <GradientStop Color="#EFF6FF" Offset="0" />
+            <GradientStop Color="#DBEAFE" Offset="1" />
+        </LinearGradientBrush>
+    </Window.Resources>
+
+    <Window.Styles>
+        <Style Selector="TreeView">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#e1e4e8" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="4" />
+            <Setter Property="Padding" Value="2" />
+        </Style>
+        <Style Selector="TreeViewItem">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="CornerRadius" Value="3" />
+            <Setter Property="Margin" Value="0,1" />
+            <Setter Property="MinHeight" Value="28" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.1" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TreeViewItem /template/ ContentPresenter#PART_HeaderPresenter">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem /template/ Border">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem /template/ Grid">
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+        <Style Selector="TreeViewItem > TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="Margin" Value="0" />
+        </Style>
+        <Style Selector="TreeViewItem:selected /template/ Border#SelectionBorder">
+            <Setter Property="Background" Value="#e7f0ff" />
+            <Setter Property="BorderBrush" Value="#4267B2" />
+            <Setter Property="BorderThickness" Value="0,0,0,0" />
+            <Setter Property="CornerRadius" Value="3" />
+        </Style>
+        <Style Selector="TreeViewItem:pointerover /template/ Border#SelectionBorder">
+            <Setter Property="Background" Value="#f5f7fa" />
+        </Style>
+
+        <Style Selector="TreeViewItem.loadingItem">
+            <Setter Property="Background" Value="#e3f2fd" />
+            <Setter Property="Foreground" Value="#1976d2" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Height" Value="32" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="#C1C7D0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="CornerRadius" Value="6" />
+            <Setter Property="Padding" Value="8,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="BorderBrush" Duration="0:0:0.2" />
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="TextBox:focus /template/ Border">
+            <Setter Property="BorderBrush" Value="#667EEA" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,*" Background="{StaticResource DarkGradient}">
+        <Border Grid.Row="0"
+                Background="{StaticResource CardGradient}"
+                CornerRadius="10"
+                BoxShadow="0 4 20 0 #15000000"
+                Padding="20"
+                Margin="20,20,20,0">
+            <StackPanel>
+                <TextBlock Text="Database Connection" FontWeight="Bold" FontSize="16"
+                           Foreground="#1A202C" Margin="0,0,0,15" />
+                <StackPanel Orientation="Horizontal">
+                    <StackPanel Margin="0,0,12,0">
+                        <TextBlock Text="Server" FontSize="11" Foreground="#4A5568" Margin="0,0,0,4" />
+                        <TextBox Name="ServerTextBox" Width="180" Watermark="Server" ToolTip.Tip="Nhập địa chỉ máy chủ" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,12,0">
+                        <TextBlock Text="Username" FontSize="11" Foreground="#4A5568" Margin="0,0,0,4" />
+                        <TextBox Name="UsernameTextBox" Width="180" Watermark="Username"
+                                 ToolTip.Tip="Nhập tên người dùng" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,12,0">
+                        <TextBlock Text="Password" FontSize="11" Foreground="#4A5568" Margin="0,0,0,4" />
+                        <TextBox Name="PasswordTextBox" Width="180" PasswordChar="•" Watermark="Password"
+                                 ToolTip.Tip="Nhập mật khẩu" />
+                    </StackPanel>
+                    <StackPanel>
+                        <TextBlock Text=" " FontSize="11" Margin="0,0,0,4" />
+                        <Button Classes="dark" Width="110" Name="ConnectButton" Content="Kết nối"
+                                Click="ConnectButton_OnClick" />
+                    </StackPanel>
+                </StackPanel>
+                <TextBlock Name="StatusTextBlock" Foreground="#667EEA" FontWeight="SemiBold" FontSize="13"
+                           IsVisible="False" Margin="0,15,0,0" />
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" ColumnDefinitions="280,*" Margin="20,20,20,20">
+            <Border Grid.Column="0"
+                    Background="{StaticResource CardGradient}"
+                    CornerRadius="10"
+                    BoxShadow="0 4 20 0 #15000000"
+                    Padding="15"
+                    Margin="0,0,15,0">
+                <Grid RowDefinitions="Auto,*">
+                    <StackPanel Grid.Row="0" Margin="0,0,0,12">
+                        <TextBlock Text="Cơ sở dữ liệu" FontWeight="Bold" FontSize="16" Foreground="#1A202C" />
+                        <Rectangle Height="2" Width="50" Fill="{StaticResource AccentGradient}"
+                                   Margin="0,6,0,0" HorizontalAlignment="Left" />
+                    </StackPanel>
+                    <TreeView Grid.Row="1" Name="DatabaseTreeView" SelectionChanged="DatabaseTreeView_SelectionChanged" />
+                </Grid>
+            </Border>
+
+            <Border Grid.Column="1"
+                    Background="{StaticResource CardGradient}"
+                    CornerRadius="10"
+                    BoxShadow="0 4 20 0 #15000000"
+                    Padding="15">
+                <Grid RowDefinitions="Auto,*">
+                    <StackPanel Grid.Row="0" Margin="0,0,0,12">
+                        <TextBlock Text="Chọn trường dữ liệu" FontWeight="Bold" FontSize="16" Foreground="#1A202C" />
+                        <TextBlock Text="Cấu hình các trường để truy vấn dữ liệu từ cơ sở dữ liệu"
+                                   FontSize="11" Foreground="#4A5568" Margin="0,2,0,0" />
+                        <Rectangle Height="2" Width="50" Fill="{StaticResource AccentGradient}"
+                                   Margin="0,6,0,0" HorizontalAlignment="Left" />
+                    </StackPanel>
+
+                    <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel>
+                            <Border Background="{StaticResource MonsterGradient}"
+                                    CornerRadius="12"
+                                    Padding="16"
+                                    BorderBrush="#FEE2E2"
+                                    BorderThickness="1"
+                                    BoxShadow="0 1 3 0 #0000000A"
+                                    Margin="0,0,0,16">
+                                <Grid RowDefinitions="Auto,Auto">
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,14">
+                                        <Ellipse Width="10" Height="10" Fill="#DC2626" Margin="0,0,10,0" />
+                                        <TextBlock Text="Truy vấn quái vật" FontWeight="Bold" FontSize="14"
+                                                   Foreground="#1F2937" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Table" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="TableMonsterFieldComboBox" Height="36"
+                                                      SelectionChanged="TableMonsterFieldComboBox_OnSelectionChanged" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,8,0">
+                                            <TextBlock Text="ID Quái vật" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="IdMonsterFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                                            <TextBlock Text="Tên Quái vật" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="NameMonsterFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <Border Background="{StaticResource PartGradient}"
+                                    CornerRadius="12"
+                                    Padding="16"
+                                    BorderBrush="#E9D5FF"
+                                    BorderThickness="1"
+                                    BoxShadow="0 1 3 0 #0000000A"
+                                    Margin="0,0,0,16">
+                                <Grid RowDefinitions="Auto,Auto,Auto">
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,14">
+                                        <Ellipse Width="10" Height="10" Fill="#8B5CF6" Margin="0,0,10,0" />
+                                        <TextBlock Text="Truy vấn parts" FontWeight="Bold" FontSize="14"
+                                                   Foreground="#1F2937" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Table" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="TablePartFieldComboBox" Height="36"
+                                                      SelectionChanged="TablePartFieldComboBox_OnSelectionChanged" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,8,0">
+                                            <TextBlock Text="ID" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="IdPartFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                                            <TextBlock Text="Type" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="TypePartFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*" Margin="0,12,0,0">
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Data Part" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="DataPartFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <Border Background="{StaticResource NpcGradient}"
+                                    CornerRadius="12"
+                                    Padding="16"
+                                    BorderBrush="#D1FAE5"
+                                    BorderThickness="1"
+                                    BoxShadow="0 1 3 0 #0000000A"
+                                    Margin="0,0,0,16">
+                                <Grid RowDefinitions="Auto,Auto,Auto">
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,14">
+                                        <Ellipse Width="10" Height="10" Fill="#059669" Margin="0,0,10,0" />
+                                        <TextBlock Text="Truy vấn NPC" FontWeight="Bold" FontSize="14"
+                                                   Foreground="#1F2937" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*">
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Table" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="TableNpcFieldComboBox" Height="36"
+                                                      SelectionChanged="TableNpcFieldComboBox_OnSelectionChanged" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,8,0">
+                                            <TextBlock Text="ID NPC" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="IdNpcFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                                            <TextBlock Text="Tên NPC" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="NameNpcFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*" Margin="0,12,0,0">
+                                        <StackPanel Grid.Column="0" Margin="0,0,8,0">
+                                            <TextBlock Text="Head Id" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="HeadNpcFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="8,0,8,0">
+                                            <TextBlock Text="BodyId" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="BodyNpcFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="8,0,0,0">
+                                            <TextBlock Text="Leg Id" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="LegNpcFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+
+                            <Border Background="{StaticResource BgItemGradient}"
+                                    CornerRadius="12"
+                                    Padding="16"
+                                    BorderBrush="#DBEAFE"
+                                    BorderThickness="1"
+                                    BoxShadow="0 1 3 0 #0000000A">
+                                <Grid RowDefinitions="Auto,Auto,Auto">
+                                    <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,14">
+                                        <Ellipse Width="10" Height="10" Fill="#2563EB" Margin="0,0,10,0" />
+                                        <TextBlock Text="Truy vấn Background Item" FontWeight="Bold" FontSize="14"
+                                                   Foreground="#1F2937" />
+                                    </StackPanel>
+                                    <Grid Grid.Row="1" ColumnDefinitions="*,*,*" Margin="0,0,0,12">
+                                        <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                            <TextBlock Text="Table" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="TableBgItemFieldComboBox" Height="36"
+                                                      SelectionChanged="TableBgItemFieldComboBox_OnSelectionChanged" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="6,0,6,0">
+                                            <TextBlock Text="ID" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="IdBgItemFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="6,0,0,0">
+                                            <TextBlock Text="Id Image" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="IdImageBgItemFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                    <Grid Grid.Row="2" ColumnDefinitions="*,*,*">
+                                        <StackPanel Grid.Column="0" Margin="0,0,6,0">
+                                            <TextBlock Text="Layer" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="LayerBgItemFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" Margin="6,0,6,0">
+                                            <TextBlock Text="Dx" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="DxBgItemFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="2" Margin="6,0,0,0">
+                                            <TextBlock Text="Dy" FontSize="11" FontWeight="SemiBold"
+                                                       Foreground="#374151" Margin="0,0,0,6" />
+                                            <ComboBox Name="DyBgItemFieldComboBox" Height="36" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </ScrollViewer>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

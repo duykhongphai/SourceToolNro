@@ -1,0 +1,169 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="320"
+        Width="400" Height="320"
+        x:Class="ToolPart.Windows.Output"
+        Title="Output"
+        Background="White"
+        CanResize="True"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+
+    <Window.Styles>
+        <Style Selector="TextBlock.TitleText">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="TextBlock.SectionTitle">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="#555555" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+
+        <Style Selector="TextBlock.FieldLabel">
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Foreground" Value="#666666" />
+            <Setter Property="Width" Value="100" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+
+        <Style Selector="RadioButton">
+            <Setter Property="Foreground" Value="#333333" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Margin" Value="0,0,16,0" />
+        </Style>
+
+        <Style Selector="RadioButton:checked /template/ Border#OuterBorder">
+            <Setter Property="BorderBrush" Value="#1E88E5" />
+            <Setter Property="Background" Value="#1E88E5" />
+        </Style>
+        <Style Selector="TextBox">
+            <Setter Property="Height" Value="36" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="BorderBrush" Value="LightGray" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="Margin" Value="0,3" />
+            <Setter Property="FontSize" Value="12" />
+            <Setter Property="Padding" Value="8,8" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Window.Styles>
+
+    <Grid RowDefinitions="40,*">
+        <Border x:Name="DragPanel" Grid.Row="0" Grid.Column="0" Background="rgb(209, 155, 30)"
+                PointerPressed="DragPanel_OnPointerPressed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Margin="0,0,10,0">
+                <Button x:Name="MinimumButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,5,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="MinimumButton_OnClick">
+                    <TextBlock Text="-"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+                <Button x:Name="CloseButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="CloseButton_OnClick">
+                    <TextBlock Text="×"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="12">
+            <Grid RowDefinitions="Auto,Auto,*">
+                <StackPanel Grid.Row="0">
+
+                    <Separator Height="1"
+                               Background="#EEEEEE"
+                               Margin="0,0,0,8" />
+
+                    <Grid ColumnDefinitions="Auto,*" Margin="0,4,0,4">
+                        <TextBlock Grid.Column="0"
+                                   Text="Format Order:"
+                                   Classes="FieldLabel" />
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <RadioButton GroupName="First Group"
+                                         Content="Id - Dx - Dy" Name="IdDxButton"
+                                         IsCheckedChanged="IdDxButton_OnIsCheckedChanged"
+                                         IsChecked="True" />
+                            <RadioButton GroupName="First Group" Name="DxIdButton"
+                                         IsCheckedChanged="DxIdButton_OnIsCheckedChanged"
+                                         Content="Dx - Dy - Id" />
+                        </StackPanel>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="Auto,*" Margin="0,4,0,4">
+                        <TextBlock Grid.Column="0"
+                                   Text="Output Type:"
+                                   Classes="FieldLabel" />
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal">
+                            <RadioButton GroupName="Second Group"
+                                         Content="JSON Array"
+                                         Name="JsonArray"
+                                         IsChecked="True" IsCheckedChanged="Json_OnIsCheckedChanged" />
+                            <RadioButton GroupName="Second Group" IsCheckedChanged="Json_OnIsCheckedChanged"
+                                         Content="JSON Object" Name="JsonObject" />
+                        </StackPanel>
+                    </Grid>
+                    <Separator Height="1"
+                               Background="#EEEEEE"
+                               Margin="0,8,0,8" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1">
+                    <TextBlock Text="JSON Preview"
+                               Classes="SectionTitle" />
+
+                    <Grid RowDefinitions="Auto,Auto,Auto" Margin="0,4,0,0">
+                        <TextBox Grid.Row="0"
+                                 Name="JsonHead"
+                                 IsReadOnly="True"
+                                 Watermark="[{"
+                                 FontFamily="{DynamicResource SegoeUIBold}" />
+
+                        <TextBox Grid.Row="1"
+                                 Name="JsonBody"
+                                 IsReadOnly="True"
+                                 Watermark='  {"id": 1, "dx": 100, "dy": 200},'
+                                 FontFamily="{DynamicResource SegoeUIBold}" />
+
+                        <TextBox Grid.Row="2"
+                                 Name="JsonLeg"
+                                 IsReadOnly="True"
+                                 Watermark="]"
+                                 FontFamily="{DynamicResource SegoeUIBold}" />
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>

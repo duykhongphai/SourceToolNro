@@ -1,0 +1,70 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="ToolPart.App"
+             RequestedThemeVariant="Default">
+
+    <Application.Styles>
+        <FluentTheme />
+        <StyleInclude Source="Styles/AppDefaultStyle.axaml" />
+    </Application.Styles>
+    <Application.Resources>
+        <StreamGeometry x:Key="edit_settings_regular">M21.0304 2.96967C22.4279 4.36713 22.4279 6.63286 21.0304 8.03033L18.386 10.6742C17.8921 10.429 17.3626 10.2449 16.8073 10.1315L17.9393 8.99957L15.0003 6.06057L5.0621 15.9987C4.96981 16.0909 4.9032 16.2057 4.86886 16.3316L3.81901 20.1811L7.66845 19.1312C7.79437 19.0969 7.90915 19.0303 8.00144 18.938L9.13159 17.8072C9.24502 18.3628 9.42932 18.8925 9.67463 19.3866L9.0621 19.9987C8.78522 20.2755 8.44089 20.4754 8.06312 20.5784L2.94743 21.9736C2.38756 22.1263 1.87383 21.6125 2.02652 21.0527L3.42171 15.937C3.52474 15.5592 3.72456 15.2149 4.00144 14.938L15.9698 2.96967C17.3672 1.5722 19.633 1.5722 21.0304 2.96967ZM15.5001 11C15.7932 11 16.0807 11.0245 16.3609 11.0717L16.5342 11.7878C16.7932 12.8616 17.8736 13.5221 18.9474 13.2631L19.0452 13.2369L19.6463 13.058C20.0088 13.525 20.2992 14.0546 20.4999 14.6285L20.0527 15.0588C19.2986 15.7844 19.237 16.9589 19.8838 17.7573L20.0252 17.9142L20.4999 18.3715C20.2994 18.945 20.0092 19.4742 19.647 19.941L19.0452 19.7631C17.9859 19.4501 16.8734 20.0551 16.5604 21.1144L16.5342 21.2122L16.3609 21.9282C16.0807 21.9755 15.7932 22 15.5001 22C15.2067 22 14.9189 21.9754 14.6384 21.9281L14.466 21.2122C14.207 20.1384 13.1266 19.4779 12.0528 19.7369L11.955 19.7631L11.3532 19.941C10.991 19.4742 10.7008 18.945 10.5003 18.3715L10.9475 17.9412C11.7435 17.1753 11.7678 15.9092 11.002 15.1133L10.9475 15.0588L10.5003 14.6285C10.7008 14.055 10.991 13.5258 11.3532 13.059L11.955 13.2369C13.0143 13.5499 14.1268 12.9449 14.4398 11.8856L14.466 11.7878L14.6384 11.0719C14.9189 11.0246 15.2067 11 15.5001 11ZM15.5001 15C14.6995 15 14.0504 15.6716 14.0504 16.5C14.0504 17.3284 14.6995 18 15.5001 18C16.3007 18 16.9498 17.3284 16.9498 16.5C16.9498 15.6716 16.3007 15 15.5001 15ZM17.0304 4.03033L16.0603 4.99957L18.9993 7.93957L19.9698 6.96967C20.7814 6.15799 20.7814 4.842 19.9698 4.03033C19.1581 3.21865 17.8421 3.21865 17.0304 4.03033Z</StreamGeometry>
+        <StreamGeometry x:Key="remove_regular">M18 11h-12c-1.104 0-2 .896-2 2s.896 2 2 2h12c1.104 0 2-.896 2-2s-.896-2-2-2z</StreamGeometry>
+        <StreamGeometry x:Key="add_regular">M14.5,13 L14.5,3.75378577 C14.5,3.33978577 14.164,3.00378577 13.75,3.00378577 C13.336,3.00378577 13,3.33978577 13,3.75378577 L13,13 L3.75387573,13 C3.33987573,13 3.00387573,13.336 3.00387573,13.75 C3.00387573,14.164 3.33987573,14.5 3.75387573,14.5 L13,14.5 L13,23.7523651 C13,24.1663651 13.336,24.5023651 13.75,24.5023651 C14.164,24.5023651 14.5,24.1663651 14.5,23.7523651 L14.5,14.5 L23.7498262,14.5030754 C24.1638262,14.5030754 24.4998262,14.1670754 24.4998262,13.7530754 C24.4998262,13.3390754 24.1638262,13.0030754 23.7498262,13.0030754 L14.5,13 Z</StreamGeometry>
+        <LinearGradientBrush x:Key="YellowGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#E29483" />
+            <GradientStop Offset="1" Color="#EA933A" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="YellowGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#F1AFA1" />
+            <GradientStop Offset="1" Color="#FAAD60" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="YellowGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#C48071" />
+            <GradientStop Offset="1" Color="#CC7F30" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="AquaGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="Aqua" />
+            <GradientStop Offset="1" Color="DodgerBlue" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#00B8B8" />
+            <GradientStop Offset="1" Color="#0078C8" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="AquaGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#009696" />
+            <GradientStop Offset="1" Color="#005A96" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#448888" />
+            <GradientStop Offset="1" Color="#446A88" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushHover" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#377777" />
+            <GradientStop Offset="1" Color="#375A77" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="GreenGradientBrushPressed" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="#2A6666" />
+            <GradientStop Offset="1" Color="#2A4A66" />
+        </LinearGradientBrush>
+
+        <LinearGradientBrush x:Key="DarkGradientBrush" StartPoint="0%, 0%" EndPoint="100%, 0%">
+            <GradientStop Offset="0" Color="Black" />
+            <GradientStop Offset="1" Color="#303957" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DarkGradientBrushHover" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#202020" />
+            <GradientStop Offset="1" Color="#404B6A" />
+        </LinearGradientBrush>
+        <LinearGradientBrush x:Key="DarkGradientBrushPressed" StartPoint="0%,0%" EndPoint="100%,0%">
+            <GradientStop Offset="0" Color="#101010" />
+            <GradientStop Offset="1" Color="#25304F" />
+        </LinearGradientBrush>
+        <FontFamily x:Key="SegoeUIBold">avares://ToolPart/Assets/Fonts/SegoeUIBold.ttf#Segoe UI</FontFamily>
+        <FontFamily x:Key="SegoeUISemibold">avares://ToolPart/Assets/Fonts/SegoeUISemibold.ttf#Segoe UI</FontFamily>
+
+    </Application.Resources>
+</Application>

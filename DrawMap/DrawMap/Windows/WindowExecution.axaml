@@ -1,0 +1,129 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="1055" d:DesignHeight="570"
+        Width="1055" Height="570"
+        x:Class="DrawMap.Windows.WindowExecution"
+        Title="DrawMap"
+        Background="White"
+        CanResize="False"
+        WindowStartupLocation="CenterScreen"
+        Icon="/Assets/Icon.ico"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        ExtendClientAreaTitleBarHeightHint="-1">
+    <Grid ColumnDefinitions="56,*" RowDefinitions="40,*">
+        <Border x:Name="DragPanel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Background="#2b2a37"
+                PointerPressed="InputElement_OnPointerPressed">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center"
+                        Margin="0,0,6,0">
+                <Button x:Name="MinimumButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="MinimumButton_OnClick">
+                    <TextBlock Text="-"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+                <Button x:Name="MaximizeButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,-3,0,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="MaximizeButton_OnClick">
+                    <TextBlock Text="□"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center" />
+                </Button>
+                <Button x:Name="CloseButton"
+                        HorizontalAlignment="Right"
+                        Margin="0,0,0,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="CloseButton_OnClick">
+                    <TextBlock Text="×"
+                               FontSize="16"
+                               FontWeight="Bold"
+                               Foreground="White"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               Margin="0,-3,0,0" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="0" Background="#212a37" Padding="10">
+            <StackPanel Spacing="30" Margin="0,20,0,0">
+                <Button x:Name="ButtonMap"
+                        Classes="image"
+                        HorizontalAlignment="Right"
+                        Margin="2,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="ButtonMap_OnClick">
+                    <Image x:Name="map" Source="/Assets/Resources/map.png" Width="30" Height="30" />
+                </Button>
+                <Button x:Name="ButtonFolder"
+                        Classes="image"
+                        HorizontalAlignment="Right"
+                        Margin="2,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="ButtonFolder_OnClick">
+                    <Image x:Name="folder" Source="/Assets/Resources/folder.png" Width="30" Height="30" />
+                </Button>
+                <Button x:Name="ButtonSql"
+                        Classes="image"
+                        HorizontalAlignment="Right"
+                        Margin="2,0"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        Click="ButtonSql_OnClick">
+                    <Image x:Name="sql" Source="/Assets/Resources/sql.png" Width="30" Height="30" />
+                </Button>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Row="1" Grid.Column="1" Background="White">
+            <Panel Name="ContentPanel">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="30">
+                    <Image Source="/Assets/banner.png" Width="530" Height="190" />
+                    <StackPanel x:Name="ProgressSection" Spacing="15" IsVisible="False">
+                        <TextBlock x:Name="StatusText"
+                                   Text="Đang tải xuống..."
+                                   HorizontalAlignment="Center"
+                                   FontSize="16"
+                                   FontWeight="Medium"
+                                   Foreground="#2b2a37" />
+
+                        <ProgressBar x:Name="DownloadProgressBar"
+                                     Width="400"
+                                     Height="25"
+                                     Minimum="0"
+                                     Maximum="100"
+                                     Value="0"
+                                     Background="#E0E0E0"
+                                     Foreground="#4CAF50"
+                                     CornerRadius="12" />
+
+                        <TextBlock x:Name="ProgressText"
+                                   Text="0/5 files hoàn thành"
+                                   HorizontalAlignment="Center"
+                                   FontSize="14"
+                                   Foreground="#666" />
+                    </StackPanel>
+                </StackPanel>
+            </Panel>
+        </Border>
+    </Grid>
+</Window>

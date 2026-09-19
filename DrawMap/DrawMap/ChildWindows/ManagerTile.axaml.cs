@@ -265,7 +265,6 @@ public partial class ManagerTile : Window
 
     private async void BgPrevBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
         if (Fields.ResourceBackground.Keys.Count == 0) return;
 
         var bgId = Fields.ResourceBackground.Keys.Min();
@@ -276,7 +275,6 @@ public partial class ManagerTile : Window
 
     private async void BgNextBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
         if (Fields.ResourceBackground.Keys.Count == 0) return;
 
         var bgId = Fields.ResourceBackground.Keys.Max();
@@ -503,7 +501,6 @@ public partial class ManagerTile : Window
 
     private async void AddBgBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
 
         var files = await OpenMultipleFileDialog("Open Background File");
         if (files.Length == 0) return;
@@ -574,7 +571,6 @@ public partial class ManagerTile : Window
 
     private async void RemoveBgBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
         if (!await ConfirmDeletion(
                 $"Bạn Có Chắc Chắn Muốn Xóa Background {ManagerDrawMap.Instance.BackgroundId} Không?")) return;
 
@@ -635,7 +631,6 @@ public partial class ManagerTile : Window
 
     private async void ExportBgBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
 
         ExportBgBtn.IsEnabled = false;
         try
@@ -651,7 +646,6 @@ public partial class ManagerTile : Window
 
     private async void ExportDataItemBg_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
 
         var result = await new NotificationDialog(_dataNotification[1]).ShowDialog<bool[]>(WindowExecution.Instance);
         if (result == null) return;
@@ -670,7 +664,6 @@ public partial class ManagerTile : Window
 
     private async void LoadDataItemBg_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidateVipAccess()) return;
 
         var result = await new NotificationDialog(_dataNotification[0]).ShowDialog<bool[]>(WindowExecution.Instance);
         if (result == null) return;

@@ -61,11 +61,6 @@ public partial class ManagerTile
         return files.Count > 0 ? files[0] : null;
     }
 
-    private async Task<bool> ValidateVipAccess()
-    {
-        return true;
-    }
-
     private bool ValidateItemBackground()
     {
         return Fields.ResourceItemBackground != null && Fields.ResourceItemBackground.Count > 0;
@@ -73,8 +68,6 @@ public partial class ManagerTile
 
     private async Task<bool> ValidateVipAccessAndItemBackground()
     {
-        if (!await ValidateVipAccess()) return false;
-
         if (!ValidateItemBackground())
         {
             await ShowErrorMessage("Vui Lòng Load Data Item Background Để Thực Hiện");

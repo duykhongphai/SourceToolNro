@@ -49,17 +49,9 @@ public partial class FormSkillEffect : Window
 
     public FormSkillEffect()
     {
-#if !DEBUG
-        if (!IsValidEnvironment()) return;
-#endif
         InitializeComponent();
         Instance = this;
         InitializeUpdateTimer();
-    }
-
-    private static bool IsValidEnvironment()
-    {
-        return true;
     }
 
     private void InitializeUpdateTimer()

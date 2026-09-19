@@ -76,8 +76,6 @@ public partial class FormMainEffect : Window
 
     public FormMainEffect()
     {
-        if (!ValidateApplicationState())
-            return;
         InitializeComponent();
         Instance = this;
         EffectKeys =
@@ -93,11 +91,6 @@ public partial class FormMainEffect : Window
 
         DartInfos.ItemAdded += OnDartAdded;
         DartInfos.ItemRemoved += OnDartRemoved;
-    }
-
-    private static bool ValidateApplicationState()
-    {
-        return true;
     }
 
     #endregion

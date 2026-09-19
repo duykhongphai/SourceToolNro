@@ -125,14 +125,11 @@ public partial class FormMainEffect : Window
 
     private async void FastCropButton_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidatePremiumFeatureAsync()) return;
         await PerformFastCropAsync();
     }
 
     private async void FastCropWithSizeButton_OnClick(object sender, RoutedEventArgs e)
     {
-        if (!await ValidatePremiumFeatureAsync()) return;
-
         var dialog = new SizeCrop();
         var result = await dialog.ShowDialog<int[]>(WindowExecution.Instance);
         if (result != null) await PerformFastCropWithSizeAsync(result[0], result[1]);
@@ -395,11 +392,6 @@ public partial class FormMainEffect : Window
 
         _ = ShowErrorMessageAsync($"Chỉ có thể thêm tối đa {byte.MaxValue} ảnh");
         return false;
-    }
-
-    private async Task<bool> ValidatePremiumFeatureAsync()
-    {
-        return true;
     }
 
     private bool ValidateFilePath(string path)

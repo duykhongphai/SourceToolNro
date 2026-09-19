@@ -1,9 +1,7 @@
-using System;
 using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using ToolPart.Classes;
 using ToolPart.Windows;
 
 namespace ToolPart.Options;

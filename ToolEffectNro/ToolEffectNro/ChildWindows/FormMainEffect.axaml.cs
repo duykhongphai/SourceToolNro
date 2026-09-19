@@ -33,10 +33,8 @@ public partial class FormMainEffect : Window
     private const string SelectFileMessage = "Vui Lòng Chọn File";
     private const string FileNotExistMessage = "File không tồn tại";
     private const string ErrorTitle = "Lỗi";
-    private const string WarningTitle = "Cảnh Báo";
     private const string NotificationTitle = "Thông Báo";
     private const string SuccessMessage = "Thành Công";
-    private const string PremiumRequiredMessage = "Vui lòng nâng cấp lên bản Premium để sử dụng tính năng";
     private const string LoadEffectSuccessMessage = "Load Effect Data Thành Công";
     private const string LoadEffectErrorMessage = "Có Lỗi Xảy Ra Khi Load Data Effect";
     private const int ScaleFactor = 4;
@@ -402,9 +400,6 @@ public partial class FormMainEffect : Window
     private async Task<bool> ValidatePremiumFeatureAsync()
     {
         return true;
-
-        await ShowWarningMessageAsync(PremiumRequiredMessage);
-        return false;
     }
 
     private bool ValidateFilePath(string path)
@@ -470,12 +465,6 @@ public partial class FormMainEffect : Window
     {
         await MessageBoxManager.GetMessageBoxStandard(ErrorTitle, message,
             ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Error).ShowAsync();
-    }
-
-    private async Task ShowWarningMessageAsync(string message)
-    {
-        await MessageBoxManager.GetMessageBoxStandard(WarningTitle, message,
-            ButtonEnum.Ok, MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
     }
 
     private async Task ShowSuccessMessageAsync(string message)

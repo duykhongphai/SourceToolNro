@@ -1,9 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using Avalonia.Media.Imaging;
-using DrawMap.Options;
 
 namespace DrawMap.Classes;
 

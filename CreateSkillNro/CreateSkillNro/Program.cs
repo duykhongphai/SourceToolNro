@@ -2,7 +2,6 @@ using System;
 using System.IO;
 using System.Threading;
 using Avalonia;
-using CreateSkillNro.Classes;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 

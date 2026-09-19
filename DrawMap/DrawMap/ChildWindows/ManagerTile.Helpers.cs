@@ -5,7 +5,6 @@ using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using Avalonia.Controls;
 using Avalonia.Platform.Storage;
-using DrawMap.Classes;
 using DrawMap.Options;
 
 namespace DrawMap.ChildWindows;

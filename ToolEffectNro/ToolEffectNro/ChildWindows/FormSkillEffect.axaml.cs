@@ -1,7 +1,5 @@
-﻿using System;
-using Avalonia.Controls;
+﻿using Avalonia.Controls;
 using Avalonia.Input;
-using ToolEffectNro.Classes;
 
 namespace ToolEffectNro.ChildWindows;
 

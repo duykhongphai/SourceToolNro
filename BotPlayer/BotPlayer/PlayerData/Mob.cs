@@ -32,8 +32,6 @@ public class Mob
 
     public int templateId;
 
-    private int wCount;
-
     public int x;
 
     public int y;

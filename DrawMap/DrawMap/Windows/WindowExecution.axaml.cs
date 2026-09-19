@@ -1,6 +1,4 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -14,8 +12,6 @@ using Avalonia.Threading;
 using DrawMap.ChildWindows;
 using DrawMap.Classes;
 using DrawMap.Options;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 using SharpCompress.Archives;
 using SharpCompress.Common;
 using Enum = DrawMap.Options.Enum;
@@ -28,8 +24,6 @@ public partial class WindowExecution : Window
 
     private const int ExpectedTileMapFiles = 875;
     private const int ExpectedItemBackgroundFiles = 348;
-    private const int UpdateCheckInterval = 100000;
-    private const int KeyCheckInterval = 180000;
     private const int ProgressUpdateDelay = 200;
     private const int ErrorDisplayDelay = 2000;
     private const int LongErrorDisplayDelay = 5000;
@@ -39,14 +33,6 @@ public partial class WindowExecution : Window
 
     private const string ItemBackgroundUrl =
         "https://www.dropbox.com/scl/fi/3kn8kjfrrbi9eteq6z397/BackgroundItem.zip?rlkey=ez90d0nlcdo598lv54232zscs&st=u75wll4t&dl=1";
-    
-    private const string UpdatePrefix = "update";
-    private const string NoneDataResponse = "NoneData";
-    private const string NoneKeyResponse = "NoneKey";
-    private const string ExpiredResponse = "Expired";
-    private const string NotSameMachineResponse = "NotSameMachine";
-    private const string NotSameNetWorkResponse = "NotSameNetWork";
-    private const string HaveMachineResponse = "HaveMachine";
 
     private const string InitializingMessage = "Đang khởi tạo...";
     private const string DownloadCompleteMessage = "Tải xuống hoàn tất!";

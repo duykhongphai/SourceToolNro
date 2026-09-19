@@ -10,12 +10,9 @@ using Avalonia.Input;
 using Avalonia.Interactivity;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
-using Avalonia.Threading;
 using DrawMap.Classes;
 using DrawMap.Options;
 using DrawMap.Windows;
-using MsBox.Avalonia;
-using MsBox.Avalonia.Enums;
 using Enum = DrawMap.Options.Enum;
 
 namespace DrawMap.ChildWindows;
@@ -30,7 +27,6 @@ public partial class ManagerTile : Window
 
     private const int TileSize = 24;
     private const int ScalePercent = 25;
-    private const int MinTileId = 1;
     private const int MaxDefaultTileId = 32;
     private const int DefaultBackgroundId = 20;
     private const int NpcWidth = 22;
@@ -40,12 +36,9 @@ public partial class ManagerTile : Window
     private const int EffectSkipRangeStart = 60;
     private const int EffectSkipRangeEnd = 65;
 
-    private const string VipRequiredMessage = "Vui Lòng Nâng Cấp Lên Bản Premium Để Sử Dụng";
     private const string LoadSuccessMessage = "Load Thành Công";
-    private const string LoadFailedMessage = "Load thất bại. Data không hợp lệ";
     private const string DeleteSuccessMessage = "Xóa Thành Công";
     private const string DeleteFailedMessage = "Xóa Thất Bại";
-    private const string ExportSuccessMessage = "Xuất Thành Công";
     private const string SaveSuccessMessage = "Lưu Thành Công";
     private const string SelectFolderMessage = "Vui Lòng Chọn Folder";
     private const string FolderNotExistMessage = "Folder không tồn tại";

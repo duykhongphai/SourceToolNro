@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.IO;
-using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Interactivity;
@@ -11,7 +9,6 @@ using Avalonia.Media.Imaging;
 using Avalonia.Threading;
 using CreateSkillNro.ChildWindows;
 using CreateSkillNro.Classes;
-using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 
 namespace CreateSkillNro.Windows;
@@ -26,7 +23,6 @@ public partial class WindowExecution : Window
         31, 32
     ];
 
-    private readonly FastHttpClient _httpClient;
     private readonly FormMainEffect _mainEffect;
     private readonly FormSkillEffect _skillEffect;
     private readonly ViewEffect _viewEffect;
@@ -42,7 +38,6 @@ public partial class WindowExecution : Window
 
     public WindowExecution()
     {
-        _httpClient = new FastHttpClient();
         InitializeComponent();
         foreach (var action in _actionCharLoad)
             ImageAction.Add(action,

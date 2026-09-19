@@ -4,7 +4,6 @@ using System.Threading;
 using Avalonia;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
-using ToolEffectNro.Classes;
 
 namespace ToolEffectNro;
 

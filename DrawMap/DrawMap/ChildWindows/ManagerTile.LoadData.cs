@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia;
-using Avalonia.Controls;
 using Avalonia.Media.Imaging;
 using Avalonia.Platform.Storage;
 using DrawMap.Classes;
 using DrawMap.Options;
-using MsBox.Avalonia.Enums;
 using Enum = DrawMap.Options.Enum;
 
 namespace DrawMap.ChildWindows;

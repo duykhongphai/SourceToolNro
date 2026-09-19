@@ -26,7 +26,6 @@ public partial class ManagerDrawMap : Window
     private const int BgOffsetY3 = 50;
     private const int BgOffsetY4 = 90;
     private const string LoadFailedMessage = "Load thất bại. Data không hợp lệ";
-    private const string VipRequiredMessage = "Vui Lòng Nâng Cấp Lên Bản Premium Để Sử Dụng";
     private const string BuildSuccessMessage = "Build Thành Công";
 
     #endregion

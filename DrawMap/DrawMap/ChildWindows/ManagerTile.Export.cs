@@ -12,7 +12,7 @@ namespace DrawMap.ChildWindows;
 
 public partial class ManagerTile
 {
-    private async void ExportDataTileMap()
+    private async Task ExportDataTileMap()
     {
         if (!Directory.Exists($"{Settings.folderOutputTileMap}x1"))
             Directory.CreateDirectory($"{Settings.folderOutputTileMap}x1");

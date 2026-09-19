@@ -624,9 +624,9 @@ public partial class ManagerTile : Window
         return Task.CompletedTask;
     }
 
-    private void ExportBtn_OnClick(object sender, RoutedEventArgs e)
+    private async void ExportBtn_OnClick(object sender, RoutedEventArgs e)
     {
-        ExportDataTileMap();
+        await ExportDataTileMap();
     }
 
     private async void ExportBgBtn_OnClick(object sender, RoutedEventArgs e)

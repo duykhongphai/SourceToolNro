@@ -444,8 +444,7 @@ public partial class WindowExecution : Window
 
     private static HttpRequestMessage CreateHttpRequest(string downloadUrl)
     {
-        var request = new HttpRequestMessage(HttpMethod.Get, downloadUrl);
-        return request;
+        return new HttpRequestMessage(HttpMethod.Get, downloadUrl);
     }
 
     private async Task<HttpResponseMessage> HandleRedirect(HttpResponseMessage response, string originalUrl,

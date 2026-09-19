@@ -580,13 +580,13 @@ public class PanelMap : Control
     {
         return typePicture switch
         {
-            _ when typePicture == Enum.TileMap => HandleTileMapInteraction,
-            _ when typePicture == Enum.ItemBackground => HandleItemBackgroundInteraction,
-            _ when typePicture == Enum.Eraser => HandleEraserInteraction,
-            _ when typePicture == Enum.Effect => HandleEffectInteraction,
-            _ when typePicture == Enum.Monster => HandleMonsterInteraction,
-            _ when typePicture == Enum.Npc => HandleNpcInteraction,
-            _ when typePicture == Enum.Waypoint => HandleWaypointInteraction,
+            Enum.TileMap => HandleTileMapInteraction,
+            Enum.ItemBackground => HandleItemBackgroundInteraction,
+            Enum.Eraser => HandleEraserInteraction,
+            Enum.Effect => HandleEffectInteraction,
+            Enum.Monster => HandleMonsterInteraction,
+            Enum.Npc => HandleNpcInteraction,
+            Enum.Waypoint => HandleWaypointInteraction,
             _ => null
         };
     }

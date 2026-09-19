@@ -218,14 +218,7 @@ public static partial class Function
     {
         if (string.IsNullOrEmpty(name)) return null;
 
-        try
-        {
-            return int.Parse(ExtractNumbers(name));
-        }
-        catch
-        {
-            return null;
-        }
+        return int.TryParse(ExtractNumbers(name), out var id) ? id : null;
     }
 
     public static void ClearFolder(string folderPath)
@@ -260,12 +253,7 @@ public static partial class Function
 
     public static int NextInt(int a, int b)
     {
-        int result;
-        if (a == b)
-            result = a;
-        else
-            result = a + Random.Next(b - a);
-        return result;
+        return a == b ? a : a + Random.Next(b - a);
     }
 
     public static void InvalidateAll(this StackPanel panel, bool recursive = true)

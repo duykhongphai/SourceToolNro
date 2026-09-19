@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
@@ -39,9 +40,9 @@ public partial class ManagerEffect : Window
             WindowExecution.Instance.ArrayFrame.Show();
     }
 
-    private void BuildEffect_OnClick(object sender, RoutedEventArgs e)
+    private async void BuildEffect_OnClick(object sender, RoutedEventArgs e)
     {
-        BuildData();
+        await BuildData();
     }
 
     private void ViewChar_OnIsCheckedChanged(object sender, RoutedEventArgs e)
@@ -49,7 +50,7 @@ public partial class ManagerEffect : Window
         FormSkillEffect.Instance.PanelMain.InvalidateVisual();
     }
 
-    private async void BuildData()
+    private async Task BuildData()
     {
         try
         {

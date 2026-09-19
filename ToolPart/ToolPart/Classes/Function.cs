@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using Avalonia.Controls;
 using Avalonia.Media.Imaging;
@@ -22,15 +21,7 @@ public static partial class Function
     public static int? TryParseId(string name)
     {
         if (string.IsNullOrEmpty(name)) return null;
-
-        try
-        {
-            return int.Parse(ExtractNumbers(name));
-        }
-        catch
-        {
-            return null;
-        }
+        return int.TryParse(ExtractNumbers(name), out var id) ? id : null;
     }
 
     public static Bitmap CloneBitmap(this Bitmap original)
@@ -49,9 +40,8 @@ public static partial class Function
             dictionary.Add(key, value);
         }
 
-        var list = value;
-        list.Add(panel);
-        panel.Tag = list.IndexOf(panel);
+        value.Add(panel);
+        panel.Tag = value.IndexOf(panel);
     }
 
     public static void InvalidateAll(this Panel panel, bool recursive = true)
@@ -71,12 +61,7 @@ public static partial class Function
 
     public static int NextInt(int a, int b)
     {
-        int result;
-        if (a == b)
-            result = a;
-        else
-            result = a + Random.Next(b - a);
-        return result;
+        return a == b ? a : a + Random.Next(b - a);
     }
 
     public static int CountNotNull(List<PartImage> a)
@@ -96,20 +81,8 @@ public static partial class Function
 
     public static string ConvertArrayToString(List<PartImage> array)
     {
-        var sb = new StringBuilder("[");
-        if (array != null)
-        {
-            var count = array.Count;
-            for (var i = 0; i < count; i++)
-            {
-                var item = array[i];
-                sb.Append(item != null ? item.ToString() : "null");
-                if (i < count - 1) sb.Append(", ");
-            }
-        }
-
-        sb.Append(']');
-        return sb.ToString();
+        if (array == null) return "[]";
+        return "[" + string.Join(", ", array.Select(item => item?.ToString() ?? "null")) + "]";
     }
 
     public static string CleanJson(string serializedJson, params string[] replacements)

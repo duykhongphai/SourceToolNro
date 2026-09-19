@@ -41,29 +41,17 @@ public partial class WindowExecution : Window
     {
         if (_selectedImageToMove == null) return;
         const int moveAmount = 4;
-        switch (e.Key)
+        var (dx, dy) = e.Key switch
         {
-            case Key.Up:
-                _selectedImageToMove.Bounds = new Rect(_selectedImageToMove.Bounds.X,
-                    _selectedImageToMove.Bounds.Y - moveAmount, _selectedImageToMove.Bounds.Width,
-                    _selectedImageToMove.Bounds.Height);
-                break;
-            case Key.Down:
-                _selectedImageToMove.Bounds = new Rect(_selectedImageToMove.Bounds.X,
-                    _selectedImageToMove.Bounds.Y + moveAmount, _selectedImageToMove.Bounds.Width,
-                    _selectedImageToMove.Bounds.Height);
-                break;
-            case Key.Left:
-                _selectedImageToMove.Bounds = new Rect(_selectedImageToMove.Bounds.X - moveAmount,
-                    _selectedImageToMove.Bounds.Y, _selectedImageToMove.Bounds.Width,
-                    _selectedImageToMove.Bounds.Height);
-                break;
-            case Key.Right:
-                _selectedImageToMove.Bounds = new Rect(_selectedImageToMove.Bounds.X + moveAmount,
-                    _selectedImageToMove.Bounds.Y, _selectedImageToMove.Bounds.Width,
-                    _selectedImageToMove.Bounds.Height);
-                break;
-        }
+            Key.Up => (0, -moveAmount),
+            Key.Down => (0, moveAmount),
+            Key.Left => (-moveAmount, 0),
+            Key.Right => (moveAmount, 0),
+            _ => (0, 0)
+        };
+        if (dx == 0 && dy == 0) return;
+        var bounds = _selectedImageToMove.Bounds;
+        _selectedImageToMove.Bounds = new Rect(bounds.X + dx, bounds.Y + dy, bounds.Width, bounds.Height);
     }
 
     protected override void OnClosed(EventArgs e)
@@ -116,32 +104,21 @@ public partial class WindowExecution : Window
             return;
         }
 
-        var result1 = JsonParser.ParseArray(headData);
-        if (result1?.Count != 0 && result1 != null)
-        {
-            if (PartHead == null) PartHead = [];
-            PartHead.Clear();
-            for (var i = 0; i < result1.Count; i++)
-                PartHead.Add(ParsePartImage(result1[i], isArray, isIdDxDy, iconPath, BodyEnum.Head));
-        }
+        PartHead = LoadParts(headData, PartHead, isArray, isIdDxDy, iconPath, BodyEnum.Head);
+        PartBody = LoadParts(bodyData, PartBody, isArray, isIdDxDy, iconPath, BodyEnum.Body);
+        PartLeg = LoadParts(legData, PartLeg, isArray, isIdDxDy, iconPath, BodyEnum.Leg);
+    }
 
-        result1 = JsonParser.ParseArray(bodyData);
-        if (result1?.Count != 0 && result1 != null)
-        {
-            if (PartBody == null) PartBody = [];
-            PartBody.Clear();
-            for (var i = 0; i < result1.Count; i++)
-                PartBody.Add(ParsePartImage(result1[i], isArray, isIdDxDy, iconPath, BodyEnum.Body));
-        }
-
-        result1 = JsonParser.ParseArray(legData);
-        if (result1?.Count != 0 && result1 != null)
-        {
-            if (PartLeg == null) PartLeg = [];
-            PartLeg.Clear();
-            for (var i = 0; i < result1.Count; i++)
-                PartLeg.Add(ParsePartImage(result1[i], isArray, isIdDxDy, iconPath, BodyEnum.Leg));
-        }
+    private List<PartImage> LoadParts(string data, List<PartImage> target, bool isArray, bool isIdDxDy,
+        string iconPath, BodyEnum type)
+    {
+        var parsed = JsonParser.ParseArray(data);
+        if (parsed == null || parsed.Count == 0) return target;
+        target ??= [];
+        target.Clear();
+        foreach (var item in parsed)
+            target.Add(ParsePartImage(item, isArray, isIdDxDy, iconPath, type));
+        return target;
     }
 
     private PartImage ParsePartImage(object data, bool isJsonArray, bool isIdDxDyOrder, string pathIcon, BodyEnum type)
@@ -185,34 +162,22 @@ public partial class WindowExecution : Window
         var windowImportImage = new ImportImage();
         var result = await windowImportImage.ShowDialog<List<List<PartImage>>>(this);
         if (result == null) return;
-        if (PartHead == null)
-            PartHead = result[0];
-        else
-            for (var i = 0; i < PartHead.Count; i++)
-            {
-                PartHead[i].Image = result[0][i].Image;
-                PartHead[i].Id = result[0][i].Id;
-            }
-
-        if (PartBody == null)
-            PartBody = result[1];
-        else
-            for (var i = 0; i < PartBody.Count; i++)
-            {
-                PartBody[i].Image = result[1][i].Image;
-                PartBody[i].Id = result[1][i].Id;
-            }
-
-        if (PartLeg == null)
-            PartLeg = result[2];
-        else
-            for (var i = 0; i < PartLeg.Count; i++)
-            {
-                PartLeg[i].Image = result[2][i].Image;
-                PartLeg[i].Id = result[2][i].Id;
-            }
-
+        PartHead = MergeParts(PartHead, result[0]);
+        PartBody = MergeParts(PartBody, result[1]);
+        PartLeg = MergeParts(PartLeg, result[2]);
         CharacterDisplayArea.InvalidateAll();
+    }
+
+    private static List<PartImage> MergeParts(List<PartImage> target, List<PartImage> source)
+    {
+        if (target == null) return source;
+        for (var i = 0; i < target.Count; i++)
+        {
+            target[i].Image = source[i].Image;
+            target[i].Id = source[i].Id;
+        }
+
+        return target;
     }
 
     private void ExportPart_OnClick(object sender, RoutedEventArgs e)

@@ -954,17 +954,19 @@ public partial class FormSkillEffect : Window
 
     private void LoadDartHeadBorderData(DartInfo dartInfo)
     {
-        PanelImgHead.Children.Clear();
-        SetHeadFramesVisibility(true);
-        for (var i = 0; i < dartInfo.HeadBorder.Count; i++)
-            AddPictureBoxDartHead(i);
+        LoadDartHeadFrames(dartInfo.HeadBorder.Count);
     }
 
     private void LoadDartHeadData(DartInfo dartInfo)
     {
+        LoadDartHeadFrames(dartInfo.Head.Count);
+    }
+
+    private void LoadDartHeadFrames(int count)
+    {
         PanelImgHead.Children.Clear();
         SetHeadFramesVisibility(true);
-        for (var i = 0; i < dartInfo.Head.Count; i++)
+        for (var i = 0; i < count; i++)
             AddPictureBoxDartHead(i);
     }
 

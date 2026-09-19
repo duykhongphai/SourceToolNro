@@ -340,34 +340,20 @@ public partial class FormMainEffect : Window
     private void ReadSkillStandData(myReader dataInputStream, SkillPaint skillPaint)
     {
         var standCount = dataInputStream.readByte();
-        skillPaint.SkillStand = new List<SkillInfoPaint>(standCount);
-
-        for (var j = 0; j < standCount; j++)
-            skillPaint.SkillStand.Add(new SkillInfoPaint
-            {
-                Status = dataInputStream.readByte(),
-                EffS0Id = dataInputStream.readShort(),
-                E0dx = dataInputStream.readShort(),
-                E0dy = dataInputStream.readShort(),
-                EffS1Id = dataInputStream.readShort(),
-                E1dx = dataInputStream.readShort(),
-                E1dy = dataInputStream.readShort(),
-                EffS2Id = dataInputStream.readShort(),
-                E2dx = dataInputStream.readShort(),
-                E2dy = dataInputStream.readShort(),
-                ArrowId = dataInputStream.readShort(),
-                Adx = dataInputStream.readShort(),
-                Ady = dataInputStream.readShort()
-            });
+        skillPaint.SkillStand = ReadSkillInfoPaints(dataInputStream, standCount);
     }
 
     private void ReadSkillFlyData(myReader dataInputStream, SkillPaint skillPaint)
     {
         var flyCount = dataInputStream.readByte();
-        skillPaint.SkillFly = new List<SkillInfoPaint>(flyCount);
-        for (var k = 0; k < flyCount; k++)
-        {
-            skillPaint.SkillFly.Add(new SkillInfoPaint
+        skillPaint.SkillFly = ReadSkillInfoPaints(dataInputStream, flyCount);
+    }
+
+    private static List<SkillInfoPaint> ReadSkillInfoPaints(myReader dataInputStream, int count)
+    {
+        var list = new List<SkillInfoPaint>(count);
+        for (var i = 0; i < count; i++)
+            list.Add(new SkillInfoPaint
             {
                 Status = dataInputStream.readByte(),
                 EffS0Id = dataInputStream.readShort(),
@@ -383,7 +369,8 @@ public partial class FormMainEffect : Window
                 Adx = dataInputStream.readShort(),
                 Ady = dataInputStream.readShort()
             });
-        }
+
+        return list;
     }
 
     private async Task ProcessDartData(myReader dataInputStream)

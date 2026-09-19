@@ -185,45 +185,33 @@ public partial class ViewSkill : Window
             myWriter.writeShort(skillPaint.Id);
             myWriter.writeShort(skillPaint.EffectHappenOnMob);
             myWriter.writeByte(0);
-            myWriter.writeByte(skillPaint.SkillStand.Count);
-            foreach (var skillStand in skillPaint.SkillStand)
-            {
-                myWriter.writeSByte(skillStand.Status);
-                myWriter.writeShort(skillStand.EffS0Id);
-                myWriter.writeShort(skillStand.E0dx);
-                myWriter.writeShort(skillStand.E0dy);
-                myWriter.writeShort(skillStand.EffS1Id);
-                myWriter.writeShort(skillStand.E1dx);
-                myWriter.writeShort(skillStand.E1dy);
-                myWriter.writeShort(skillStand.EffS2Id);
-                myWriter.writeShort(skillStand.E2dx);
-                myWriter.writeShort(skillStand.E2dy);
-                myWriter.writeShort(skillStand.ArrowId);
-                myWriter.writeShort(skillStand.Adx);
-                myWriter.writeShort(skillStand.Ady);
-            }
-
-            myWriter.writeByte(skillPaint.SkillFly.Count);
-            foreach (var skillFly in skillPaint.SkillFly)
-            {
-                myWriter.writeSByte(skillFly.Status);
-                myWriter.writeShort(skillFly.EffS0Id);
-                myWriter.writeShort(skillFly.E0dx);
-                myWriter.writeShort(skillFly.E0dy);
-                myWriter.writeShort(skillFly.EffS1Id);
-                myWriter.writeShort(skillFly.E1dx);
-                myWriter.writeShort(skillFly.E1dy);
-                myWriter.writeShort(skillFly.EffS2Id);
-                myWriter.writeShort(skillFly.E2dx);
-                myWriter.writeShort(skillFly.E2dy);
-                myWriter.writeShort(skillFly.ArrowId);
-                myWriter.writeShort(skillFly.Adx);
-                myWriter.writeShort(skillFly.Ady);
-            }
+            WriteSkillInfoList(myWriter, skillPaint.SkillStand);
+            WriteSkillInfoList(myWriter, skillPaint.SkillFly);
         }
 
         await File.WriteAllBytesAsync("Output//NrSkill", Array.ConvertAll(myWriter.getData(), a => (byte)a));
         myWriter.Close();
+    }
+
+    private static void WriteSkillInfoList(myWriter writer, List<SkillInfoPaint> list)
+    {
+        writer.writeByte(list.Count);
+        foreach (var info in list)
+        {
+            writer.writeSByte(info.Status);
+            writer.writeShort(info.EffS0Id);
+            writer.writeShort(info.E0dx);
+            writer.writeShort(info.E0dy);
+            writer.writeShort(info.EffS1Id);
+            writer.writeShort(info.E1dx);
+            writer.writeShort(info.E1dy);
+            writer.writeShort(info.EffS2Id);
+            writer.writeShort(info.E2dx);
+            writer.writeShort(info.E2dy);
+            writer.writeShort(info.ArrowId);
+            writer.writeShort(info.Adx);
+            writer.writeShort(info.Ady);
+        }
     }
 
     private async void WriteNrEffect()

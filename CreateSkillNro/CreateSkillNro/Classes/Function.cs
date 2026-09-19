@@ -173,14 +173,7 @@ public static partial class Function
     {
         if (string.IsNullOrEmpty(name)) return null;
 
-        try
-        {
-            return short.Parse(ExtractNumbers(name));
-        }
-        catch
-        {
-            return null;
-        }
+        return short.TryParse(ExtractNumbers(name), out var id) ? id : null;
     }
 
     [GeneratedRegex("[^0-9]")]
@@ -203,12 +196,7 @@ public static partial class Function
 
     public static int NextInt(int a, int b)
     {
-        int result;
-        if (a == b)
-            result = a;
-        else
-            result = a + Random.Next(b - a);
-        return result;
+        return a == b ? a : a + Random.Next(b - a);
     }
 
     public static int NextInt(int b)

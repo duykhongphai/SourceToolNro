@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -53,16 +54,19 @@ public partial class ManagerCrop : Window
         _imageInfoDeletes.Clear();
     }
 
+    private async Task<bool> EnsurePictureBoxSelectedAsync(string message)
+    {
+        if (_pictureBoxSelect != null) return true;
+        await MessageBoxManager.GetMessageBoxStandard("Thông Báo",
+            message,
+            ButtonEnum.Ok,
+            MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
+        return false;
+    }
+
     private async void Left_OnClick(object sender, RoutedEventArgs e)
     {
-        if (_pictureBoxSelect == null)
-        {
-            await MessageBoxManager.GetMessageBoxStandard("Thông Báo",
-                "Vui Lòng Chọn Ảnh Để Di Chuyển",
-                ButtonEnum.Ok,
-                MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-            return;
-        }
+        if (!await EnsurePictureBoxSelectedAsync("Vui Lòng Chọn Ảnh Để Di Chuyển")) return;
 
         var index = PanelImage.Children.IndexOf(_pictureBoxSelect);
         if (index <= 0) return;
@@ -84,14 +88,7 @@ public partial class ManagerCrop : Window
 
     private async void Right_OnClick(object sender, RoutedEventArgs e)
     {
-        if (_pictureBoxSelect == null)
-        {
-            await MessageBoxManager.GetMessageBoxStandard("Thông Báo",
-                "Vui Lòng Chọn Ảnh Để Di Chuyển",
-                ButtonEnum.Ok,
-                MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-            return;
-        }
+        if (!await EnsurePictureBoxSelectedAsync("Vui Lòng Chọn Ảnh Để Di Chuyển")) return;
 
         var index = PanelImage.Children.IndexOf(_pictureBoxSelect);
         if (index >= PanelImage.Children.Count - 1) return;
@@ -102,14 +99,7 @@ public partial class ManagerCrop : Window
 
     private async void Delete_OnClick(object sender, RoutedEventArgs e)
     {
-        if (_pictureBoxSelect == null)
-        {
-            await MessageBoxManager.GetMessageBoxStandard("Thông Báo",
-                "Vui Lòng Chọn Ảnh Để Xóa",
-                ButtonEnum.Ok,
-                MsBox.Avalonia.Enums.Icon.Warning).ShowAsync();
-            return;
-        }
+        if (!await EnsurePictureBoxSelectedAsync("Vui Lòng Chọn Ảnh Để Xóa")) return;
 
         var index = PanelImage.Children.IndexOf(_pictureBoxSelect);
         if (_imageInfoSelect == null) return;

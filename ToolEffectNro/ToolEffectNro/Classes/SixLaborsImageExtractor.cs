@@ -149,13 +149,6 @@ public class SixLaborsImageExtractor
 
     #region Helper methods
 
-    private static (int rows, int cols) FindOptimalRowsAndCols(int count)
-    {
-        var cols = (int)Math.Ceiling(Math.Sqrt(count));
-        var rows = (int)Math.Ceiling((double)count / cols);
-        return (rows, cols);
-    }
-
     private static Mat ImageToMat(Image<Rgba32> image)
     {
         using var memoryStream = new MemoryStream();

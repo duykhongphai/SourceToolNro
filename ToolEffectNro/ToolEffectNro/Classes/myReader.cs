@@ -112,11 +112,7 @@ public class myReader
 
     public string readString()
     {
-        var num = readShort();
-        var array = new byte[num];
-        for (var i = 0; i < num; i++) array[i] = convertSbyteToByte(readSByte());
-        var utf8Encoding = new UTF8Encoding();
-        return utf8Encoding.GetString(array);
+        return readStringUTF();
     }
 
     public string readStringUTF()

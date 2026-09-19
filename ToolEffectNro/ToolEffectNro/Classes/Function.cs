@@ -48,12 +48,7 @@ public static class Function
 
     public static int NextInt(int a, int b)
     {
-        int result;
-        if (a == b)
-            result = a;
-        else
-            result = a + _random.Next(b - a);
-        return result;
+        return a == b ? a : a + _random.Next(b - a);
     }
 
     public static sbyte[] ImageToSByteArray(Bitmap image)

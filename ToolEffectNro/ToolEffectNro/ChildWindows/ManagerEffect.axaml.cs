@@ -161,27 +161,25 @@ public partial class ManagerEffect : Window
         BeginMoveDrag(e);
     }
 
+    private static void SyncFlagFile(bool isChecked, string path)
+    {
+        if (isChecked)
+            File.WriteAllText(path, "");
+        else if (File.Exists(path)) File.Delete(path);
+    }
+
     private void DataHasEffectId_OnIsCheckedChanged(object sender, RoutedEventArgs e)
     {
-        var pathEff = Settings.localLowPath + "_1";
-        if (DataHasEffectId.IsChecked == true)
-            File.WriteAllText(pathEff, "");
-        else if (File.Exists(pathEff)) File.Delete(pathEff);
+        SyncFlagFile(DataHasEffectId.IsChecked == true, Settings.localLowPath + "_1");
     }
 
     private void FlagBag_OnIsCheckedChanged(object sender, RoutedEventArgs e)
     {
-        var pathFlag = Settings.localLowPath + "_2";
-        if (FlagBag.IsChecked == true)
-            File.WriteAllText(pathFlag, "");
-        else if (File.Exists(pathFlag)) File.Delete(pathFlag);
+        SyncFlagFile(FlagBag.IsChecked == true, Settings.localLowPath + "_2");
     }
 
     private void SeparateImageAndData_OnIsCheckedChanged(object sender, RoutedEventArgs e)
     {
-        var pathSeparate = Settings.localLowPath + "_3";
-        if (SeparateImageAndData.IsChecked == true)
-            File.WriteAllText(pathSeparate, "");
-        else if (File.Exists(pathSeparate)) File.Delete(pathSeparate);
+        SyncFlagFile(SeparateImageAndData.IsChecked == true, Settings.localLowPath + "_3");
     }
 }
